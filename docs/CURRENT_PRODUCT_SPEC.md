@@ -69,3 +69,8 @@ Home → 建物情報（3ステップ）→ Results（6用途の確認状況）�
 ## 9. 関連する基準資料
 - [画面仕様](UI_SPEC.md)、[診断仕様](DIAGNOSIS_SPEC.md)、[作業分解](IMPLEMENTATION_BACKLOG.md)
 - [架空検証ケース](VALIDATION_SCENARIOS.md)、[調査案](QUESTIONNAIRE_DRAFT.md)、[実証判断基準](EVIDENCE_DECISION_PLAYBOOK.md)、[あなたの作業](FIELDWORK_HANDOFF.md)
+
+## 設計の最終補足（2026-11-12）
+- [詳細ワイヤーフレーム](DETAILED_WIREFRAMES.md)：各画面の配置・文言・操作状態。
+- [境界条件・例外仕様](DIAGNOSIS_EDGE_CASES.md)：入力・用途分類・地域情報・質問の42ケース。
+- [生成AI利用記録と申告案](AI_USAGE_DISCLOSURE.md)：県の公式条件と、現時点でChatGPTが関わった作業範囲。実装と提出は未実施。
