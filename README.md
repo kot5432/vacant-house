@@ -10,6 +10,8 @@
 ## 【現行の正本はこちら】
 **[docs/v3/README.md — v3.1の設計、競合・需要の検証計画](docs/v3/README.md)**
 
+**開発前に決めることは [6ステップ計画](docs/v3/PREDEVELOPMENT_PLAN.md) へ。** 課題・対象者→提供価値・独自性→MVP→入力/データ・判定→画面→コンテスト・開発着手条件の順に、設計の結論と未検証事項を分けて整理しています。
+
 参照順：
 [製品仕様](docs/v3/PRODUCT_SPEC.md) → [画面](docs/v3/USER_FLOW.md) → [判断ルール](docs/v3/DECISION_RULES.md) → [需要・競合の監査](docs/v3/DEMAND_AND_COMPETITOR_AUDIT.md) → [実際の検証方法](docs/v3/VALIDATION_PROTOCOL_V31.md)
 
