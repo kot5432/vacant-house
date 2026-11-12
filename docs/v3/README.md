@@ -11,6 +11,19 @@
 
 重点の例は、子どもの居場所・学習支援、非営利の体験会・地域交流。空き家は必要なときの選択肢の一つであり、物件を探したり予約したりしない。
 
+## 【開発前の優先資料】6つのSTEPを順番に進める
+
+**[開発前の6ステップ・決定事項・未決事項](PREDEVELOPMENT_PLAN.md)** が現在の計画の入口です。
+
+1. [STEP1 課題とターゲット](STEP1_PROBLEM_TARGET.md) — 誰の何を解決するか。
+2. [STEP2 提供価値と独自性](STEP2_VALUE_DIFFERENTIATION.md) — アプリを使う理由と既存サービスとの差。
+3. [STEP3 MVPの範囲](STEP3_MVP_BOUNDARY.md) — 必須機能・作らない機能。
+4. [STEP4 データと判断ルール](STEP4_INPUT_OUTPUT_EVIDENCE.md) — 入力→確認カード→根拠と例外。
+5. [STEP5 画面・利用体験](STEP5_USER_EXPERIENCE.md) — 主要5画面の文章ワイヤーフレーム。
+6. [STEP6 コンテストと開発着手条件](STEP6_CONTEST_READINESS.md) — 架空デモと未決事項。
+
+これらの設計は現在のv3.1に従って作成。**旧v1所有者向け用途診断、旧v2営利活動・場所診断は含めません**。聞き取り・アンケート・実装は未実施です。
+
 ## 読む順番（すべて現行v3.1）
 1. [PRODUCT_SPEC.md](PRODUCT_SPEC.md) — 対象・価値・MVP。
 2. [USER_FLOW.md](USER_FLOW.md) — 画面と実際の利用体験。
