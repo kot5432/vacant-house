@@ -31,7 +31,7 @@
 ## 5. 入力（最小限）
 **必須**：活動種類 `activityType`、現在の形態 `startingMode`（solo / forming_team）。
 **任意**：最も困っていること `blocker`（people / operation / venue / cost / unsure / none_or_unknown）、協力者 `supportPeople`（available/looking/unknown）、活動責任者 `responsibleLead`（available/coordinating/unknown）、希望地区、日時・頻度、参加人数（整数/不明）、必要設備、活動説明（判断に使わない）。
-**地域交流センターを検討するときだけ** `centerUserComposition`（minor_only / adult_involved / unknown）。**年齢の数字や個人情報は不要**。
+**高岡市の地域交流センターをすでに検討している場合**：入力ステップ2で「高岡市地域交流センターを検討中か」（yes/no/unknown）を任意で聞く。yesのときだけ利用者構成（minor_only/adult_involved/unknown）を聞く。**正確な年齢や個人情報は不要**。結果の後から施設条件を変更した場合も、最初のカードと相談文を再計算する。
 入力欄は子どもの実名、参加者の連絡先、実在の空き家の正確住所、GPSを収集しない。AI APIへの自由文送信なし。
 
 ## 6. 診断と結果の原則
@@ -49,5 +49,11 @@
 ## 8. 実装の可否を決める条件
 **未実施の利用者検証が先**。実際に困った個人・小規模チームからエピソードを集め、自治体Web/検索/汎用AIと紙の回答カードを比較する。独自性が確認できなければ改善・方向転換。方法は[検証プロトコル](VALIDATION_PROTOCOL_V31.md)。
 
-## 9. 他資料
+## 9. 今回の設計机上レビュー（未実装・未検証）
+- 高岡市の公式情報台帳：[OFFICIAL_SOURCE_REGISTER.md](OFFICIAL_SOURCE_REGISTER.md)
+- 5つの架空利用シナリオ：[TABLETOP_SCENARIOS.md](TABLETOP_SCENARIOS.md)
+- 設計矛盾の解消：[DESIGN_REVIEW_AND_DECISIONS.md](DESIGN_REVIEW_AND_DECISIONS.md)
+- 本人の活動・困りごとに該当しない地域ルールは確定事項として適用せず、公式管理者の確認を促す。
+
+## 10. 他資料
 [画面](USER_FLOW.md)／[判定](DECISION_RULES.md)／[監査](DEMAND_AND_COMPETITOR_AUDIT.md)／[価値の具体例](VALUE_PROPOSITION_V31.md)／[開発計画](IMPLEMENTATION_PLAN.md)。
