@@ -1,5 +1,5 @@
 # 現行設計 v3.1 — 初めての地域イベント開催準備ガイド（仮称）
-更新：2026-11-13（STEP1・STEP2方針確定）。**設計・公開資料の机上調査のみ／未実装／利用者の需要は未検証。**
+更新：2026-11-13（STEP1・STEP2方針とSTEP3-①〜⑭の採用事項を整理、⑮詳細設計中）。**設計・公開資料の机上調査のみ／未実装／利用者の需要は未検証。**
 
 > **現行仕様の唯一の入口です。** docs/直下の旧v1/v2資料と `PROJECT_CONCEPT.md` の過去章、v3.0の内容を現行仕様に混ぜないでください。**v3.1が現在の最新版**です。v3.0との差分はGit履歴に保存されています。
 
@@ -17,17 +17,17 @@
 
 1. [STEP1 課題とターゲット](STEP1_PROBLEM_TARGET.md) — 誰の何を解決するか。
 2. [STEP2 提供価値と独自性](STEP2_VALUE_DIFFERENTIATION.md) — アプリを使う理由と既存サービスとの差。
-3. [STEP3 MVPの範囲](STEP3_MVP_BOUNDARY.md) — 必須機能・作らない機能。
-4. [STEP4 データと判断ルール](STEP4_INPUT_OUTPUT_EVIDENCE.md) — 入力→確認カード→根拠と例外。
-5. [STEP5 画面・利用体験](STEP5_USER_EXPERIENCE.md) — 主要5画面の文章ワイヤーフレーム。
+3. [STEP3 MVPの範囲](STEP3_MVP_BOUNDARY.md) — 入力方式①〜⑫、条件ベース順位提案⑬、結果表示⑭の採用事項と⑮詳細案。
+4. [STEP4 データと判断ルール](STEP4_INPUT_OUTPUT_EVIDENCE.md) — **4領域12項目の条件別判定表**、優先度・例外・根拠の設計案（最終確定前）。
+5. [STEP5 画面・利用体験](STEP5_USER_EXPERIENCE.md) — **旧構成の文章ワイヤーフレーム。現行フローへの改訂が必要**。
 6. [STEP6 コンテストと開発着手条件](STEP6_CONTEST_READINESS.md) — 架空デモと未決事項。
 
-**現在の進め方**：**STEP1・STEP2はユーザーが方針を確定（2026-11-13）**。STEP3〜6と、本フォルダ内の以前の「最初の一歩カードを最初に見せる」UI/ルール等は**STEP2以前の暫定設計**であり、STEP3から順に改訂してから確定させます。旧v1所有者向け用途診断、旧v2営利活動・場所診断を現行仕様に混ぜません。聞き取り・アンケート・実装は未実施です。
+**現在の進め方**：**STEP1・STEP2は方針確定**。STEP3-①〜⑫の入力方式、⑬「本人の困りごとを追加で聞かない」、⑭「重要確認→次の行動→準備の全体像」、**基本6問→暫定プラン→任意詳細化→持ち帰り**を採用しました。⑮の**4領域12項目の詳細な判定ルールは設計案・最終確認前**です。STEP4はこの現行方針を反映済みですが、STEP5と以下の旧来のv3.1補助文書には「活動障壁の入力」「最初の一歩のみ」の古い仮仕様が残ります。**STEP3と更新後のSTEP4を優先し、矛盾する記述は採用しない**でください。旧v1所有者向け用途診断、旧v2営利活動・場所診断は現行仕様に混ぜません。聞き取り・アンケート・実装は未実施です。
 
-## 読む順番（すべて現行v3.1）
+## 補助資料（旧仮仕様を含むため、STEP3/更新済みSTEP4を優先）
 1. [PRODUCT_SPEC.md](PRODUCT_SPEC.md) — 対象・価値・MVP。
 2. [USER_FLOW.md](USER_FLOW.md) — 画面と実際の利用体験。
-3. [DECISION_RULES.md](DECISION_RULES.md) — 障壁・地域の条件から次の一歩を作る規則。
+3. [DECISION_RULES.md](DECISION_RULES.md) — **旧・障壁入力方式の判定案。現行の優先順位仕様として採用しない**。
 4. [VALUE_PROPOSITION_V31.md](VALUE_PROPOSITION_V31.md) — 旧版との差、架空の画面例。
 5. [DEMAND_AND_COMPETITOR_AUDIT.md](DEMAND_AND_COMPETITOR_AUDIT.md) — 需要の根拠と競合の限界。
 6. [EVIDENCE_AND_VALIDATION.md](EVIDENCE_AND_VALIDATION.md) — 机上調査の結論と残る仮説。
