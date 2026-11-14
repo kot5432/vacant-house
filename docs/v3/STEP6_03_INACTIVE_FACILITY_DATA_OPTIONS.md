@@ -1,3 +1,5 @@
+> **決定後追記（2026-11-15）：比較は完了し、B案を正式採用しました。正本は[ADR-005](ADR_005_CLEAR_INAPPLICABLE_FACILITY_INPUT.md)。以下のA/B比較・未決表記は当時の履歴です。非該当となった施設固有の入力はU04の確定保存が成功したときだけ削除し、進捗履歴は保持します。**
+
 # STEP6-③｜残る入力・施設情報保持の決定ゲート（2026-11-15）
 
 > 状態：ユーザー確認前の選択肢比較。既決事項（[ADR-001](ADR_001_TECH_STACK_ADOPTED.md)技術、[ADR-002](ADR_002_NO_PHYSICAL_VENUE_SCOPE.md)物理会場なし、[ADR-003](ADR_003_PRIORITY_RULES_ADOPTED.md)優先度、[ADR-004](ADR_004_EXPLICIT_RECHECK_CLEAR.md)再確認解除）は変更しない。現行イベント準備支援Webアプリ専用。旧空き家や物件DBは対象外。コード・テストなし。
