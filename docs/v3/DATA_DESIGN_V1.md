@@ -212,3 +212,7 @@ interface EventRecord {
 ## 16. 出典有効状態の月末境界（ADR-011正式採用）
 
 ユーザーの`EventRecord`（IndexedDB）には**出典の確認予定日をユーザーごとに複製しない**。公式出典の版付きカタログ（アプリ同梱、保存される本人進捗とは別）に`sourceId`、`sourceRevision`、`baseStatus`、`checkedAt`、`reviewedAt`、`reviewedMonth`（YYYY-MM）などを保持する**設計案**。期限ルールは**JST各暦月末日中に当月レビュー完了、未完了のまま翌月1日00:00から当該出典の断定停止**で正式決定。現在の基準日時と出典データから`effectiveStatus`を算出し、`verified`の保存値だけを信用しない。未記録・破損の出典は一般確認へフォールバック。出典の失効によって`progressByTask`のstatusやイベントのrevisionを無条件に書き換えない。出典モデルの物理保存形式・旧タブの更新通知は未決。[ADR-011](ADR_011_MONTH_END_SOURCE_REVIEW_DEADLINE.md)。
+
+## 17. 静的公式出典カタログのデータ境界（ADR-012採用）
+
+`SourceCatalog`はイベントデータのIndexedDBと分離し、Git管理の`catalogVersion,buildId,sourceId,sourceRevision,baseStatus,checkedAt,reviewedAt,reviewedMonth,facilityScope,applicabilityPredicate,officialUrl`などをViteビルドへ読み取り専用同梱する設計。**原ページを再確認したことが古いタブへ自動反映されると扱わない**。新しい`verified`情報の復帰は新版ビルドの読込後、本人の施設条件との一致とJST月末期限判定が揃った場合だけ。古いイベントの`progress.status`は出典の失効のみで変更しない。出典の改定による`needsRecheck`は影響範囲に限定。技術上の型・物理保存形式と版ID生成は未承認。決定：[ADR-012](ADR_012_BUNDLED_OFFICIAL_SOURCE_CATALOG.md)。
