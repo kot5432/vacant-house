@@ -1,3 +1,5 @@
+> **決定後追記：月末締切A案は[ADR-011](ADR_011_MONTH_END_SOURCE_REVIEW_DEADLINE.md)として採用済み。以下の「期限算定未決」記述は以前の技術検討時点のものです。**
+
 # STEP7-③｜公式情報の状態・期限判定・保存進捗の境界 v0.1
 
 作成：2026-11-15。**状態：実装前の技術設計案**。採用済み運用方針は[ADR-009](ADR_009_OFFICIAL_SOURCE_MONTHLY_RELEASE_REVIEWS.md)（月1回＋毎本番リリース前）、[ADR-010](ADR_010_STALE_SOURCE_FAIL_CLOSED.md)（予定期限超過時に猶予なく施設固有断定停止）。**期限日そのものは[STEP7-②](STEP7_02_SOURCE_REVIEW_DUE_DATE_OPTIONS.md)で比較中、未承認**。現行地域イベント準備支援アプリのみ対象。コード・試験・公開なし。
