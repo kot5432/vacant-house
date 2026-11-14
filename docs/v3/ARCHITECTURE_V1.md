@@ -152,3 +152,7 @@ U01からエクスポート／インポートを行う。設計上の責務は`E
 ## 15. 反復JSON復元の処理境界（ADR-017）
 
 `ImportService`はファイル取込履歴やハッシュDBをMVPに増やさず、**毎回**、検証済みJSONと最新EventRepositoryのID集合からコピー件数・追加件数を算定する。本人確認後に同じトランザクション内で衝突を再照合、変化があれば中断して再承認。衝突したeventIdのデータは一意な新IDのレコードとして追加し、既存には書き込まない。全件成功／全件失敗、未知形式拒否、未保存ドラフト非対象はADR-015/016を維持。[ADR-017](ADR_017_REPEAT_IMPORT_WITH_CONFIRMATION.md)。
+
+## 16. importメタデータの生成責務（ADR-018）
+
+`ImportService`はインポート全件の検証と本人承認後、原子的な追加トランザクションで**全新規EventRecordのrevision=1**、`createdAt/updatedAt=importedAt`（保存コミット時刻）を設定する。バックアップの元ID・元作成/更新日時を`importedFrom`に分け、既存のイベントの情報を変更しない。元のrevisionをCAS判定に持ち込まない。U01一覧は復元日時・元日時を区別、由来はイベント進捗とは独立。日時形式・旧版schemaの互換性や異常値防止は技術レビューが必要。[ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)。
