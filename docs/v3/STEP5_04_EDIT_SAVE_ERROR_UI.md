@@ -211,3 +211,7 @@ U04の既存編集ドラフトがあるイベントと同じeventIdがJSONにあ
 ## 21. 同じJSONの再取込みとU04ドラフト（ADR-017）
 
 繰返しインポートは毎回件数・別コピー件数を確認し、本人の明示確定後のみ実行。**既存イベントのU04編集中ドラフトに影響させず**、同一eventIdならバックアップ側を独立コピーとして追加。プレビュー後の別タブ更新で衝突分類が変われば再確認し、失敗時に既存イベント・ドラフトを変更しない。ファイルが既取込みかどうかのハッシュ履歴はMVPに含めない。[ADR-017](ADR_017_REPEAT_IMPORT_WITH_CONFIRMATION.md)。
+
+## 22. 復元したコピーの編集とrevision（ADR-018正式採用）
+
+インポートされたイベントは**新しい独立EventRecordとしてrevision=1で開始**。最初のU04更新はその新eventId/revisionとのCAS一致を確認し、保存成功時だけrevisionを進める。既存eventIdや由来のoriginalEventIdへ書き戻さない。復元日時をcreatedAt/updatedAtとし、後続の通常編集では当該レコードのupdatedAtを更新する。由来`importedFrom`の元日時は保持。U04キャンセル／保存失敗／他タブ競合は元の保存レコードを変更しない。[ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)。
