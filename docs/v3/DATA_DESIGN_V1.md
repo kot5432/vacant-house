@@ -183,6 +183,10 @@ interface EventRecord {
 
 [STEP6-① 進捗・再確認仕様](STEP6_01_PROGRESS_RECHECK_SPEC.md)を参照。本人の`status=not_applicable`とルールエンジンの`applicability=no`は別軸で保存・計算する。`completed+needsRecheck`または`not_applicable+needsRecheck`を許容し、条件変更時は旧進捗を黙って書き換えない。
 
-**新たな操作案（承認前）**：本人が「再確認を終えた」を明示選択した場合だけ、revision照合付きトランザクションで`needsRecheck`を解除する。保存前に「解除済み」と表示しない。理由コードの詳細な履歴保持方法は未決。
+**ADR-004正式採用**：本人が「再確認を終えた」を明示選択した場合だけ、revision照合付きトランザクションで`needsRecheck=false`、現在の`recheckReasonCodes=[]`を保存。`progress.status`を変更しない。保存前に「解除済み」と表示しない。理由コードの全履歴保持方法はMVP範囲外／未決。
 
 **入力検証案**：[STEP6-②](STEP6_02_VALIDATION_CONTRACT.md)に基本6問・任意回答の判別状態・ランタイム検証を整理。人数上限、メモ文字数上限、過去日入力、条件外施設値の保存／クリアは未承認の設計事項。
+
+## 11. 再確認解除のRepository更新境界（ADR-004正式採用）
+
+操作契約：`clearRecheck(eventId, taskId, expectedRevision)`。同一IndexedDB readwriteトランザクション内でレコード存在、revision一致、taskIdの妥当性、現在のneedsRecheckを確認し、対象タスクのstatusとcheckedItemIdsを保持したままneedsRecheckをfalse、現在のrecheckReasonCodesを空配列に更新する。成功後のみ新revisionと保存成功状態を返す。競合、保存失敗、削除済みIDなら既存保存レコードを変更せず、上書き・復活をしない。これは**API設計であってコード実装ではない**。
