@@ -136,3 +136,7 @@ Git版管理の公式出典台帳 + タスク定義
 `Vite build`内の`buildId`と**同一オリジンに配信する軽量なbuildIdメタデータのみ**を照合。起動・タブ復帰などの機会に自動確認し、一致しなければ更新案内を表示する。**再読み込みは本人操作のみ、強制リロード禁止**。出典カタログ自体の別JSON取得・専用APIは導入しない（ADR-012維持）。
 
 U02は初回未完成下書きがReactメモリ内だけにあるため、更新時に入力が消えると説明する。U04は未保存ドラフト、U03は進捗自動保存の完了を確認するまで再読み込みしない。buildId取得失敗や不正応答は「新版あり」と推定しない。**月末の出典失効判定はbuildId確認と独立**。通信タイムアウト、キャッシュ、ビルドID生成方式、再確認頻度は開発前の詳細技術検討。[ADR-013](ADR_013_MANUAL_REFRESH_ON_AUTO_VERSION_DETECTION.md)。
+
+## 12. PC・スマホ主要ブラウザの互換性境界（ADR-014採用）
+
+Chrome・Edge・Safari・Firefoxの現行版を**Windows/macOS・Android/iOSで利用可能な組合せに応じて検証**する。実行不可のOS×ブラウザ組合せは必須にしない。具体的な最低対応バージョンは実機検証後に公開前確定。書記素文字数は`Intl.Segmenter('ja',{granularity:'grapheme'})`第一候補でUI・保存で共通計算、IMEはcompositionイベントを中心として候補確定前の強制切断なし。`InputEvent.isComposing`のみへの依存は禁止する技術方針。対応しない環境で暗黙にUTF-16へ変更しない。IndexedDBは同一オリジンのローカル保存でブラウザ間同期・プライベートモード永続保存を保証しない。新ビルド通知はADR-013で本人明示再読込、旧タブDBスキーマ競合は[STEP7-⑥](STEP7_06_SCHEMA_AND_OLD_TAB_SAFETY_REVIEW.md)で検証。**実装・実機試験未実施**。[ADR-014](ADR_014_MAJOR_DESKTOP_MOBILE_BROWSER_SUPPORT.md)。
