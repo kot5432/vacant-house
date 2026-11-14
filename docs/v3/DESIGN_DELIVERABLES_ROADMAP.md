@@ -1,3 +1,5 @@
+> **2026-11-15更新：後続の正式決定を優先してください。** 技術は[ADR-001](ADR_001_TECH_STACK_ADOPTED.md)により**React + TypeScript + Vite、IndexedDB + Dexie、Vercel**を正式採用。生成後の進捗、同一ブラウザへの後日保存、複数イベント対応はSTEP4-⑥・⑨・⑫で採用済み。本書の「後日保存未決」「技術未決」「6分類T01-T12」などは**以前の検討時点の記録**です。現在の設計は[要件定義v1草案](REQUIREMENTS_V1_DRAFT.md)、[判定エンジン契約草案](RULE_ENGINE_CONTRACT_V1.md)、[データ](DATA_DESIGN_V1.md)、[アーキテクチャ](ARCHITECTURE_V1.md)、[テスト](TEST_PLAN_V1_DRAFT.md)、[開発・運用計画](DEVELOPMENT_OPERATIONS_PLAN_V1.md)を参照。**P01〜P12の細かい判定ルールや初回下書き保存は未決。実装・テスト・Vercel公開は未実施。**
+
 # 現行プロダクトの境界・設計成果物ロードマップ（2026-11-14）
 
 > **現行対象：富山県プログラミングコンテスト作品部門／初めての単発・小規模な非営利地域イベント主催者向け準備支援Webアプリ。**
