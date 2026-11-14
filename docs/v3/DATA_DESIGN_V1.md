@@ -208,3 +208,7 @@ interface EventRecord {
 ## 15. 任意メモの文字数と永続化（ADR-008正式採用）
 
 `venueNameMemo`は100字、`optionalDescription`は500字まで、どちらも任意。上限を超えるU04ドラフトは保存せず、以前のEventRecordとrevisionを維持する。保存時・読込時のランタイム検証も同じ文字数定義を使用。警告や残り字数はイベント本体に冗長保存しない。Unicodeの書記素クラスタ（`Intl.Segmenter`）を第一候補とし、IME中は強制切断しない。長い結合文字を別途防御するサイズ上限は**技術レビュー未決**。ADR-005により不適用の施設名メモはU04確定保存成功時のみ消去。[ADR-008](ADR_008_OPTIONAL_TEXT_LIMITS.md)。
+
+## 16. 出典有効状態の月末境界（ADR-011正式採用）
+
+ユーザーの`EventRecord`（IndexedDB）には**出典の確認予定日をユーザーごとに複製しない**。公式出典の版付きカタログ（アプリ同梱、保存される本人進捗とは別）に`sourceId`、`sourceRevision`、`baseStatus`、`checkedAt`、`reviewedAt`、`reviewedMonth`（YYYY-MM）などを保持する**設計案**。期限ルールは**JST各暦月末日中に当月レビュー完了、未完了のまま翌月1日00:00から当該出典の断定停止**で正式決定。現在の基準日時と出典データから`effectiveStatus`を算出し、`verified`の保存値だけを信用しない。未記録・破損の出典は一般確認へフォールバック。出典の失効によって`progressByTask`のstatusやイベントのrevisionを無条件に書き換えない。出典モデルの物理保存形式・旧タブの更新通知は未決。[ADR-011](ADR_011_MONTH_END_SOURCE_REVIEW_DEADLINE.md)。
