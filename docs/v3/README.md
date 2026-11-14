@@ -173,6 +173,13 @@
 - **次の利用者判断**：[STEP7-⑨ 保存データのバックアップ範囲](STEP7_09_BACKUP_SCOPE_OPTIONS.md)。A：エクスポート・インポート／B：エクスポートのみ／C：MVPでは機能なし。推奨Aだが**未承認**。
 - [STEP7残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)はADR-001〜014まで更新。現行の地域イベント準備支援アプリのみ扱い、旧空き家の物件・所有者・マッチング機能を引き継がない。**実装・テスト実行・デプロイは一切行っていない**。
 
+## 2026-11-15｜JSONバックアップの書き出し・復元をMVPに正式追加（ADR-015）
+
+- **正式採用**：[ADR-015 エクスポート＋インポート（A案）](ADR_015_JSON_BACKUP_EXPORT_IMPORT.md)。ブラウザIndexedDBに保存済みのイベント・進捗・再確認情報をローカルJSONへ書き出し、対応形式を選択して復元する機能をMVPに含める。[STEP4-⑫旧要件](STEP4_12_MVP_REQUIREMENTS_V01.md)の「ファイル入出力はMVP外」は本決定で変更。
+- [MVP要件](REQUIREMENTS_V1_DRAFT.md)、[データ設計](DATA_DESIGN_V1.md)、[アーキテクチャ](ARCHITECTURE_V1.md)、[U01/U02](STEP5_02_HOME_SETUP_WIREFRAMES.md)、[U04](STEP5_04_EDIT_SAVE_ERROR_UI.md)、[テスト](TEST_PLAN_V1_DRAFT.md)、[開発運用](DEVELOPMENT_OPERATIONS_PLAN_V1.md)に反映。本人の明示確認なしで既存イベントを上書き・削除しない。未保存U02/U04はバックアップ済みと偽らない。
+- **次の正式判断**：[STEP7-⑩ インポート時にeventIdが衝突したときの対応](STEP7_10_BACKUP_IMPORT_CONFLICT_OPTIONS.md)。衝突したイベントを別IDで複製するA案を推奨するが**未採用**。[STEP7-⑪復元安全契約](STEP7_11_BACKUP_SAFETY_CONTRACT_DRAFT.md)で形式・サイズ・競合・原子的保存の詳細を検討。
+- [STEP7実装前残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)にADR-001〜015を整理。現行地域イベント準備支援アプリのみ対象で、**旧空き家用のJSON・物件・所有者・マッチングを一切復元しない**。**実装・ブラウザ試験・デプロイは未実施**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
