@@ -165,6 +165,14 @@
 - **次の確認**：[STEP7-⑦ 対応ブラウザの範囲](STEP7_07_BROWSER_SUPPORT_OPTIONS.md)。スマホとPCの現行主要ブラウザを試験対象とするA案を推奨するが未承認。
 - [STEP7残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)をADR-001〜013に更新。現行イベント開催準備支援Webアプリのみ。旧空き家物件登録・所有者診断・マッチングは含めない。**アプリコード・実行テスト・公開は未着手**。
 
+## 2026-11-15｜PC・スマホ主要ブラウザA案正式採用（ADR-014）
+
+- **正式決定**：[ADR-014 主要Chrome・Edge・Safari・Firefox現行版をPC／スマホで検証](ADR_014_MAJOR_DESKTOP_MOBILE_BROWSER_SUPPORT.md)。検証対象の決定であり、まだ動作確認・具体的な最低版の確定はしていない。
+- [アーキテクチャ](ARCHITECTURE_V1.md)、[入力バリデーション](STEP6_02_VALIDATION_CONTRACT.md)、[データ設計](DATA_DESIGN_V1.md)、[U02](STEP5_02_HOME_SETUP_WIREFRAMES.md)、[U04](STEP5_04_EDIT_SAVE_ERROR_UI.md)、[テスト計画](TEST_PLAN_V1_DRAFT.md)、[開発運用](DEVELOPMENT_OPERATIONS_PLAN_V1.md)へ反映。Unicode書記素（Intl.Segmenter）を技術第一候補に、IMEのcompositionイベント、IndexedDB保存の失敗と別タブ競合、buildIdの手動更新などを検証。
+- **技術検証計画**：[STEP7-⑧ ブラウザ別試験行列](STEP7_08_BROWSER_COMPATIBILITY_TEST_MATRIX.md)。**未実施**。出典期限切れと更新通知、IME、書記素、ブラウザ保存データの一貫性をテストする。
+- **次の利用者判断**：[STEP7-⑨ 保存データのバックアップ範囲](STEP7_09_BACKUP_SCOPE_OPTIONS.md)。A：エクスポート・インポート／B：エクスポートのみ／C：MVPでは機能なし。推奨Aだが**未承認**。
+- [STEP7残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)はADR-001〜014まで更新。現行の地域イベント準備支援アプリのみ扱い、旧空き家の物件・所有者・マッチング機能を引き継がない。**実装・テスト実行・デプロイは一切行っていない**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
