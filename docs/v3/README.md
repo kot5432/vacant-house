@@ -126,6 +126,15 @@
 - [公式情報更新運用](OFFICIAL_SOURCES_OPERATIONS_V1.md)、[担当・点検フロー](OFFICIAL_SOURCES_REVIEW_CADENCE_PROPOSAL.md)、[状態遷移](OFFICIAL_SOURCES_STATUS_TRANSITIONS_V1.md)は設計案であり、**最新の高岡市公式原資料を今回実地確認したわけではない**。
 - 現行イベント準備支援Webアプリ専用。旧空き家案の所有者、物件、マッチングに関する機能を再導入しない。**実装／動作テスト／Vercel公開は未実施**。
 
+## 2026-11-15｜公式情報の更新頻度A案（ADR-009）正式採用とSTEP7の残件
+
+- **正式採用**：[ADR-009 公式情報の月次点検＋本番毎リリース前点検](ADR_009_OFFICIAL_SOURCE_MONTHLY_RELEASE_REVIEWS.md)。新規掲載前にも原ページを確認。変更・誤案内が判明したときは周期を待たず施設固有の断定を停止する。
+- [公式情報の運用](OFFICIAL_SOURCES_OPERATIONS_V1.md)、[状態遷移](OFFICIAL_SOURCES_STATUS_TRANSITIONS_V1.md)、[更新担当と点検記録](OFFICIAL_SOURCES_REVIEW_CADENCE_PROPOSAL.md)、[テスト設計](TEST_PLAN_V1_DRAFT.md)、[開発運用計画](DEVELOPMENT_OPERATIONS_PLAN_V1.md)に反映した。[STEP6-⑦のA/B/C比較](STEP6_07_OFFICIAL_SOURCE_CADENCE_OPTIONS.md)は採用前の履歴。
+- **現行の正式採用／未承認／公開前作業の全体整理**：[STEP7 実装前残件レビュー](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)。
+- **次に利用者判断が必要**：[STEP7-① 月次点検が遅れた場合の施設固有表示の扱い](STEP7_01_STALE_OFFICIAL_INFO_POLICY_OPTIONS.md)。推奨Aは期限超過時に一般確認へ切替。**未採用**。
+- [既存の高岡市出典台帳](OFFICIAL_SOURCE_REGISTER.md)には**2026-11-12に公式ページを机上閲覧した記録**がある。今回の作業では最新情報を再確認していない。過去の閲覧履歴と、最新の原ページ照合実施を混同しない。
+- 現行の単発・小規模地域イベント主催者向け準備支援Webアプリのみ。旧空き家所有者、物件診断、物件マッチングの要件は混入させない。**実装・テスト実行・Vercelデプロイは未実施**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
