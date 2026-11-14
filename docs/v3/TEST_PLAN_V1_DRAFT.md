@@ -248,3 +248,10 @@
 | COUNT-10 | 同eventIdを別タブで更新 | 旧revisionの人数変更を拒否 |
 
 [ADR-007](ADR_007_ATTENDEE_COUNT_WARNING.md)に従う。入力方式（全角数字など）の最終パース細則は別のテストとして追加。**実行試験は未実施**。
+
+## 17. 文字数・公式出典の追加検証計画（選択肢レビュー前、未実行）
+
+- 任意メモの上限は[比較資料](STEP6_06_TEXT_LENGTH_DESIGN_OPTIONS.md)で提案段階。採用まで100／500等の値を確定期待値にしない。
+- Unicode文字数は表示カウンターと保存検証を一致させる。書記素クラスタ推奨だが、実ブラウザ互換性・IME変換・極端な長い結合記号で試験が必要。
+- 公式情報は[状態遷移案](OFFICIAL_SOURCES_STATUS_TRANSITIONS_V1.md)の`verified→needs_review→suspended→verified/retired`と実際の対象条件の一致・不一致を試験。
+- Vercelの本番・プレビュー、古いブラウザタブ、手動再読み込みを分け、公式情報の停止を即時保証と表現しない。
