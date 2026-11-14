@@ -1,4 +1,4 @@
-# STEP7｜正式採用ADR-001〜014と実装前残件の棚卸し（2026-11-15）
+# STEP7｜正式採用ADR-001〜015と実装前残件の棚卸し（2026-11-15）
 
 > **目的：既決事項と未決事項を区別し、実装開始を誤って宣言しないための設計レビュー**。対象は地域イベント準備支援Webアプリのみ。GitHubリポジトリ名がvacant-houseでも、旧空き家所有者／物件／マッチングの機能は使わない。ソースコード、ブラウザ試験、Vercelデプロイなし。
 
@@ -20,6 +20,7 @@
 | ADR-012 | 公式出典はVite静的ビルド同梱、新しい版の読込時に再掲載 | [配信方式](ADR_012_BUNDLED_OFFICIAL_SOURCE_CATALOG.md) |
 | ADR-013 | 軽量buildIdを自動確認、再読み込みは本人の明示操作のみ | [版確認](ADR_013_MANUAL_REFRESH_ON_AUTO_VERSION_DETECTION.md) |
 | ADR-014 | PC・スマホ主要現行Chrome/Edge/Safari/Firefoxを検証対象 | [対応ブラウザ](ADR_014_MAJOR_DESKTOP_MOBILE_BROWSER_SUPPORT.md) |
+| ADR-015 | 保存済みイベントと本人進捗のJSONエクスポート＋インポートをMVPに追加 | [バックアップ](ADR_015_JSON_BACKUP_EXPORT_IMPORT.md) |
 
 **さらに既決**：基本6問、4領域・P01〜P12、U01〜U04、生成後ブラウザ内保存と複数イベント・再開、U03進捗自動保存、U04編集の明示確定、初回U02の下書き非永続化。施設情報は本人がカテゴリを明示して対象条件が一致した場合のみ公式出典を表示。行政が許可したと断定しない。
 
@@ -27,7 +28,7 @@
 
 | 重要度 | 残件 | 種別 | 進め方 |
 |---|---|---|---|
-| **高・次の利用者確認** | **IndexedDB保存データのバックアップ機能（入出力／出力のみ／MVP対象外）**。対応ブラウザはADR-014で確定 | 利用者のMVP範囲・データ保護方針 | [STEP7-⑨ 比較](STEP7_09_BACKUP_SCOPE_OPTIONS.md)で検討 |
+| **高・次の利用者確認** | **バックアップから復元したイベントのeventIdが既存イベントと衝突した場合**（複製／除外／個別選択） | 本人データの保持・復元UX方針 | [STEP7-⑩ 比較](STEP7_10_BACKUP_IMPORT_CONFLICT_OPTIONS.md)で検討 |
 | 高 | 公式施設の原ページ・対象条件・改定内容の再検証 | 公開前の実地確認 | 既存[公式根拠台帳](OFFICIAL_SOURCE_REGISTER.md)には**2026-11-12時点の閲覧記録がある**。2026-11-15の今回の作業では再確認していない。台帳の過去確認と今回の未確認を区別 |
 | 高 | 全P01〜P12の該当性／優先度の未決細則、再確認依存の網羅 | 判定設計 | [判定契約](RULE_ENGINE_CONTRACT_V1.md)の未承認箇所を個別レビュー。優先順A案は変更しない |
 | 高 | eventId・revision・schemaVersion・rulesVersion／sourceRevisionの移行時の厳密な扱い | 技術設計 | [データ](DATA_DESIGN_V1.md)と[テスト](TEST_PLAN_V1_DRAFT.md)を一致。旧タブから削除済みIDを復活させない |
@@ -51,7 +52,7 @@
 
 ## 4. 開発着手前の実施順（実装はしない）
 
-1. **月末期限・出典同梱・旧タブ検知・対応ブラウザはADR-010〜014で確定済み**。次は[STEP7-⑨](STEP7_09_BACKUP_SCOPE_OPTIONS.md)でブラウザ保存データのバックアップ範囲を選ぶ。
+1. **公式情報・旧タブ・ブラウザとバックアップ両機能までADR-010〜015で確定済み**。次は[STEP7-⑩](STEP7_10_BACKUP_IMPORT_CONFLICT_OPTIONS.md)で復元時のeventId衝突への対応を選ぶ。
 2. 公式出典の既存登録内容と画面表示条件・最新版照合のチェックリストをレビューする。
 3. P01〜P12の全条件を採用済み・仮説・対象外に仕分け、推奨案を実装前に確認。
 4. EventRecordの正規化とDexie移行・削除・競合・多タブの設計上の境界を凍結する。
@@ -85,3 +86,9 @@
 PC・スマホの主要現行Chrome、Edge、Safari、Firefoxを検証対象に正式採用（[ADR-014](ADR_014_MAJOR_DESKTOP_MOBILE_BROWSER_SUPPORT.md)）。**検証対象決定≠実機テスト合格**。書記素100/500字、IME、同一オリジンのIndexedDB、別タブの競合、旧タブbuildId更新とJST月末境界の実行テスト計画は[STEP7-⑧](STEP7_08_BROWSER_COMPATIBILITY_TEST_MATRIX.md)に整理した。実機OS・ブラウザの最低対応版、詳細なUnicode・ストレージ制限、移行実装は未決。
 
 **次の利用者の製品判断**：[STEP7-⑨](STEP7_09_BACKUP_SCOPE_OPTIONS.md)でローカル保存データのエクスポート＋インポート、エクスポートのみ、MVPではバックアップなしの3案を比較。保存消去リスクと開発工数のトレードオフがあるため、本人の決定前に新機能を正式採用しない。
+
+## 10. ADR-015によるMVP変更と復元安全性
+
+[ADR-015](ADR_015_JSON_BACKUP_EXPORT_IMPORT.md)で**JSONエクスポート＋インポートをMVPに正式追加**。以前のSTEP4-⑫「ファイル入出力はMVP外」は変更済み。基本6問、P01〜P12、U01〜U04は維持。U01の補助導線から保存済みイベント入力と本人進捗のみをバックアップする。公式出典カタログ、未保存U02/U04ドラフトはバックアップ対象にしない。
+
+**重要な未決**：[STEP7-⑩ 復元時のeventId衝突解決](STEP7_10_BACKUP_IMPORT_CONFLICT_OPTIONS.md)。推薦Aは衝突したイベントを別IDで複製し、既存データを保護する案。[STEP7-⑪ 復元安全契約草案](STEP7_11_BACKUP_SAFETY_CONTRACT_DRAFT.md)にスキーマ検証、サイズ上限、原子的保存、競合と旧空き家JSONの拒否を整理。**実装・試験・配信は未実施**。
