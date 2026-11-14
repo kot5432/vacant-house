@@ -216,3 +216,7 @@ interface EventRecord {
 ## 17. 静的公式出典カタログのデータ境界（ADR-012採用）
 
 `SourceCatalog`はイベントデータのIndexedDBと分離し、Git管理の`catalogVersion,buildId,sourceId,sourceRevision,baseStatus,checkedAt,reviewedAt,reviewedMonth,facilityScope,applicabilityPredicate,officialUrl`などをViteビルドへ読み取り専用同梱する設計。**原ページを再確認したことが古いタブへ自動反映されると扱わない**。新しい`verified`情報の復帰は新版ビルドの読込後、本人の施設条件との一致とJST月末期限判定が揃った場合だけ。古いイベントの`progress.status`は出典の失効のみで変更しない。出典の改定による`needsRecheck`は影響範囲に限定。技術上の型・物理保存形式と版ID生成は未承認。決定：[ADR-012](ADR_012_BUNDLED_OFFICIAL_SOURCE_CATALOG.md)。
+
+## 18. ブラウザ別保存と文字数の技術境界（ADR-014）
+
+正式に検証するブラウザはPC・スマホの主要現行Chrome/Edge/Safari/Firefox（OSで実行可能な組合せ）。EventRecordは**同一オリジン・同一ブラウザのIndexedDB**に保存し、他ブラウザ・他端末への同期を行わない。プライベートモード、ストレージ消去、容量制限、ブラウザ更新時の読込失敗に注意。任意文字列100／500字のカウンターと検証は**同じ書記素計算**を第一候補に、保存時にも計数単位を統一。非対応時に無言でUTF-16へ切替えない。旧タブによる未知schemaVersion書込・revision競合を阻止する実装方式は技術レビュー待ち。[ADR-014](ADR_014_MAJOR_DESKTOP_MOBILE_BROWSER_SUPPORT.md)。
