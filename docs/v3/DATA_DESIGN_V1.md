@@ -236,3 +236,11 @@ interface EventRecord {
 ## 21. 繰り返しインポートのデータ境界（ADR-017正式採用）
 
 同一JSONの繰返し復元を**ブロックしない**。ファイル内容のハッシュ・インポート履歴の追加テーブルはMVPでは保持しない。**毎回**、現在のIndexedDBイベントID集合との衝突を評価し、追加・別IDコピーの件数と既存件数をプレビュー。本人の明示確定前は保存なし。衝突時の新しい一意eventId、独立revisionと本人の進捗・再確認の保持はADR-016に準拠。プレビュー後に衝突分類が変わった場合は再承認。一括失敗時は部分追加も既存変更もなし。元日時・新しいrevision初期値・コピーの由来表示は未決。[ADR-017](ADR_017_REPEAT_IMPORT_WITH_CONFIRMATION.md)。
+
+## 22. 復元した新規レコードの日時と由来（ADR-018正式採用）
+
+**全インポート新規イベントのrevisionは1**（同一ID衝突の有無を問わない）。新しいEventRecordの`createdAt=updatedAt=importedAt`は**一括復元の確定保存時刻**とする。バックアップ元の`revision`は現DBのCAS/競合判定に流用しない。既存イベントのイベントID／revision／日時／進捗は一切変更しない。
+
+新規レコードの`importedFrom`は**直接の元**`originalEventId`、`originalCreatedAt`、`originalUpdatedAt`、`importedAt`を記録。復元元JSONに過去の由来欄があっても無限の履歴配列として継承しない。元の日時が不正なら捏造・暗黙補正をしない。詳細：[ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)。由来の元revisionの保持、具体的なISO日時検証、異常な未来日時の取扱いは未決。
+
+U01は復元イベントに「バックアップから復元」、衝突に伴う追加コピーには「別コピー」を表示する設計。開催日Q3とバックアップ元の作成日、復元日のそれぞれの意味を混同しない。
