@@ -188,6 +188,14 @@
 - **次の判断**：[STEP7-⑫ 同一JSONを繰り返しインポートした際の重複防止](STEP7_12_REPEAT_IMPORT_OPTIONS.md)。A：毎回件数とコピー増加の可能性を注意＋明示確定（推奨）／B：インポート済みファイルハッシュを記録／C：同一ファイル再取込み禁止。**未採用**。
 - [STEP7-⑬ データ・トランザクション細則](STEP7_13_IMPORT_METADATA_AND_TRANSACTION_DRAFT.md)、[STEP7残件整理](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)で未確定のrevision初期値・作成日時・サイズ上限・旧版JSONの互換性を区別。**現在の地域イベント準備支援Webアプリのみ／旧空き家案なし／実装・実行試験・公開は未実施**。
 
+## 2026-11-15｜JSON繰返しインポートのA案を正式採用（ADR-017）
+
+- **正式決定**：[ADR-017 繰返し取込みは毎回、追加件数・別コピー件数とコピー増加の可能性を案内し、本人の明示承認で許可](ADR_017_REPEAT_IMPORT_WITH_CONFIRMATION.md)。ファイルハッシュと過去の取込履歴テーブルはMVPでは追加しない。「以前取り込んだ同じファイル」と断定しない。
+- [ADR-016 衝突時は別IDで複製](ADR_016_IMPORT_COLLISION_AS_COPY.md)は維持。ファイル内eventId重複は拒否。プレビュー後に別タブで衝突分類が変われば再承認、保存失敗では一括ロールバック、既存イベントは不変。
+- [U01の復元画面](STEP5_02_HOME_SETUP_WIREFRAMES.md)、[U04編集と復元競合](STEP5_04_EDIT_SAVE_ERROR_UI.md)、[データ設計](DATA_DESIGN_V1.md)、[テスト仕様](TEST_PLAN_V1_DRAFT.md)、[要件](REQUIREMENTS_V1_DRAFT.md)、[アーキテクチャ](ARCHITECTURE_V1.md)、[開発運用](DEVELOPMENT_OPERATIONS_PLAN_V1.md)を更新。[STEP7-⑫比較](STEP7_12_REPEAT_IMPORT_OPTIONS.md)は採用前の履歴。
+- **次の製品判断**：[STEP7-⑭ 復元イベントのrevision・日時・由来情報](STEP7_14_RESTORED_EVENT_METADATA_OPTIONS.md)。推奨Aは新revision=1・復元時刻を新作成日時として記録・元の日時を由来として保持するが**未承認**。[STEP7-⑬技術草案](STEP7_13_IMPORT_METADATA_AND_TRANSACTION_DRAFT.md)も更新。
+- [STEP7残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)をADR-001〜017へ更新。**現行の地域イベント準備支援Webアプリのみ**。旧空き家・物件登録・所有者診断・マッチングの要件は含めない。**実装・実行テスト・Vercel配信は未実施**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
