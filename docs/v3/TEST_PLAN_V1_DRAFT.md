@@ -432,3 +432,20 @@
 | REPEAT-A10 | 未知schema／旧空き家のファイル | 検証拒否 |
 
 正本：[ADR-017](ADR_017_REPEAT_IMPORT_WITH_CONFIRMATION.md)。**テスト実行は未実施**。
+
+## 28. ADR-018復元revision・日時・由来の受入テスト（期待値確定／未実行）
+
+| ID | 入力・操作 | 期待 |
+|---|---|---|
+| META-A01 | 元revision=8、既存IDと衝突してコピー | コピーrevision=1、新ID、既存のrevision/日時不変 |
+| META-A02 | 元revision=8、衝突なし | 元eventIdを保持しrevision=1で追加 |
+| META-A03 | 元日時と復元時刻が異なる | 新createdAt/updatedAtは復元コミット時、importedFromに元日時を保存 |
+| META-A04 | U01の最終更新順 | 復元したレコードを復元日時によって並べ、開催日Q3と区別 |
+| META-A05 | U04で復元コピー編集 | コピーのrevision・updatedAtのみ更新、元イベント不変 |
+| META-A06 | 同じJSONを繰返し復元 | 毎回の件数警告・承認、独立した元ID・由来を持つレコード |
+| META-A07 | コピーのコピーを復元 | importedFromは今回ファイル内の直接元IDと日時、無限履歴を増やさない |
+| META-A08 | 元日時が不正／非対応schema | 無断修復なしで拒否、全件DB不変 |
+| META-A09 | 途中容量不足・別タブ競合 | 全件ロールバックまたは再承認、既存DB保護 |
+| META-A10 | 旧出典と現行出典が異なる | 本人進捗・由来保持、公式の断定情報は現行カタログを評価 |
+
+正本：[ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)。具体的な日時パーサー・未知旧版対応、実ブラウザ試験は未実施。
