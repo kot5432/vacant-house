@@ -157,6 +157,14 @@
 - **次の重要判断は[STEP7-⑤ 旧タブの新ビルド検知と再読込方法](STEP7_05_OLD_TAB_UPDATE_CHOICES.md)**。軽量なビルド識別子だけ自動確認し、更新の読み込みは本人の操作にするA案を推奨。**未決**。
 - [STEP7実装前残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)をADR-001〜012まで更新。未決：P01〜P12の細条件／データ移行／Unicode計数の技術仕様／公式原ページの最新照合／担当割当。現行の地域イベント準備支援Webアプリのみ、旧空き家案の物件・所有者・マッチングを混同しない。**実装・動作テスト・公開なし**。
 
+## 2026-11-15｜旧タブの自動新版確認＋本人操作による再読み込み（ADR-013）
+
+- **正式決定**：[ADR-013 軽量buildIdの自動照合・本人による再読込](ADR_013_MANUAL_REFRESH_ON_AUTO_VERSION_DETECTION.md)。新しいアプリ版を照合できたときだけ知らせ、**U02初回入力・U04未保存編集・U03保存中の進捗を強制リロードで消さない**。公式出典本文は静的ビルド同梱のまま（ADR-012）。
+- [アーキテクチャ](ARCHITECTURE_V1.md)、[U01/U02](STEP5_02_HOME_SETUP_WIREFRAMES.md)、[U03](STEP5_03_PREPARATION_PLAN_UI.md)、[U04](STEP5_04_EDIT_SAVE_ERROR_UI.md)、[テスト](TEST_PLAN_V1_DRAFT.md)、[開発運用](DEVELOPMENT_OPERATIONS_PLAN_V1.md)へ反映。[STEP7-⑤](STEP7_05_OLD_TAB_UPDATE_CHOICES.md)は決定前の比較履歴。
+- **残る技術設計**：[STEP7-⑥ 旧タブとDBスキーマの保護](STEP7_06_SCHEMA_AND_OLD_TAB_SAFETY_REVIEW.md)。保存形式・schemaVersion・ルール版・出典版の混同を防ぐ仕様を追加レビュー中。
+- **次の確認**：[STEP7-⑦ 対応ブラウザの範囲](STEP7_07_BROWSER_SUPPORT_OPTIONS.md)。スマホとPCの現行主要ブラウザを試験対象とするA案を推奨するが未承認。
+- [STEP7残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)をADR-001〜013に更新。現行イベント開催準備支援Webアプリのみ。旧空き家物件登録・所有者診断・マッチングは含めない。**アプリコード・実行テスト・公開は未着手**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
