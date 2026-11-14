@@ -87,11 +87,11 @@ interface EventInput {
   region: Region;
   organizerForm: OrganizerForm;
   attendeeCount: Known<number>; // 1以上の整数。上限は入力仕様で要決定
-  responsible: Known<"decided" | "not_decided" | "unknown">;
-  equipmentNeed: Known<"yes" | "none_identified" | "unknown">;
+  responsible: Known<"decided" | "not_decided">;
+  equipmentNeed: Known<"yes" | "none_identified">;
   equipmentCategories: string[];
-  venueCategory: Known<"takaoka_community_center" | "other" | "unknown">;
-  facilityUsersAge: Known<"minors_only" | "includes_adults" | "unknown">;
+  venueCategory: Known<"takaoka_community_center" | "other">;
+  facilityUsersAge: Known<"minors_only" | "includes_adults">;
   venueNameMemo?: string;
   optionalDescription?: string;
 }
@@ -115,7 +115,7 @@ interface EventRecord {
 }
 ```
 
-**このコードは型の検討サンプルであり実装していない。** `Known`中の`unknown`と`undecided`が一部重複するため、最終スキーマでは回答種別と値の区別を統一する必要がある。施設固有質問は**条件に該当するときだけ**入力と判定を利用する。旧条件の値を保存する場合も最新の計算には使わない。文字列の長さや日時境界・任意メモの最大文字数は要決定。
+**このコードは型の検討サンプルであり実装していない。** 「分からない」「まだ未定」は `kind: "undecided"` に正規化し、`kind: "unanswered"` は利用者が回答していない状態に限定する。「特に思いつかない」は `kind: "answered", value: "none_identified"` とし、設備不要の断定とは区別する。施設固有質問は**条件に該当するときだけ**入力と判定を利用する。旧条件の値を保存する場合も最新の計算には使わない。文字列の長さや日時境界・任意メモの最大文字数は要決定。
 
 ## 5. 検証条件
 
