@@ -118,6 +118,14 @@
 - **公式情報の運用はまだ提案**：[点検担当・頻度](OFFICIAL_SOURCES_REVIEW_CADENCE_PROPOSAL.md)、[出典の状態遷移・公開停止と再開](OFFICIAL_SOURCES_STATUS_TRANSITIONS_V1.md)。月1回＋リリース前の点検は利用者承認待ち。**高岡市公式資料の最新内容を今回照合した事実はない**。
 - **技術**：React＋TypeScript＋Vite、IndexedDB＋Dexie、Vercel採用済み。旧空き家案の所有者・物件・マッチングと混同しない。**実装・デプロイは行っていない**。
 
+## 2026-11-15｜任意テキスト100/500字の採用・公式情報の更新頻度の判断
+
+- **正式採用**：[ADR-008 任意メモの文字数制限A案](ADR_008_OPTIONAL_TEXT_LIMITS.md)：施設名メモ100字、イベント説明500字。空欄可・超過時は保存エラー。IME変換中に強制切断しない。文字数カウンターと保存前検証を一致させる。Unicode書記素によるカウントは技術第一候補で、対応ブラウザと長い単一書記素の安全策は実装前の検証事項。
+- [入力検証](STEP6_02_VALIDATION_CONTRACT.md)、[データ設計](DATA_DESIGN_V1.md)、[U04編集](STEP5_04_EDIT_SAVE_ERROR_UI.md)、[テスト計画](TEST_PLAN_V1_DRAFT.md)を更新。[STEP6-⑥比較](STEP6_06_TEXT_LENGTH_DESIGN_OPTIONS.md)は採用前の比較履歴。
+- **次の運用判断**：[STEP6-⑦ 公式出典更新頻度のA/B/C比較](STEP6_07_OFFICIAL_SOURCE_CADENCE_OPTIONS.md)。A案：月1回＋各リリース前（推奨）、B案：3か月ごと＋各リリース前、C案：各リリース前のみ。**未承認**。
+- [公式情報更新運用](OFFICIAL_SOURCES_OPERATIONS_V1.md)、[担当・点検フロー](OFFICIAL_SOURCES_REVIEW_CADENCE_PROPOSAL.md)、[状態遷移](OFFICIAL_SOURCES_STATUS_TRANSITIONS_V1.md)は設計案であり、**最新の高岡市公式原資料を今回実地確認したわけではない**。
+- 現行イベント準備支援Webアプリ専用。旧空き家案の所有者、物件、マッチングに関する機能を再導入しない。**実装／動作テスト／Vercel公開は未実施**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
