@@ -114,3 +114,19 @@ U01 --delete(eventId, revision)--> confirm --> delete transaction --> refresh li
 - 判定ルールの依存全パターンと、オンライン開催の支援範囲。
 - テスト環境、ルーティング、CSS、データ検証ライブラリ等の正式採用。
 - 公開前に保存・復元・移行・削除・公式情報の更新運用をテストし、実装チェックを完了する。
+
+## 10. 公式出典のビルド同梱方式（ADR-012正式採用）
+
+**React/Viteの静的アプリに版付き公式出典カタログを同梱**。施設固有情報は`catalogVersion`・`sourceRevision`・`reviewedMonth`・`baseStatus`と現在のJST暦日、本人が選んだ地域／施設条件から有効性を導出する。期限は[ADR-011](ADR_011_MONTH_END_SOURCE_REVIEW_DEADLINE.md)どおり各月末、翌月1日00:00 JSTから未点検出典の断定を停止。[ADR-012](ADR_012_BUNDLED_OFFICIAL_SOURCE_CATALOG.md)によって別配信JSON／専用APIをMVPでは採用しない。
+
+```text
+Git版管理の公式出典台帳 + タスク定義
+             ↓ 出典確認・レビュー・Preview点検
+        Vite buildId/catalogVersion
+             ↓ Vercel静的アプリとして同時配信
+ブラウザ：有効状態をJST評価→U03で施設固有案内or一般案内
+             ├→ EventRecordの進捗はDexie/IndexedDBに別管理
+             └→ 再掲載は最新版ビルドを読み込んだ場合のみ
+```
+
+起動時・U03表示・タブ再表示・月境界の再評価を設計。**旧タブへの即時更新保証なし**。最新版検知・未保存U04ドラフト保護・端末時計ずれ対応の具体方式は[STEP7-⑤](STEP7_05_OLD_TAB_UPDATE_CHOICES.md)で比較する。利用者のイベントデータを公式出典側へ送信しない。
