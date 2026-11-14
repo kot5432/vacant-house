@@ -196,6 +196,13 @@
 - **次の製品判断**：[STEP7-⑭ 復元イベントのrevision・日時・由来情報](STEP7_14_RESTORED_EVENT_METADATA_OPTIONS.md)。推奨Aは新revision=1・復元時刻を新作成日時として記録・元の日時を由来として保持するが**未承認**。[STEP7-⑬技術草案](STEP7_13_IMPORT_METADATA_AND_TRANSACTION_DRAFT.md)も更新。
 - [STEP7残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)をADR-001〜017へ更新。**現行の地域イベント準備支援Webアプリのみ**。旧空き家・物件登録・所有者診断・マッチングの要件は含めない。**実装・実行テスト・Vercel配信は未実施**。
 
+## 2026-11-15｜復元イベントのrevision=1と元日時保持（ADR-018正式採用）
+
+- **正式採用**：[ADR-018 復元イベントのrevision=1・復元日時を新日時・元イベントIDと元作成/更新日時を由来として保持](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)。既存IDとの衝突有無にかかわらず**新規追加するすべてのイベント**はrevision=1。`createdAt/updatedAt`は今回の復元コミット日時で、元の日時は`importedFrom`へ区別して記録。既存イベントの日時・revision・進捗は不変。
+- [データ設計](DATA_DESIGN_V1.md)、[U01一覧](STEP5_02_HOME_SETUP_WIREFRAMES.md)、[U04編集](STEP5_04_EDIT_SAVE_ERROR_UI.md)、[テスト](TEST_PLAN_V1_DRAFT.md)、[アーキテクチャ](ARCHITECTURE_V1.md)、[要件](REQUIREMENTS_V1_DRAFT.md)、[復元メタデータ技術草案](STEP7_13_IMPORT_METADATA_AND_TRANSACTION_DRAFT.md)を更新。[STEP7-⑭比較](STEP7_14_RESTORED_EVENT_METADATA_OPTIONS.md)は決定前の履歴。
+- **次の正式判断**：[STEP7-⑮ JSONバックアップの容量とイベント件数上限](STEP7_15_BACKUP_LIMIT_OPTIONS.md)。A：2MiB/100件（暫定推奨）、B：10MiB/500件、C：固定上限なし。**未採用**。書出ししたファイルが復元できない事態を防ぐため、上限超過時の分割も設計対象。
+- [STEP7残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)はADR-001〜018まで整理。現行の地域イベント準備支援アプリだけを対象とし、**旧空き家案の機能・データを取り込まない**。**コード実装・実行試験・Vercel公開は行っていない**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
