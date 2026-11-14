@@ -1,3 +1,5 @@
+> **2026-11-15正式決定：A案「復元イベントのrevision=1、createdAt/updatedAtは復元日時、元ID・元作成/更新日時を由来として保持」を採用。最新正本は[ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)。以下の比較は決定前の履歴です。**
+
 # STEP7-⑭｜バックアップ復元イベントのrevision・日時の扱い（利用者選択前）
 
 作成日：2026-11-15。**未採用の比較資料**。正式採用済み：[ADR-015](ADR_015_JSON_BACKUP_EXPORT_IMPORT.md)（JSON入出力）、[ADR-016](ADR_016_IMPORT_COLLISION_AS_COPY.md)（衝突時別IDコピーと原子的追加）、[ADR-017](ADR_017_REPEAT_IMPORT_WITH_CONFIRMATION.md)（繰り返し取込みは毎回注意・本人確認）。現行の地域イベント準備支援Webアプリ専用。旧空き家案は対象外。実装・テスト実行なし。
