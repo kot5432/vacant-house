@@ -156,3 +156,7 @@ U01からエクスポート／インポートを行う。設計上の責務は`E
 ## 16. importメタデータの生成責務（ADR-018）
 
 `ImportService`はインポート全件の検証と本人承認後、原子的な追加トランザクションで**全新規EventRecordのrevision=1**、`createdAt/updatedAt=importedAt`（保存コミット時刻）を設定する。バックアップの元ID・元作成/更新日時を`importedFrom`に分け、既存のイベントの情報を変更しない。元のrevisionをCAS判定に持ち込まない。U01一覧は復元日時・元日時を区別、由来はイベント進捗とは独立。日時形式・旧版schemaの互換性や異常値防止は技術レビューが必要。[ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)。
+
+## 17. JSONバックアップのサイズ・件数の共通ゲート（ADR-019）
+
+`ExportService`は保存済みEventRecordを整合スナップショットで取得し、`BackupEnvelope`の完成したUTF-8 JSONの**実バイト数<=2,097,152**かつ**件数<=100**を検証。上限超過時に一部だけ無断書出ししない。`ImportService`はファイル物理サイズをパース前に拒否し、パース後の`eventCount/events.length`と件数上限、データ版を検証。復元のプレビュー・本人確認・Dexie原子的追加はADR-015〜018を維持。JSON内の個人メモを外部へ自動送信しない。上限超過時の分割エクスポートは[STEP7-⑯](STEP7_16_EXPORT_SPLIT_OPTIONS.md)で未決。[ADR-019](ADR_019_JSON_BACKUP_LIMIT_2MIB_100_EVENTS.md)。
