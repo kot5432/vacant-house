@@ -1,3 +1,5 @@
+> **決定後追記（2026-11-15）：A案「公式出典を静的ビルドへ同梱・新版の読み込み時のみ再掲載」を正式採用。[ADR-012](ADR_012_BUNDLED_OFFICIAL_SOURCE_CATALOG.md)が決定正本。以下のA/B/C比較と未決の記述は比較時点の履歴。**
+
 # STEP7-④｜出典期限切れと更新反映の実装前選択肢
 
 作成日：2026-11-15。**比較・未承認**。[ADR-009](ADR_009_OFFICIAL_SOURCE_MONTHLY_RELEASE_REVIEWS.md)月次とリリース前の確認、[ADR-010](ADR_010_STALE_SOURCE_FAIL_CLOSED.md)期限超過時停止、[ADR-011](ADR_011_MONTH_END_SOURCE_REVIEW_DEADLINE.md)日本時間の月末締切は正式採用済み。現行地域イベント準備支援Webアプリのみ対象。実装・動作試験・デプロイはしていない。
