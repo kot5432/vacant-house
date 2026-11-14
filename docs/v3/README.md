@@ -9,7 +9,7 @@
 
 ## STEP4-⑫の最新MVP範囲（2026-11-14）
 
-**[MVP要件定義 v0.1・複数イベント保存と持ち帰りの範囲](STEP4_12_MVP_REQUIREMENTS_V01.md)** を参照してください。後続決定により、旧STEP3-①の「1回限り・継続進捗管理なし」は更新され、**生成後の進捗管理・ブラウザ保存・同じブラウザでの後日再開・複数イベント保存**が現行MVPに含まれます。ファイル出力／インポート・PDFは初期MVP外。技術選定・実装・検証は未完了です。旧空き家案は引き継ぎません。
+**[MVP要件定義 v0.1・複数イベント保存と持ち帰りの範囲](STEP4_12_MVP_REQUIREMENTS_V01.md)** を参照してください。後続決定により、旧STEP3-①の「1回限り・継続進捗管理なし」は更新され、**生成後の進捗管理・ブラウザ保存・同じブラウザでの後日再開・複数イベント保存**が現行MVPに含まれます。ファイル出力／インポート・PDFは初期MVP外。技術スタックの採用は後続のADR-001で確定しましたが、実装・検証は未完了です。旧空き家案は引き継ぎません。
 
 ## STEP5の最新画面設計（2026-11-14）
 
@@ -31,15 +31,30 @@
 
 - [STEP5-⑤ UI未決事項と推奨仕様](STEP5_05_UI_DECISIONS.md) — 初回入力の下書き、進捗率、タスク開閉、表示トークンの**提案**。
 - [要件定義 v1 草案](REQUIREMENTS_V1_DRAFT.md) — FR／NFR／受け入れ条件の統合。**未承認・未実装**。
-- [技術選定書 v1 提案](TECH_SELECTION_V1_PROPOSAL.md) — TypeScript／React／Vite／IndexedDB-Dexie／Vitest／Playwright／Cloudflare Pagesの比較。**正式採用前**。
-- [アーキテクチャ・データ設計 v1 提案](ARCHITECTURE_DATA_V1_PROPOSAL.md) — ブラウザ保存、ルールエンジン、イベントID／revision、再確認の責務分離。**正式採用前**。
+- [技術選定書 v1 提案](TECH_SELECTION_V1_PROPOSAL.md) — 採用前の比較資料。Cloudflare Pages案は正式採用されていません。
+- [アーキテクチャ・データ設計 v1 提案](ARCHITECTURE_DATA_V1_PROPOSAL.md) — 正式採用前の構成草案。最新の技術に沿う設計は[アーキテクチャv1](ARCHITECTURE_V1.md)。
 - [テスト設計 v1 草案](TEST_PLAN_V1_DRAFT.md) — 判定・ブラウザDB・UI・異常系の期待結果。**テスト未実施**。
 
 この一覧は最新の設計資料へのリンクです。旧 `STEP5_USER_EXPERIENCE.md`、`USER_FLOW.md`、旧空き家案、旧STEP3の保存なし説明を優先しないでください。**コード開発、動作テスト、公開は行っていません。**
 
 ## 技術比較・Vercel候補（2026-11-15）
 
-[技術スタック比較 B案：React/Vite、Next.js、Vue、Svelte、Vercel](TECH_STACK_COMPARISON_VERCEL.md) を追加しました。Vercelは**利用者の希望を踏まえた第一候補であり正式採用前**、React + TypeScript + Vite + IndexedDB/Dexieは推奨案です。旧Cloudflare候補資料は比較の履歴であり採用確定を表しません。コード・デプロイ・実際のテストは未実施です。
+[技術スタック比較 B案：React/Vite、Next.js、Vue、Svelte、Vercel](TECH_STACK_COMPARISON_VERCEL.md) を追加しました。**後続の採用決定によりVercel、React + TypeScript + Vite、IndexedDB + Dexieを正式採用済み**です。旧Cloudflare候補資料は比較の履歴です。コード・デプロイ・実際のテストは未実施です。
+
+## 最新の技術決定・実装前設計（2026-11-15）
+
+**技術スタックはユーザーが正式採用**：**React + TypeScript + Vite／IndexedDB + Dexie／Vercel**。ログイン・クラウドDB・共同編集はMVP外。関連する正本／設計書：
+
+1. [ADR-001 技術選定の正式決定](ADR_001_TECH_STACK_ADOPTED.md) — **技術スタックの最新正本**。旧Cloudflare候補は不採用。
+2. [P01〜P12の判定エンジン契約 v1](RULE_ENGINE_CONTRACT_V1.md) — 該当性／優先度／完了＋再確認／出典条件を統合。**細かなルールは最終承認前**。
+3. [データ設計 v1](DATA_DESIGN_V1.md) — Dexie/IndexedDB、イベントID、revision、保存・復元・移行・削除。**実装前の草案**。
+4. [アーキテクチャ設計 v1](ARCHITECTURE_V1.md) — Vercelの静的配信＋ブラウザ内データ、各レイヤの責務。
+5. [テスト設計 v1](TEST_PLAN_V1_DRAFT.md) — 採用技術と失敗・競合・判定のテストマトリクス。**テスト未実施**。
+6. [開発・運用計画 v1](DEVELOPMENT_OPERATIONS_PLAN_V1.md) — AIコーディング／人のレビュー／フェーズ／Vercel公開前のゲート。
+
+**過去資料との関係：** [TECH_SELECTION_V1_PROPOSAL.md](TECH_SELECTION_V1_PROPOSAL.md)、[TECH_STACK_COMPARISON_VERCEL.md](TECH_STACK_COMPARISON_VERCEL.md)、[ARCHITECTURE_DATA_V1_PROPOSAL.md](ARCHITECTURE_DATA_V1_PROPOSAL.md) は正式採用前の比較・草案。最新の技術決定とは区別する。旧STEP3の「後日保存なし」も後続決定で更新済み。
+
+**現状：設計のみ。アプリ本体、依存インストール、CI、動作テスト、Vercel接続・公開、利用者調査はいずれも未実施。** 旧空き家の所有者・物件・マッチング・6用途診断の仕様は引き継がない。
 
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
