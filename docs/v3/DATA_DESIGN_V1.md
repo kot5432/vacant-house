@@ -190,3 +190,9 @@ interface EventRecord {
 ## 11. 再確認解除のRepository更新境界（ADR-004正式採用）
 
 操作契約：`clearRecheck(eventId, taskId, expectedRevision)`。同一IndexedDB readwriteトランザクション内でレコード存在、revision一致、taskIdの妥当性、現在のneedsRecheckを確認し、対象タスクのstatusとcheckedItemIdsを保持したままneedsRecheckをfalse、現在のrecheckReasonCodesを空配列に更新する。成功後のみ新revisionと保存成功状態を返す。競合、保存失敗、削除済みIDなら既存保存レコードを変更せず、上書き・復活をしない。これは**API設計であってコード実装ではない**。
+
+## 12. 施設固有入力の非該当クリア（ADR-005正式採用）
+
+[ADR-005](ADR_005_CLEAR_INAPPLICABLE_FACILITY_INPUT.md)により**確定保存成功時のみ施設固有入力を削除**する。U04のドラフトの地域・会場状態から施設情報の適用可否を導出し、非該当なら`venueCategory`／`facilityUsersAge`を`{kind:"unanswered"}`に正規化、`venueNameMemo`を空欄にする。ただし高岡市の候補/確定のまま施設カテゴリだけ`other`等になった場合、現在の候補施設のメモは本人の入力として保持し、センター固有の`facilityUsersAge`のみクリア。**既存の旧入力はトランザクション成功前には変更せず、再読込・古いタブ・保存失敗で上書きしない。** 進捗、子チェック履歴、他イベントは削除対象ではない。
+
+`EventInput`スキーマの任意`venueNameMemo`は現在の本人が選ぶ施設のメモを意味し、**施設変更を自動検知できる識別子はまだない**。本人が同じ会場状態のまま別施設に変える場合の再確認・メモ更新導線は追加レビュー対象。設計の実際のクリア対象、復元禁止、例外テストはADR-005を参照。
