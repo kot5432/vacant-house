@@ -1,6 +1,6 @@
 # STEP 6-①｜タスク進捗・「対象外」・再確認解除 UI/状態契約 v0.1（2026-11-15）
 
-> **状態：推奨詳細設計。ユーザーが承認した既存事項は維持するが、本書で新たに提案した操作文言や手順は未承認。実装・テストは未実施。**
+> **状態：再確認解除A案は[ADR-004](ADR_004_EXPLICIT_RECHECK_CLEAR.md)により正式採用済み。対象外確認ダイアログ等の細かなUI文言は推奨案・未承認。実装・テスト未実施。**
 > 現行「初めて単発・小規模の非営利地域イベントを主催する人向け準備支援Webアプリ」のみ。旧空き家・物件マッチング・所有者診断は対象外。
 > 依存：[ADR-002](ADR_002_NO_PHYSICAL_VENUE_SCOPE.md)、[ADR-003](ADR_003_PRIORITY_RULES_ADOPTED.md)、[U03](STEP5_03_PREPARATION_PLAN_UI.md)、[U04](STEP5_04_EDIT_SAVE_ERROR_UI.md)、[データ](DATA_DESIGN_V1.md)。
 
@@ -21,7 +21,7 @@
 - `完了`または`対象外`のタスクに`needsRecheck=true`が立つと、行の状態は**「以前は完了／対象外・現在の条件で再確認が必要」**とし、優先候補に含める。本人の以前の判断値は保存し続ける。
 - 通常の`進行中`や`未着手`に`needsRecheck`が立った場合も、別のフラグとして表示する。ただしルールで過剰に付与しない。
 
-## 3. 再確認を解除する流れ（推奨）
+## 3. 再確認を解除する流れ（ADR-004正式採用）
 
 ```text
 U04で会場を変更 → P08の依存条件に変化 → 完了のままneedsRecheck=true
@@ -29,7 +29,7 @@ U04で会場を変更 → P08の依存条件に変化 → 完了のままneedsRe
  タスクを開く: 変わった前提と確認事項、該当する出典・確認日を表示
  [再確認を終えた]       [進捗を変更]
        ↓
-「今回の条件で確認を終えましたか？」（必要なら短い確認）
+「今回の条件で確認を終えましたか？」（**確認ダイアログの有無・文言は未承認**）
        ↓
 progress.statusを保持したままneedsRecheck=false、recheckReasonCodesを消去
        ↓
@@ -75,8 +75,19 @@ progress.statusを保持したままneedsRecheck=false、recheckReasonCodesを�
 
 ## 7. 実装前の残る判断
 
-- **新規提案**：対象外の確認ダイアログ、`再確認を終えた`の明示操作と確認文言の正式採否。
+- **正式採用**：`再確認を終えた`の明示操作でだけ解除し、本人のprogress.statusを変えない。[ADR-004](ADR_004_EXPLICIT_RECHECK_CLEAR.md)。**未承認**：対象外確認ダイアログと解除時の二重確認の文言・形式。
 - 再確認理由の記録粒度（reasonCodeのみか変更元フィールド情報も持つか）。
 - 複数条件変更・複数回の再確認がある場合の理由の付与・重複排除・履歴保持期間。
 - 施設固有の公式情報が変わった場合のルール版更新と再確認境界。
 - UXの有効性はユーザー検証前であり、法的な可否・安全性の判断機能ではない。
+
+## 8. ADR-004の状態遷移補足（正式採用）
+
+| 旧状態 | 解除保存成功後 | 代表優先への影響 |
+|---|---|---|
+| completed + needsRecheck=true | completed + false | 原則、未解決候補から外れる |
+| not_applicable + needsRecheck=true | not_applicable + false | 本人の対象外判断を維持、根拠ある注意は消さない |
+| in_progress + needsRecheck=true | in_progress + false | 進行中は未解決のまま |
+| not_started + needsRecheck=true | not_started + false | 未着手は未解決のまま |
+
+再確認解除は保存トランザクション成功後のみ確定。保存失敗・revision競合時に`needsRecheck=false`と永続保存されたと扱わない。現在の理由は空にするが、MVPが全変更履歴を監査保存することは意味しない。
