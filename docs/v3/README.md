@@ -150,6 +150,13 @@
 - **次の未決**：[STEP7-④ 出典の配信・更新方式](STEP7_04_SOURCE_UPDATE_DELIVERY_OPTIONS.md)。**A案：静的ビルドに同梱して更新版読込で復帰**を推奨するが、まだ正式採用していない。古いタブへの即時反映は保証できない。
 - [STEP7残件一覧](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)はADR-001〜011の採用と未決を区別。現行地域イベント準備支援アプリのみ対象、旧空き家案の要件を混入しない。**実装・動作テスト・Vercel公開は未実施**。
 
+## 2026-11-15｜出典カタログを静的ビルドに同梱（ADR-012正式採用）
+
+- **正式決定**：[ADR-012 公式出典カタログはVite静的アプリへ同梱](ADR_012_BUNDLED_OFFICIAL_SOURCE_CATALOG.md)。毎月点検・各リリース前確認・JST月末失効はADR-009〜011に従う。期限切れの施設固有断定は停止し、**再確認後の再掲載は新しいアプリ版の読み込み時のみ**。
+- [アーキテクチャ](ARCHITECTURE_V1.md)、[データモデル](DATA_DESIGN_V1.md)、[出典有効状態](STEP7_03_SOURCE_EFFECTIVE_STATUS_CONTRACT.md)、[U03](STEP5_03_PREPARATION_PLAN_UI.md)、[公式出典運用](OFFICIAL_SOURCES_OPERATIONS_V1.md)、[テスト](TEST_PLAN_V1_DRAFT.md)、[開発運用](DEVELOPMENT_OPERATIONS_PLAN_V1.md)へ反映。[STEP7-④](STEP7_04_SOURCE_UPDATE_DELIVERY_OPTIONS.md)は以前の比較履歴。
+- **次の重要判断は[STEP7-⑤ 旧タブの新ビルド検知と再読込方法](STEP7_05_OLD_TAB_UPDATE_CHOICES.md)**。軽量なビルド識別子だけ自動確認し、更新の読み込みは本人の操作にするA案を推奨。**未決**。
+- [STEP7実装前残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)をADR-001〜012まで更新。未決：P01〜P12の細条件／データ移行／Unicode計数の技術仕様／公式原ページの最新照合／担当割当。現行の地域イベント準備支援Webアプリのみ、旧空き家案の物件・所有者・マッチングを混同しない。**実装・動作テスト・公開なし**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
