@@ -1,3 +1,5 @@
+> **2026-11-15正式採用：A案「PC・スマホの主要現行Chrome/Edge/Safari/Firefoxを検証対象」は[ADR-014](ADR_014_MAJOR_DESKTOP_MOBILE_BROWSER_SUPPORT.md)で確定。以下の比較は決定前の履歴です。実機動作・最低バージョンは未確認。**
+
 # STEP7-⑦｜MVPの対象ブラウザの選択（利用者確認前）
 
 作成：2026-11-15。**決定前の比較**。採用済み：React/TS/Vite、IndexedDB/Dexie、Vercel、公式出典カタログの静的同梱、軽量buildIdの自動確認＋本人による再読み込み、100／500字の文字数上限。Unicode書記素数（Intl.Segmenter）を第一候補とし、実機のIME・保存・更新通知を検証する必要がある。**実装・動作検証なし**。旧空き家案は対象外。
