@@ -143,6 +143,13 @@
 - **技術設計案**：[STEP7-③ 出典の有効状態と本人進捗の分離](STEP7_03_SOURCE_EFFECTIVE_STATUS_CONTRACT.md)。公開中の古いタブの即時更新は保証しない。
 - [STEP7実装前残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)で正式採用ADR-001〜010と実装前の課題を整理。現行の地域イベント準備支援アプリのみを対象とし、旧空き家所有者診断・物件登録・マッチングを再導入しない。**実装・テスト実行・Vercel公開は未実施**。
 
+## 2026-11-15｜公式情報の月末締切ADR-011と配信方式の判断
+
+- **正式採用**：[ADR-011 日本時間の各月末日を月次点検期限とする](ADR_011_MONTH_END_SOURCE_REVIEW_DEADLINE.md)。その月の点検と必要なレビューが未完了のまま翌月1日00:00 JSTとなった場合、[ADR-010](ADR_010_STALE_SOURCE_FAIL_CLOSED.md)に従い**対象施設の断定案内を猶予なく停止**。一般の準備プランと本人の保存進捗は保持。
+- [出典状態と進捗の分離](STEP7_03_SOURCE_EFFECTIVE_STATUS_CONTRACT.md)、[データ設計](DATA_DESIGN_V1.md)、[U03](STEP5_03_PREPARATION_PLAN_UI.md)、[公式出典運用](OFFICIAL_SOURCES_OPERATIONS_V1.md)、[テスト](TEST_PLAN_V1_DRAFT.md)、[開発・運用計画](DEVELOPMENT_OPERATIONS_PLAN_V1.md)に反映。[STEP7-②](STEP7_02_SOURCE_REVIEW_DUE_DATE_OPTIONS.md)は決定前の比較履歴。
+- **次の未決**：[STEP7-④ 出典の配信・更新方式](STEP7_04_SOURCE_UPDATE_DELIVERY_OPTIONS.md)。**A案：静的ビルドに同梱して更新版読込で復帰**を推奨するが、まだ正式採用していない。古いタブへの即時反映は保証できない。
+- [STEP7残件一覧](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)はADR-001〜011の採用と未決を区別。現行地域イベント準備支援アプリのみ対象、旧空き家案の要件を混入しない。**実装・動作テスト・Vercel公開は未実施**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
