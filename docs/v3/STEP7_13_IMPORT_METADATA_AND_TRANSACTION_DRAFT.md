@@ -69,3 +69,7 @@ select file → validate all → preview collision counts → user confirms
 ## 7. 次の利用者判断
 
 [STEP7-⑫ 繰返しバックアップ取込みの扱い](STEP7_12_REPEAT_IMPORT_OPTIONS.md)でA/B/Cを選ぶのが先。revision・日時の細目、バックアップサイズ／件数・対応する過去版はその後、必要な事項だけ判断を求める。
+
+## 8. ADR-017採用後の変更点
+
+**反復インポートでは過去のファイルハッシュや取込み履歴を保持しない**。毎回、現在のDBと比較した件数・コピー増加の注意・本人の明示確認を必要とする。別IDコピー、プレビュー後の衝突分類変更時の再承認、全件原子的追加はADR-016のまま。次の詳細決定は、新規復元イベントのrevision初期値と日時の扱いを[STEP7-⑭](STEP7_14_RESTORED_EVENT_METADATA_OPTIONS.md)で比較する。[ADR-017](ADR_017_REPEAT_IMPORT_WITH_CONFIRMATION.md)。
