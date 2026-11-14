@@ -220,3 +220,9 @@ interface EventRecord {
 ## 18. ブラウザ別保存と文字数の技術境界（ADR-014）
 
 正式に検証するブラウザはPC・スマホの主要現行Chrome/Edge/Safari/Firefox（OSで実行可能な組合せ）。EventRecordは**同一オリジン・同一ブラウザのIndexedDB**に保存し、他ブラウザ・他端末への同期を行わない。プライベートモード、ストレージ消去、容量制限、ブラウザ更新時の読込失敗に注意。任意文字列100／500字のカウンターと検証は**同じ書記素計算**を第一候補に、保存時にも計数単位を統一。非対応時に無言でUTF-16へ切替えない。旧タブによる未知schemaVersion書込・revision競合を阻止する実装方式は技術レビュー待ち。[ADR-014](ADR_014_MAJOR_DESKTOP_MOBILE_BROWSER_SUPPORT.md)。
+
+## 19. JSONバックアップのデータ設計（ADR-015）
+
+**エクスポート＋インポートをMVPに採用**。対象は保存成功済みEventRecord。JSONルートの提案は`formatId,exportSchemaVersion,exportedAt,sourceBuildId,eventCount,events`。入力・progressByTask・再確認・イベント版を保存し、公式出典／再計算可能な優先度は含めない。
+
+取り込みは**メモリ上で全件をサイズ・形式・既知schema・イベントID・必須6問・人数・100/500字・進捗状態・タスクIDまで検証**し、件数とID衝突を表示して本人が確定するまでDBに書かない。未知形式・旧空き家JSONは拒否。保存失敗・別タブ競合で既存レコードを保護。ファイルサイズ・旧版対応範囲・重複ID処理・バッチトランザクション詳細は未決。[ADR-015](ADR_015_JSON_BACKUP_EXPORT_IMPORT.md)。
