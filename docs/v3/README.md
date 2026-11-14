@@ -86,6 +86,14 @@
 - **優先順位は[ADR-003](ADR_003_PRIORITY_RULES_ADOPTED.md)で正式決定済み**。初回入力下書き非保存A案、物理会場なし限定支援B案、React/TypeScript/Vite + IndexedDB/Dexie + Vercelも維持。
 - **設計のみ**。アプリ本体のコード、実行テスト、Vercel公開は行っていない。旧空き家関連の所有者・物件・マッチング機能を引き継がない。
 
+## STEP6 再確認解除A案正式採用・次の入力データ判断（2026-11-15）
+
+- **正式決定**：[ADR-004 「再確認を終えた」の明示操作](ADR_004_EXPLICIT_RECHECK_CLEAR.md)。状態`needsRecheck`は本人の明示操作＋IndexedDB保存成功後のみ解除。本人の進捗`completed`/`not_applicable`等は保持。旧空き家案と混同しない。
+- **確定仕様反映**：[STEP6-① 進捗・再確認UI](STEP6_01_PROGRESS_RECHECK_SPEC.md)、[データ設計](DATA_DESIGN_V1.md)、[判定契約](RULE_ENGINE_CONTRACT_V1.md)、[U03](STEP5_03_PREPARATION_PLAN_UI.md)、[テスト設計](TEST_PLAN_V1_DRAFT.md)。**テスト未実施**。
+- **入力バリデーション草案**：[STEP6-②](STEP6_02_VALIDATION_CONTRACT.md)で基本6問・任意回答・日付・人数・保存データの検証を整理。未承認の上限値はまだ固定しない。
+- **次の重要判断**：[STEP6-③ 非該当の施設固有入力の保持A／確定時削除B](STEP6_03_INACTIVE_FACILITY_DATA_OPTIONS.md)。B案推奨、**未決**。現在の条件から外れた施設固有回答は、いずれの案でも判定・公式案内に使わない。
+- **設計のみ**：React+TypeScript+Vite / IndexedDB+Dexie / Vercel正式採用済みだが、アプリ実装、依存導入、動作テスト、公開は未実施。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
