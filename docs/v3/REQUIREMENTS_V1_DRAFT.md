@@ -98,3 +98,7 @@
 ## 繰返しバックアップ復元（ADR-017正式採用）
 
 **FR-17**：同じJSONファイルの再インポートを禁止せず、毎回、追加件数・別IDコピー件数とコピー増加可能性をプレビューに明示。**本人が明示承認したときのみ一括保存**。ファイルハッシュによる取込履歴管理・同一ファイルの自動ブロック・自動スキップはMVPに含めない。既存ID衝突はADR-016に従い別IDコピー、ファイル内部重複は拒否。全件失敗時は旧DB無変更。[ADR-017](ADR_017_REPEAT_IMPORT_WITH_CONFIRMATION.md)。
+
+## 復元したイベントのrevisionと由来（ADR-018正式採用）
+
+**FR-18**：JSONから復元された新規EventRecordは衝突の有無にかかわらずrevision=1、createdAt/updatedAtは復元時刻。元eventId・元createdAt・元updatedAtとimportedAtは由来情報として保持する。U01では復元日時と元の日時を区別し、イベント開催日Q3と混同しない。既存レコードを不変とし、本人の進捗・再確認を保持。出典や優先度を復元元ファイルからコピーしない。[ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)。
