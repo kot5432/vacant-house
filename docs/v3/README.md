@@ -180,6 +180,14 @@
 - **次の正式判断**：[STEP7-⑩ インポート時にeventIdが衝突したときの対応](STEP7_10_BACKUP_IMPORT_CONFLICT_OPTIONS.md)。衝突したイベントを別IDで複製するA案を推奨するが**未採用**。[STEP7-⑪復元安全契約](STEP7_11_BACKUP_SAFETY_CONTRACT_DRAFT.md)で形式・サイズ・競合・原子的保存の詳細を検討。
 - [STEP7実装前残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)にADR-001〜015を整理。現行地域イベント準備支援アプリのみ対象で、**旧空き家用のJSON・物件・所有者・マッチングを一切復元しない**。**実装・ブラウザ試験・デプロイは未実施**。
 
+## 2026-11-15｜既存イベントID衝突時は別IDで複製（ADR-016正式採用）
+
+- **正式決定**：[ADR-016 JSON復元で既存eventIdが衝突した場合はバックアップ側を新IDでコピー追加](ADR_016_IMPORT_COLLISION_AS_COPY.md)。**既存イベントの本文・進捗・revision・日時は無変更**。ファイル内ID重複は全件拒否し、既存と衝突しないIDは可能な範囲で保持。
+- **復元の確認・安全条件**：追加件数と別コピー件数をプレビュー→本人の明示確定→同一Dexieトランザクションで全件追加・全件失敗。プレビュー後に別タブで衝突分類が変わった場合は再プレビュー・再承認。中断や容量不足で旧DBを変更せず、成功表示しない。
+- [ADR-015 JSONバックアップMVP](ADR_015_JSON_BACKUP_EXPORT_IMPORT.md)、[データ設計](DATA_DESIGN_V1.md)、[U01ホーム](STEP5_02_HOME_SETUP_WIREFRAMES.md)、[U04保存競合](STEP5_04_EDIT_SAVE_ERROR_UI.md)、[アーキテクチャ](ARCHITECTURE_V1.md)、[テスト計画](TEST_PLAN_V1_DRAFT.md)、[要件](REQUIREMENTS_V1_DRAFT.md)を更新。[STEP7-⑩](STEP7_10_BACKUP_IMPORT_CONFLICT_OPTIONS.md)は正式決定前の比較履歴。
+- **次の判断**：[STEP7-⑫ 同一JSONを繰り返しインポートした際の重複防止](STEP7_12_REPEAT_IMPORT_OPTIONS.md)。A：毎回件数とコピー増加の可能性を注意＋明示確定（推奨）／B：インポート済みファイルハッシュを記録／C：同一ファイル再取込み禁止。**未採用**。
+- [STEP7-⑬ データ・トランザクション細則](STEP7_13_IMPORT_METADATA_AND_TRANSACTION_DRAFT.md)、[STEP7残件整理](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)で未確定のrevision初期値・作成日時・サイズ上限・旧版JSONの互換性を区別。**現在の地域イベント準備支援Webアプリのみ／旧空き家案なし／実装・実行試験・公開は未実施**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
