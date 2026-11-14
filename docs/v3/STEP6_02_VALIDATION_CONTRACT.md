@@ -100,3 +100,7 @@ region=takaoka AND venueStatus in {candidate, confirmed}
 ## 12. 任意テキストの100字・500字上限（ADR-008正式採用）
 
 `venueNameMemo`は100字、`optionalDescription`は500字。空欄は可、上限ぴったりは可、超過はバリデーションエラー。U04の編集ドラフトは保持し、保存成功前に旧DBを書き換えない。日本語IME変換中に文字列を強制切断しない。UIカウンターと保存前検証は**同一の文字数単位**に揃える。Unicode書記素クラスタ＋`Intl.Segmenter`を技術第一候補とし、対応ブラウザ・極端に長い一書記素への別のバイト上限を開発前に確認する。出典を施設名メモから推定しない。詳細：[ADR-008](ADR_008_OPTIONAL_TEXT_LIMITS.md)。
+
+## 13. 互換性・Unicode書記素とIME（ADR-014）
+
+PC・スマホ主要現行Chrome・Edge・Safari・Firefoxを検証対象に採用。**100／500字は確定、書記素クラスタ計測は技術第一候補**。同じカウンター／保存検証関数を使い、`Intl.Segmenter`のある環境では書記素ごとに計数。非対応時にUTF-16の文字数へ黙って切り替えない。IMEでは`compositionstart/compositionend`などを重視し、`isComposing`単独に依存しない。変換中に`maxLength`や自動切断を強制しない。絵文字結合・濁点・改行・過大な単一書記素を境界試験に含む。技術上のUTF-8保護上限や正確な対象ブラウザ版は未決。[ADR-014](ADR_014_MAJOR_DESKTOP_MOBILE_BROWSER_SUPPORT.md)。
