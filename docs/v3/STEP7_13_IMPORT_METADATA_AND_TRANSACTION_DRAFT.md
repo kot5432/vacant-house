@@ -73,3 +73,7 @@ select file → validate all → preview collision counts → user confirms
 ## 8. ADR-017採用後の変更点
 
 **反復インポートでは過去のファイルハッシュや取込み履歴を保持しない**。毎回、現在のDBと比較した件数・コピー増加の注意・本人の明示確認を必要とする。別IDコピー、プレビュー後の衝突分類変更時の再承認、全件原子的追加はADR-016のまま。次の詳細決定は、新規復元イベントのrevision初期値と日時の扱いを[STEP7-⑭](STEP7_14_RESTORED_EVENT_METADATA_OPTIONS.md)で比較する。[ADR-017](ADR_017_REPEAT_IMPORT_WITH_CONFIRMATION.md)。
+
+## 9. ADR-018でrevision・日時を正式確定
+
+従来「revision=1は未決」「復元日時は候補」とした箇所は[ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)で正式採用。**衝突あり／なしを問わず復元で新規追加するEventRecordはrevision=1**、`createdAt/updatedAt`を**今回の復元コミット日時**にする。由来`importedFrom`には`originalEventId`・`originalCreatedAt`・`originalUpdatedAt`・`importedAt`を保存する。既存イベントのrevision・日時は不変。元revision由来保持、タイムゾーンと日時異常の厳密な許容、JSON最大サイズは技術残件。**設計文書のみ**。
