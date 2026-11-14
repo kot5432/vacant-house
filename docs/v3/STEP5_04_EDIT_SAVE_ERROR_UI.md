@@ -199,3 +199,7 @@ U04の`venueNameMemo`は100字、`optionalDescription`は500字まで。空欄�
 ## 18. U04の文字数・IME・保存互換性（ADR-014）
 
 PC・スマホ主要ブラウザの現行版で、**書記素数カウンターと保存検証の一致**、日本語IME変換中に超過しても自動切断しないこと、保存失敗やQuotaExceededでドラフトを可能な限り保持することを確認する。ブラウザ内DBの`revision`競合や旧タブのスキーマ更新、本人操作による新版再読み込みを検証。未対応`Intl.Segmenter`環境で文字数定義を勝手に変更しない。[ADR-014](ADR_014_MAJOR_DESKTOP_MOBILE_BROWSER_SUPPORT.md)。
+
+## 19. U04編集中とバックアップ復元（ADR-015）
+
+U04未保存ドラフトはエクスポートに含めず、復元でも本人の編集内容を黙って上書きしない。同じeventIdが既存DBにある場合、復元前に衝突の存在を提示。別タブrevision競合、容量不足、未対応schemaで保存成功と偽らず元レコードを保護する。復元時の同一ID処理は別途判断。[ADR-015](ADR_015_JSON_BACKUP_EXPORT_IMPORT.md)。
