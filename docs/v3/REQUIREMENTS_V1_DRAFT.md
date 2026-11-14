@@ -102,3 +102,7 @@
 ## 復元したイベントのrevisionと由来（ADR-018正式採用）
 
 **FR-18**：JSONから復元された新規EventRecordは衝突の有無にかかわらずrevision=1、createdAt/updatedAtは復元時刻。元eventId・元createdAt・元updatedAtとimportedAtは由来情報として保持する。U01では復元日時と元の日時を区別し、イベント開催日Q3と混同しない。既存レコードを不変とし、本人の進捗・再確認を保持。出典や優先度を復元元ファイルからコピーしない。[ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)。
+
+## バックアップ1ファイルの制限（ADR-019正式採用）
+
+**FR-19**：エクスポート／インポートのJSONは**1ファイル最大2 MiB（2,097,152バイト）かつ最大100イベント**。書出し時には完成UTF-8 JSONの実サイズを確認し、ファイル選択で取り込む場合もサイズ→内容・件数を検証する。片方でも超える場合は保存成功・復元完了と偽らず、既存DBを変更しない。データを無断で間引かない。上限超過時の分割導線は別決定。[ADR-019](ADR_019_JSON_BACKUP_LIMIT_2MIB_100_EVENTS.md)。
