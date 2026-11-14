@@ -1,4 +1,4 @@
-# STEP7｜正式採用ADR-001〜010と実装前残件の棚卸し（2026-11-15）
+# STEP7｜正式採用ADR-001〜011と実装前残件の棚卸し（2026-11-15）
 
 > **目的：既決事項と未決事項を区別し、実装開始を誤って宣言しないための設計レビュー**。対象は地域イベント準備支援Webアプリのみ。GitHubリポジトリ名がvacant-houseでも、旧空き家所有者／物件／マッチングの機能は使わない。ソースコード、ブラウザ試験、Vercelデプロイなし。
 
@@ -16,6 +16,7 @@
 | ADR-008 | 任意施設名メモ100字、イベント説明500字。IMEで自動切断しない | [文字数](ADR_008_OPTIONAL_TEXT_LIMITS.md) |
 | ADR-009 | 公式出典を月1回＋毎本番リリース前＋初回掲載前に確認 | [公式出典](ADR_009_OFFICIAL_SOURCE_MONTHLY_RELEASE_REVIEWS.md) |
 | ADR-010 | 月次点検の予定期限超過時は猶予なく施設固有断定を停止し、一般案内へ | [点検遅延](ADR_010_STALE_SOURCE_FAIL_CLOSED.md) |
+| ADR-011 | 日本時間の毎月末までにその月の原ページ点検とレビューを完了 | [月末期限](ADR_011_MONTH_END_SOURCE_REVIEW_DEADLINE.md) |
 
 **さらに既決**：基本6問、4領域・P01〜P12、U01〜U04、生成後ブラウザ内保存と複数イベント・再開、U03進捗自動保存、U04編集の明示確定、初回U02の下書き非永続化。施設情報は本人がカテゴリを明示して対象条件が一致した場合のみ公式出典を表示。行政が許可したと断定しない。
 
@@ -23,7 +24,7 @@
 
 | 重要度 | 残件 | 種別 | 進め方 |
 |---|---|---|---|
-| **高・次の利用者確認** | **月次点検期限をどう算定するか（月末・毎月指定日・30日方式）**。期限超過で猶予なく停止はADR-010で確定 | 利用者の運用・表示方針 | [STEP7-② 比較](STEP7_02_SOURCE_REVIEW_DUE_DATE_OPTIONS.md)で検討 |
+| **高・次の利用者確認** | **公式出典の配信・最新版反映方式（静的ビルド同梱／別JSON／専用API）**。月末期限はADR-011で確定 | 利用者の配信方式方針 | [STEP7-④ 配信・更新の比較](STEP7_04_SOURCE_UPDATE_DELIVERY_OPTIONS.md)で検討 |
 | 高 | 公式施設の原ページ・対象条件・改定内容の再検証 | 公開前の実地確認 | 既存[公式根拠台帳](OFFICIAL_SOURCE_REGISTER.md)には**2026-11-12時点の閲覧記録がある**。2026-11-15の今回の作業では再確認していない。台帳の過去確認と今回の未確認を区別 |
 | 高 | 全P01〜P12の該当性／優先度の未決細則、再確認依存の網羅 | 判定設計 | [判定契約](RULE_ENGINE_CONTRACT_V1.md)の未承認箇所を個別レビュー。優先順A案は変更しない |
 | 高 | eventId・revision・schemaVersion・rulesVersion／sourceRevisionの移行時の厳密な扱い | 技術設計 | [データ](DATA_DESIGN_V1.md)と[テスト](TEST_PLAN_V1_DRAFT.md)を一致。旧タブから削除済みIDを復活させない |
@@ -47,7 +48,7 @@
 
 ## 4. 開発着手前の実施順（実装はしない）
 
-1. **点検が遅れた場合の表示停止はADR-010で確定済み**。次に、月次点検期限の算定を[STEP7-②](STEP7_02_SOURCE_REVIEW_DUE_DATE_OPTIONS.md)で合意。
+1. **点検期限の末日設定と期限超過時の停止はADR-011/010で確定済み**。次は出典配信・更新の方式を[STEP7-④](STEP7_04_SOURCE_UPDATE_DELIVERY_OPTIONS.md)から選ぶ。
 2. 公式出典の既存登録内容と画面表示条件・最新版照合のチェックリストをレビューする。
 3. P01〜P12の全条件を採用済み・仮説・対象外に仕分け、推奨案を実装前に確認。
 4. EventRecordの正規化とDexie移行・削除・競合・多タブの設計上の境界を凍結する。
@@ -59,3 +60,7 @@
 ## 5. 出典状態と本人進捗の切り分け（ADR-010以降）
 
 出典の`verified / needs_review / suspended / retired`と本人の`not_started / in_progress / completed / not_applicable`および`needsRecheck`は別の次元。[出典有効状態契約草案](STEP7_03_SOURCE_EFFECTIVE_STATUS_CONTRACT.md)で、期限超過してもP01〜P12の一般準備プランを維持し、本人進捗を書き換えない設計を確認。月内の期限日は未決。
+
+## 6. ADR-011と出典配信方式の分離
+
+月次点検は**各月末日JSTまで**、未完了なら翌月1日00:00から該当する施設固有断定を停止する。[ADR-011](ADR_011_MONTH_END_SOURCE_REVIEW_DEADLINE.md)。出典カタログの`reviewedMonth/checkedAt/reviewedAt`と本人のIndexedDB EventRecordを別管理し、出典失効だけで本人の完了・対象外を変更しない。**出典が再検証された後に古いタブへどう反映するかは未決**。[STEP7-④](STEP7_04_SOURCE_UPDATE_DELIVERY_OPTIONS.md)にA/B/C比較を用意した。コード・試験は未実施。
