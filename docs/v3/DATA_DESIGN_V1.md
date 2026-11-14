@@ -226,3 +226,9 @@ interface EventRecord {
 **エクスポート＋インポートをMVPに採用**。対象は保存成功済みEventRecord。JSONルートの提案は`formatId,exportSchemaVersion,exportedAt,sourceBuildId,eventCount,events`。入力・progressByTask・再確認・イベント版を保存し、公式出典／再計算可能な優先度は含めない。
 
 取り込みは**メモリ上で全件をサイズ・形式・既知schema・イベントID・必須6問・人数・100/500字・進捗状態・タスクIDまで検証**し、件数とID衝突を表示して本人が確定するまでDBに書かない。未知形式・旧空き家JSONは拒否。保存失敗・別タブ競合で既存レコードを保護。ファイルサイズ・旧版対応範囲・重複ID処理・バッチトランザクション詳細は未決。[ADR-015](ADR_015_JSON_BACKUP_EXPORT_IMPORT.md)。
+
+## 20. インポート時の別ID複製・revision・原子的保存（ADR-016正式採用）
+
+バックアップ内のeventIdが**既存DBのIDと衝突した場合は新たに一意eventIdを発行し、別イベントとして新規追加**。既存DBのeventId・入力・進捗・revision・日時を**変更しない**。衝突しないイベントは元IDを維持して新規追加。ファイル内eventId重複は全件取込み拒否。本人の完了・対象外・要再確認と入力を複製するが、優先度・該当性・公式出典は現在のビルドで再計算。複製後のrevisionは**新しい独立EventRecordの初期revision**であり、元IDのrevisionをコピーして一続きの履歴とみなさない（初期値1は技術候補）。元の日時・コピー元IDを内部記録に保持するかは別途データ仕様を確定する。
+
+**検証→プレビュー→明示確定**までは書き込まず、確定時に同一Dexie readwriteトランザクション内で現行ID・schema・revisionを再検査し、衝突分類がプレビューから変化した場合は**変更後のプレビューと本人再承認**が必要。全件を新規追加できた場合のみコミット成功。保存失敗や他タブ競合では部分追加を行わず既存イベントも維持。反復インポートではコピー増加を事前に説明。正本：[ADR-016](ADR_016_IMPORT_COLLISION_AS_COPY.md)。
