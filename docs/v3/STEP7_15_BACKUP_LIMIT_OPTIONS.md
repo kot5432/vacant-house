@@ -1,3 +1,5 @@
+> **2026-11-15正式決定：A案（JSON 1ファイル最大2 MiB＝2,097,152バイト、かつ100イベント）を採用。正本は[ADR-019](ADR_019_JSON_BACKUP_LIMIT_2MIB_100_EVENTS.md)。以下の比較や「未決」は採用前の履歴です。**
+
 # STEP7-⑮｜JSONバックアップのファイルサイズ・イベント件数の上限（選択肢・未決）
 
 作成：2026-11-15。**ユーザー判断待ち、数値未採用**。MVPは[ADR-015](ADR_015_JSON_BACKUP_EXPORT_IMPORT.md)でJSONエクスポート＋インポート採用。[ADR-016](ADR_016_IMPORT_COLLISION_AS_COPY.md)で既存ID衝突時別IDコピー、[ADR-017](ADR_017_REPEAT_IMPORT_WITH_CONFIRMATION.md)で繰返し復元時毎回確認、[ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)でrevision=1・復元日時と元の由来情報を保持。実装・テスト・デプロイは未実施。旧空き家データは対象外。
