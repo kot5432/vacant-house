@@ -140,3 +140,7 @@ U02は初回未完成下書きがReactメモリ内だけにあるため、更新
 ## 12. PC・スマホ主要ブラウザの互換性境界（ADR-014採用）
 
 Chrome・Edge・Safari・Firefoxの現行版を**Windows/macOS・Android/iOSで利用可能な組合せに応じて検証**する。実行不可のOS×ブラウザ組合せは必須にしない。具体的な最低対応バージョンは実機検証後に公開前確定。書記素文字数は`Intl.Segmenter('ja',{granularity:'grapheme'})`第一候補でUI・保存で共通計算、IMEはcompositionイベントを中心として候補確定前の強制切断なし。`InputEvent.isComposing`のみへの依存は禁止する技術方針。対応しない環境で暗黙にUTF-16へ変更しない。IndexedDBは同一オリジンのローカル保存でブラウザ間同期・プライベートモード永続保存を保証しない。新ビルド通知はADR-013で本人明示再読込、旧タブDBスキーマ競合は[STEP7-⑥](STEP7_06_SCHEMA_AND_OLD_TAB_SAFETY_REVIEW.md)で検証。**実装・実機試験未実施**。[ADR-014](ADR_014_MAJOR_DESKTOP_MOBILE_BROWSER_SUPPORT.md)。
+
+## 13. JSONバックアップの入出力構成（ADR-015）
+
+U01からエクスポート／インポートを行う。設計上の責務は`ExportService`（保存済みEventRepositoryスナップショット→JSONファイル）と`ImportService`（選択→ローカル検証→件数・衝突プレビュー→明示確定→Dexie保存）に分離。**公式出典の静的カタログをファイルにコピーせず、本人のイベント情報を外部送信しない**。既存イベントの無断上書き・削除・旧空き家データの誤取り込みは禁止。インポートの衝突処理と一括保存方式は別途決定。[ADR-015](ADR_015_JSON_BACKUP_EXPORT_IMPORT.md)。
