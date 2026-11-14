@@ -244,3 +244,7 @@ interface EventRecord {
 新規レコードの`importedFrom`は**直接の元**`originalEventId`、`originalCreatedAt`、`originalUpdatedAt`、`importedAt`を記録。復元元JSONに過去の由来欄があっても無限の履歴配列として継承しない。元の日時が不正なら捏造・暗黙補正をしない。詳細：[ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)。由来の元revisionの保持、具体的なISO日時検証、異常な未来日時の取扱いは未決。
 
 U01は復元イベントに「バックアップから復元」、衝突に伴う追加コピーには「別コピー」を表示する設計。開催日Q3とバックアップ元の作成日、復元日のそれぞれの意味を混同しない。
+
+## 23. JSONバックアップ1ファイルの件数・実バイト上限（ADR-019）
+
+**正式上限：2 MiB（2,097,152 UTF-8バイト）かつ100イベントまで**。書出し側は、保存済みEventRecordの一貫したスナップショットからJSONを完成させ、**ルートメタデータ、エスケープ、importedFromを含む最終的なUTF-8バイト長**を算定する。両上限内の場合だけ全件をバックアップとして生成。インポート側は選択ファイルの物理バイト数を先に検査、形式・eventCount一致・100件上限・スキーマ・進捗・ID整合を検証してから本人へプレビュー。片方の上限だけ満たしても拒否。**無断で一部を除外せず、失敗時は元DB不変**。分割方式は[STEP7-⑯](STEP7_16_EXPORT_SPLIT_OPTIONS.md)で選択待ち。既存の100/500字書記素上限とファイル容量は別。[ADR-019](ADR_019_JSON_BACKUP_LIMIT_2MIB_100_EVENTS.md)。
