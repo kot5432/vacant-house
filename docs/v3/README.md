@@ -135,6 +135,14 @@
 - [既存の高岡市出典台帳](OFFICIAL_SOURCE_REGISTER.md)には**2026-11-12に公式ページを机上閲覧した記録**がある。今回の作業では最新情報を再確認していない。過去の閲覧履歴と、最新の原ページ照合実施を混同しない。
 - 現行の単発・小規模地域イベント主催者向け準備支援Webアプリのみ。旧空き家所有者、物件診断、物件マッチングの要件は混入させない。**実装・テスト実行・Vercelデプロイは未実施**。
 
+## 2026-11-15｜月次点検期限超過時の表示停止（ADR-010正式採用）
+
+- **正式採用**：[ADR-010 公式出典の期限超過時は猶予なく施設固有の断定を停止](ADR_010_STALE_SOURCE_FAIL_CLOSED.md)。一般的なP01〜P12の準備プランは引き続き利用可能。原資料確認・必要なレビューが済んだ出典のみ再掲。本人の進捗`completed/not_applicable`と出典の`needs_review`は別の状態。
+- [公式出典運用](OFFICIAL_SOURCES_OPERATIONS_V1.md)・[状態遷移](OFFICIAL_SOURCES_STATUS_TRANSITIONS_V1.md)・[U03準備プラン](STEP5_03_PREPARATION_PLAN_UI.md)・[テスト設計](TEST_PLAN_V1_DRAFT.md)・[開発運用計画](DEVELOPMENT_OPERATIONS_PLAN_V1.md)を更新。[STEP7-①](STEP7_01_STALE_OFFICIAL_INFO_POLICY_OPTIONS.md)は決定前の比較履歴。
+- **次の正式判断待ち**：[STEP7-② 月次点検の具体期限の比較](STEP7_02_SOURCE_REVIEW_DUE_DATE_OPTIONS.md)（月末／毎月指定日／直近確認から30日）。**月末を推奨するが未承認**。
+- **技術設計案**：[STEP7-③ 出典の有効状態と本人進捗の分離](STEP7_03_SOURCE_EFFECTIVE_STATUS_CONTRACT.md)。公開中の古いタブの即時更新は保証しない。
+- [STEP7実装前残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)で正式採用ADR-001〜010と実装前の課題を整理。現行の地域イベント準備支援アプリのみを対象とし、旧空き家所有者診断・物件登録・マッチングを再導入しない。**実装・テスト実行・Vercel公開は未実施**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
