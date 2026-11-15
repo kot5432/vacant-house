@@ -227,6 +227,14 @@
 - **次の利用者判断**：[STEP7-⑱ JSONバックアップ形式のバージョン互換性](STEP7_18_BACKUP_VERSION_COMPATIBILITY_OPTIONS.md)。現在版＋検証済みの既知旧版を許すA案を推奨するが、未採用。
 - [STEP7残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)はADR-001〜021を反映。**現行の地域イベント準備支援アプリのみ**。旧空き家・物件・所有者の仕様は引き継がない。**コード実装・動作試験・Vercel公開なし**。
 
+## 2026-11-15｜JSONバックアップの対応版は現在＋検証済み既知旧版（ADR-022正式採用）
+
+- **正式採用**：[ADR-022 現行のバックアップ形式と、安全な移行手順とテストが検証済みの既知旧形式のみインポート](ADR_022_BACKUP_KNOWN_VERSION_COMPATIBILITY.md)。未対応旧版・未知将来版・旧空き家等の他アプリJSONは**拒否**して既存データを守る。旧形式移行は旧版スキーマ検証→意味の欠落を許さない変換→現在版全件再検証。
+- **重要な制限**：初期の正式`formatId`と初期`exportSchemaVersion`の値、対応旧版一覧は未決で、実際に公開・検証した旧JSON版は**まだない**。バックアップ互換性の方針決定を「旧版の移行実装・試験が完了した」と混同しない。
+- [バックアップのデータ設計](DATA_DESIGN_V1.md)、[U01復元エラーUI](STEP5_02_HOME_SETUP_WIREFRAMES.md)、[インポート安全契約](STEP7_11_BACKUP_SAFETY_CONTRACT_DRAFT.md)、[アーキテクチャ](ARCHITECTURE_V1.md)、[テスト仕様](TEST_PLAN_V1_DRAFT.md)、[MVP要件](REQUIREMENTS_V1_DRAFT.md)、[開発運用計画](DEVELOPMENT_OPERATIONS_PLAN_V1.md)へ反映。[STEP7-⑱](STEP7_18_BACKUP_VERSION_COMPATIBILITY_OPTIONS.md)は比較履歴。
+- **次の確認**：[STEP7-⑲ JSON復元時の不正・矛盾・未来の元保存日時](STEP7_19_IMPORTED_TIMESTAMP_VALIDATION_OPTIONS.md)。元の作成・更新日時を由来として残すADR-018との整合を図る。A/B/Cは未決。
+- [STEP7残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)をADR-001〜022まで更新。現行の地域イベント準備支援アプリ専用、旧空き家案は引き継がない。**実装・動作テスト・Vercel公開は行っていない**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
