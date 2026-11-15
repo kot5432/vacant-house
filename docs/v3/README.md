@@ -235,6 +235,14 @@
 - **次の確認**：[STEP7-⑲ JSON復元時の不正・矛盾・未来の元保存日時](STEP7_19_IMPORTED_TIMESTAMP_VALIDATION_OPTIONS.md)。元の作成・更新日時を由来として残すADR-018との整合を図る。A/B/Cは未決。
 - [STEP7残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)をADR-001〜022まで更新。現行の地域イベント準備支援アプリ専用、旧空き家案は引き継がない。**実装・動作テスト・Vercel公開は行っていない**。
 
+## 2026-11-15｜復元元の保存日時：不正拒否・有効な未来日時は本人確認（ADR-023正式採用）
+
+- **正式採用**：[ADR-023 JSON内の元保存日時が不正・順序矛盾ならファイル全体拒否、有効な未来日時は端末時計への注意と本人の明示確認後に復元可能](ADR_023_BACKUP_TIMESTAMP_STRICT_WITH_FUTURE_WARNING.md)。不正な暦日、タイムゾーン不明、`updatedAt<createdAt`、不正`exportedAt`は元DBを変更せず拒否。オフセットの異なる同一瞬間を誤判定しない。
+- [ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)の復元新レコード`revision=1`、`createdAt=updatedAt=importedAt`、元日時を`importedFrom`へ保持する方針を変更しない。イベント開催予定日Q3の過去日を許容する[ADR-006](ADR_006_ALLOW_PAST_SCHEDULE.md)とも混同しない。
+- [データ設計](DATA_DESIGN_V1.md)、[U01復元エラー・警告](STEP5_02_HOME_SETUP_WIREFRAMES.md)、[インポート安全契約](STEP7_11_BACKUP_SAFETY_CONTRACT_DRAFT.md)、[アーキテクチャ](ARCHITECTURE_V1.md)、[MVP要件](REQUIREMENTS_V1_DRAFT.md)、[テスト](TEST_PLAN_V1_DRAFT.md)に反映。[STEP7-⑲](STEP7_19_IMPORTED_TIMESTAMP_VALIDATION_OPTIONS.md)は正式採用前の比較履歴。
+- **次の判断**：[STEP7-⑳ 任意入力のUnicode書記素制限に追加するUTF-8バイト上限](STEP7_20_TEXT_BYTE_SAFETY_LIMIT_OPTIONS.md)。A：施設名メモ4 KiB／イベント説明16 KiB（暫定推奨）、B：両方64 KiB、C：追加のバイト制限なし。**数値は未採用**。
+- [STEP7残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)をADR-001〜023に更新。現行地域イベント準備支援Webアプリのみ扱い、旧空き家所有者・物件マッチング案を取り込まない。**実装・実行テスト・Vercel公開なし**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
