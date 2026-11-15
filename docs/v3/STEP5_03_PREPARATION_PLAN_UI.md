@@ -213,3 +213,9 @@ P05は未成年／両方=P1、成人／未定=P2を正式維持。物理会場�
 ## STEP8-⑤｜判定ルールと例示画面の照合（推奨レビュー）
 
 モバイルの例は**子どもが参加する体験会**で、P05が未解決ならADR-003により**P05=P1**。古い「会場P2を代表」の例は条件を示さず矛盾していたため、**P05=P1の代表例**に訂正した。他タスクのP1があればタスクID昇順、P05が完了して再確認不要なら代表候補から外れる。P08は施設固有出典が有効でもADR-027によりP2基本。カードは理由と次の一歩を同じ視線の流れで示す。[STEP8-⑤照合](STEP8_05_RULE_UI_CONSISTENCY_REVIEW.md)。**UI実装・テストなし**。
+
+## U03｜限定的なP2分岐の表示契約（ADR-028正式採用）
+
+**理由は実在する回答にひも付ける**。P01=eventType other、P02=audience undecided、P03=schedule month/undecided、P04=organizerForm undecidedまたはresponsible明示未定、P07=venueStatus undecided/candidate、P09=equipmentNeedで必要設備ありのときだけP3→P2。P06/P10/P11/P12=P3固定。P05未成年含むP1・その他P2、P08=P2基本は従来どおり（施設条件だけで自動P1なし）。
+
+代表は**未解決P1→P2→P3、同区分taskId順**。代表の上部では「この回答をもとに、次の確認を先に提案しています」と理由1文＋次の一歩1文を示す。P2は法的義務・許可の必要性を意味しない。P1が複数あれば他のP1も隠さない。ユーザーが完了にしたタスクの履歴・needsRecheckを順位変更で書き換えない。物理会場なしのP07〜P09親は一般確認を残し、建物固有子項目のみ非該当。詳細：[ADR-028](ADR_028_LIMITED_P2_PRIORITY_BY_EXISTING_INPUTS.md)。実機UI未検証。
