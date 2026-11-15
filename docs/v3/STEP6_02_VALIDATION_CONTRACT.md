@@ -118,3 +118,7 @@ PC・スマホ主要現行Chrome・Edge・Safari・Firefoxを検証対象に採�
 ## ADR-028優先度分岐の入力型チェック（2026-11-16）
 
 [ADR-028](ADR_028_LIMITED_P2_PRIORITY_BY_EXISTING_INPUTS.md)が参照するのは、既存基本6問`eventType`、`audience`、`schedule.kind`、`venueStatus`、`organizerForm`および既存任意欄`responsible`、`equipmentNeed`だけ。**新規の「企画整理希望」「人数検討希望」という入力は作らない**。任意質問の`unanswered`と`undecided`、回答済みの「未決定／設備が必要」の意味を正規化後に判別する。日本語ラベルや存在しないTS enumを直接条件に使わない。未回答から未定を補完しない。イベントの自由記述や任意人数の大きさでpriorityを操作しない。
+
+## STEP8-⑩｜開催時期の保存キー・任意型の正式値との照合
+
+本書の基本質問欄の`schedule`は**開催時期の説明上の呼称**であり、[EventInputの既存型サンプル](DATA_DESIGN_V1.md)の`date: DateAnswer`と同じ一問。2つの保存項目を作らない。現行の正規保存候補は`input.date.kind`。`responsible: Known<"decided"|"not_decided">`、`equipmentNeed: Known<"yes"|"none_identified">`の実在型サンプルを参照し、P04は`responsible.kind=undecided`または`answered/not_decided`、P09は`answered/yes`のみP2。未回答は未定扱いにしない。詳細：[STEP8-⑩](STEP8_10_CANONICAL_INPUT_MAPPING_AND_ENUM.md)。**ADR-028の意味は変更しない**。
