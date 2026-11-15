@@ -650,3 +650,9 @@
 U01→U02→U03→U04とJSON入出力の保存境界を[STEP8-⑦](STEP8_07_CROSS_SCREEN_STATE_TRANSITIONS.md)の**FLOW-01〜20**に追加整理した。特に①U02保存失敗で遷移しない、②U03進捗CASの別タブ競合、③U04施設固有入力の保存確定時だけの失効、④U01本人選択JSONの2 MiB・100件、⑤JSON復元時の全件拒否／revision=1・由来保持を統合確認する。**実際の試験結果ではない**。
 
 P01〜P04/P06/P07/P09〜P12の入力条件別優先度は[STEP8-⑧](STEP8_08_REMAINING_PRIORITY_POLICY_GATE.md)で未決。比較案A/B/Cいずれも**採用済み期待値としてテストに固定しない**。既決のP05/P08と同優先度ID昇順だけを確定期待値にする。
+
+## STEP8-⑧ A案・ADR-028 限定P2判定テスト（未実行）
+
+[ADR-028](ADR_028_LIMITED_P2_PRIORITY_BY_EXISTING_INPUTS.md)のPRIO-A01〜19を**正式な期待値**として追加。基本のP3からP2へ上げる条件は`eventType=other`（P01）、`audience=undecided`（P02）、`schedule=month/undecided`（P03）、`organizerForm=undecided`または`responsible`が明示未定（P04）、`venueStatus=undecided/candidate`（P07）、`equipmentNeed`が必要設備あり（P09）。P06/P10/P11/P12=P3固定。任意欄未回答と「未定」を取り違えず、存在しない「人数検討希望」「企画整理希望」フラグを参照しないこと。
+
+**回帰必須**：P05のminors/both=P1・adults/undecided=P2、P08=P2基本かつ施設出典でP1自動昇格なし、no_physical_venueのP07/P08/P09親`needs_information`と子項目非該当、P1→P2→P3／同区分ID順、progress・needsRecheck・revision不変。日付による架空の14日前昇格なし。**この節は期待値でありテストを実行していない**。
