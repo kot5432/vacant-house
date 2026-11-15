@@ -1,3 +1,5 @@
+> **2026-11-15正式決定：A案（施設名メモ4 KiB・イベント説明16 KiBのUTF-8上限を、100/500書記素上限とは別に追加）を採用。正本は[ADR-024](ADR_024_UTF8_TEXT_BYTE_LIMITS.md)。以下は採用前の比較履歴です。実装・実機試験は未実施。**
+
 # STEP7-⑳｜Unicode書記素の文字数と別に設ける入力の技術バイト上限（未決・比較）
 
 作成：2026-11-15。**利用者判断前の設計比較**。既決：[ADR-008](ADR_008_OPTIONAL_TEXT_LIMITS.md)で施設名メモ100字・イベント説明500字、IME変換中の強制切断なし。[ADR-014](ADR_014_MAJOR_DESKTOP_MOBILE_BROWSER_SUPPORT.md)でPC・スマホ主要ブラウザの検証を採用し、`Intl.Segmenter`書記素計測を技術第一候補にしている。1ファイルJSON上限は[ADR-019](ADR_019_JSON_BACKUP_LIMIT_2MIB_100_EVENTS.md)で2 MiB・100件。**本書の数値は未採用。実装・試験なし。**
