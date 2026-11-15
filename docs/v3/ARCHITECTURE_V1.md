@@ -176,3 +176,7 @@ U01からエクスポート／インポートを行う。設計上の責務は`E
 ## 21. インポート時の保存日時検証（ADR-023）
 
 `ImportService`のJSON形式・版検証後、`exportedAt`と元EventRecordの`createdAt/updatedAt`を**実在日時・オフセット付き・順序整合**で検証し、ひとつでも不正なら全件拒否してDB無変更。有効な未来日時は件数・対象をU01プレビューへ出し、**本人の明示確認**を復元条件に追加する。元の日時は同じ瞬間を`importedFrom`に保持、新EventRecordはrevision=1かつ復元時のcreatedAt/updatedAt。未知旧形式の曖昧な日時は無断補完しない。Q3開催予定日の過去日許容は不変。[ADR-023](ADR_023_BACKUP_TIMESTAMP_STRICT_WITH_FUTURE_WARNING.md)。
+
+## 22. 書記素・UTF-8サイズの共通バリデーション（ADR-024）
+
+`InputValidation`に施設名メモ100書記素／4,096 UTF-8バイト、イベント説明500書記素／16,384 UTF-8バイトの独立した条件を置く。UI表示カウンター、U04明示保存、バックアップインポート全件検証で**同一バリデーション契約**を使用し、書記素は`Intl.Segmenter`を第一候補、バイト数は`TextEncoder`相当のUTF-8エンコードを技術候補とする。非対応ブラウザで暗黙の計数単位変更なし。IME変換中は強制切断しない。完成JSON全体の2 MiB上限とは別のゲート。既存不適合レコードの扱いは後続判断。[ADR-024](ADR_024_UTF8_TEXT_BYTE_LIMITS.md)。
