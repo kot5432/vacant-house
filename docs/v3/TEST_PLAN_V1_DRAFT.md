@@ -660,3 +660,7 @@ P01〜P04/P06/P07/P09〜P12の入力条件別優先度は[STEP8-⑧](STEP8_08_RE
 ## STEP8-⑨入力→理由→画面の追跡回帰（設計・未実行）
 
 [STEP8-⑨](STEP8_09_PRIORITY_TRACEABILITY_MATRIX.md)の**TRACE-01〜12**を追加受入ベクトルとして参照。混合P2時の代表ID順、未成年を含むP05 P1、物理会場なしのP07/P08/P09親と子の別扱い、任意の責任者・備品回答の明示値、人数1001人警告と優先度の分離、公式施設出典によるP08自動P1禁止、完了/needsRecheck/未保存ドラフトの保護を確認する。期待値のみ、実行済みとはしない。
+
+## STEP8-⑩｜入力キーと任意列挙値の整合テスト（設計のみ・未実行）
+
+[STEP8-⑩](STEP8_10_CANONICAL_INPUT_MAPPING_AND_ENUM.md)の**NORM-01〜12**を期待値として追加。開催時期の`schedule`説明名と`EventInput.date`保存候補を2問／2フィールドにしないこと、P03の月・未定と日付の分離、P04の`Known<decided|not_decided>`の明示未定、P09の`Known<yes|none_identified>`と設備空欄の区別、不明JSON別名の推測受理禁止、no_physical_venueの親タスク保持を回帰検証する。schemaVersionの最終値とJSON移行パターンは未決、テスト結果はまだない。
