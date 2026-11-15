@@ -138,3 +138,7 @@
 ## 初期MVP対象外記述の訂正（2026-11-16）
 
 第1章に残っていた「データファイルの出力・読み込みは対象外」という初期の記述は**後続[ADR-015](ADR_015_JSON_BACKUP_EXPORT_IMPORT.md)で廃止**。現行MVPには**本人選択によるJSONエクスポート＋検証付きインポート**を含む。2 MiB・100件/ファイル、旧版互換、コピー復元、UTF-8制限等はADR-016〜025を適用する。PDF出力は引き続きMVP対象外。[STEP8-⑤](STEP8_05_RULE_UI_CONSISTENCY_REVIEW.md)。
+
+## 初期MVPのP01〜P12優先度（ADR-028正式採用）
+
+**FR-28**：既存基本入力・任意入力に本人が明示した条件を使い、P01（eventType other）、P02（audience undecided）、P03（schedule month/undecided）、P04（organizerForm undecidedまたは任意responsible明示未定）、P07（venueStatus undecided/candidate）、P09（equipmentNeed必要あり）のみ**基本P3からP2へ限定昇格**。P06/P10/P11/P12はP3固定。P05は未成年含むP1、それ以外P2（ADR-003）。P08はP2基本、施設公式条件のみでP1へ自動昇格なし（ADR-027）。P07〜P09親は物理会場なしでも一般確認を残す。実在しない追加質問や「未回答→未定」の推測で優先度を変えない。代表は未解決P1→P2→P3・同じ区分taskId昇順。本人のprogress/needsRecheck/revisionは評価で変更しない。詳細：[ADR-028](ADR_028_LIMITED_P2_PRIORITY_BY_EXISTING_INPUTS.md)。
