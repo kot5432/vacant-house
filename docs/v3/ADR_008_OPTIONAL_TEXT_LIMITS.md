@@ -57,3 +57,7 @@
 ## 参考（技術資料）
 - MDN Intl.Segmenter: https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
 - MDN InputEvent.isComposing: https://developer.mozilla.org/ja/docs/Web/API/InputEvent/isComposing
+
+## 後続決定（ADR-024：書記素数とは別のUTF-8安全上限）
+
+既存の**施設名メモ100字・イベント説明500字**上限を維持したまま、施設名メモ**4 KiB（4,096 UTF-8バイト）**、イベント説明**16 KiB（16,384 UTF-8バイト）**を追加採用。書記素数・バイト数を別々に計測し、IME変換中の文字列を勝手に切断しない。U04とバックアップ復元の同じ入力検証契約で扱い、既存値を無断切詰めしない。[ADR-024](ADR_024_UTF8_TEXT_BYTE_LIMITS.md)。
