@@ -1,3 +1,5 @@
+> **2026-11-15正式採用：A案「現在版と、安全な移行手順が検証された既知旧版だけを取り込む」。正本は[ADR-022](ADR_022_BACKUP_KNOWN_VERSION_COMPATIBILITY.md)。以下の比較・未決記述は採用前の履歴です。まだ実在の旧版・実行済み移行テストはありません。**
+
 # STEP7-⑱｜JSONバックアップのバージョン互換性（未決の選択肢）
 
 作成：2026-11-15。**利用者判断待ち**。採用済み：[ADR-015](ADR_015_JSON_BACKUP_EXPORT_IMPORT.md)（JSON入出力）、[ADR-016](ADR_016_IMPORT_COLLISION_AS_COPY.md)（衝突時別IDコピー）、[ADR-017](ADR_017_REPEAT_IMPORT_WITH_CONFIRMATION.md)（再取込注意）、[ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)（revision=1・日時由来）、[ADR-019](ADR_019_JSON_BACKUP_LIMIT_2MIB_100_EVENTS.md)（2 MiB／100件）、[ADR-020](ADR_020_MANUAL_EVENT_SELECTION_EXPORT.md)（選択式分割）、[ADR-021](ADR_021_EXPORT_INITIAL_NONE_SELECT_ALL_WITHIN_100.md)（初期未選択）。現行地域イベント準備支援アプリのみ対象。旧空き家アプリのJSONは復元不可。実装・実行試験なし。
