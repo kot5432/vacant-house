@@ -219,3 +219,7 @@ P05は未成年／両方=P1、成人／未定=P2を正式維持。物理会場�
 **理由は実在する回答にひも付ける**。P01=eventType other、P02=audience undecided、P03=schedule month/undecided、P04=organizerForm undecidedまたはresponsible明示未定、P07=venueStatus undecided/candidate、P09=equipmentNeedで必要設備ありのときだけP3→P2。P06/P10/P11/P12=P3固定。P05未成年含むP1・その他P2、P08=P2基本は従来どおり（施設条件だけで自動P1なし）。
 
 代表は**未解決P1→P2→P3、同区分taskId順**。代表の上部では「この回答をもとに、次の確認を先に提案しています」と理由1文＋次の一歩1文を示す。P2は法的義務・許可の必要性を意味しない。P1が複数あれば他のP1も隠さない。ユーザーが完了にしたタスクの履歴・needsRecheckを順位変更で書き換えない。物理会場なしのP07〜P09親は一般確認を残し、建物固有子項目のみ非該当。詳細：[ADR-028](ADR_028_LIMITED_P2_PRIORITY_BY_EXISTING_INPUTS.md)。実機UI未検証。
+
+## STEP8-⑪｜U03状態別説明と読み上げ・誤認防止（設計詳細）
+
+[STEP8-⑪](STEP8_11_U03_STATE_COPY_AND_USABILITY_PLAN.md)に代表タスクカードの**理由→次の一歩→他のP1→全12タスク→有効出典→保存状況**の表示順、完了・対象外・要再確認・出典期限切れ・保存失敗の文言案、320px/200%拡大・キーボード・スクリーンリーダーの受入条件を整理。P05がP1の場合にP08のP2を代表へ優先させず、P2を行政申請義務と説明しない。入力名のdate/schedule差は[STEP8-⑩](STEP8_10_CANONICAL_INPUT_MAPPING_AND_ENUM.md)に従う。**実UIは作成していない**。
