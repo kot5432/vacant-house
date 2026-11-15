@@ -160,3 +160,7 @@ U01からエクスポート／インポートを行う。設計上の責務は`E
 ## 17. JSONバックアップのサイズ・件数の共通ゲート（ADR-019）
 
 `ExportService`は保存済みEventRecordを整合スナップショットで取得し、`BackupEnvelope`の完成したUTF-8 JSONの**実バイト数<=2,097,152**かつ**件数<=100**を検証。上限超過時に一部だけ無断書出ししない。`ImportService`はファイル物理サイズをパース前に拒否し、パース後の`eventCount/events.length`と件数上限、データ版を検証。復元のプレビュー・本人確認・Dexie原子的追加はADR-015〜018を維持。JSON内の個人メモを外部へ自動送信しない。上限超過時の分割エクスポートは[STEP7-⑯](STEP7_16_EXPORT_SPLIT_OPTIONS.md)で未決。[ADR-019](ADR_019_JSON_BACKUP_LIMIT_2MIB_100_EVENTS.md)。
+
+## 18. 選択ID集合からのエクスポート（ADR-020）
+
+`ExportService`はU01の**本人選択eventId集合**だけをEventRepositoryから一貫した読取時点で取得し、全件存在・形式を確認してBackupEnvelopeを構成する。JSON完成後のUTF-8バイト長・100件上限を検証してからダウンロード処理へ。対象外を無断で除外しない。元イベントのstatus/revisionは書き換えない。複数ファイルは本人が別操作で選択、バッチ生成サーバーや別の自動ダウンロードAPIは導入しない。別タブ削除／更新により選択対象が変わった場合の再確認が必要。[ADR-020](ADR_020_MANUAL_EVENT_SELECTION_EXPORT.md)。
