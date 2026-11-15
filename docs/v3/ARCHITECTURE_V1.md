@@ -184,3 +184,7 @@ U01からエクスポート／インポートを行う。設計上の責務は`E
 ## 23. 既存の不適合入力の閲覧と編集保存を分ける（ADR-025）
 
 保存済みEventRepositoryの読み取り成功と、現行InputValidationへの適合を**別の状態**として管理。旧データのサイズ超過があってもU01/U03表示は維持、DBの暗黙migrationや切断は行わない。U04の全入力保存は現在の上限に合格した場合だけ既存revision CASで更新。JSONインポートはスキーマ検証で1件でも上限超過なら全件拒否。ExportServiceは選択イベントの現行制約に違反があれば全体停止・理由表示、黙って一部除外しない。U03ProgressRepositoryとU04InputSaveの書込み境界はSTEP8-①で技術レビューし、inputの異常がprogressを無断で初期化しないことを守る。[ADR-025](ADR_025_LEGACY_OVERSIZED_RECORD_READ_ONLY_UNTIL_FIXED.md)。
+
+## 24. U03ProgressServiceとU04InputSaveServiceの境界（ADR-026）
+
+`U03ProgressService`は元EventRecordの最新revision・既知schema・対象taskId・進捗enumを確認し、同一Dexie readwriteトランザクション内で**本人操作対象のprogressByTaskだけを更新**する。成功時revision+1・updatedAt更新、EventInput・createdAt・由来情報・他タスクは不変。旧入力が現行サイズ上限超でも、**U04が許す入力修正とU03進捗操作の検証責務を分ける**。別タブCAS失敗・削除・DBアクセス失敗なら保存成功にしない。needsRecheckの明示解除は成功時のみ。JSONバックアップ検証はADR-025を変更しない。Dexie/IndexedDBの競合処理は実装前／実機試験で妥当性を確認。[ADR-026](ADR_026_U03_PROGRESS_CAS_INDEPENDENT_OF_INVALID_INPUT.md)。
