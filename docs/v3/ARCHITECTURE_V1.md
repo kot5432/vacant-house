@@ -172,3 +172,7 @@ U01からエクスポート／インポートを行う。設計上の責務は`E
 ## 20. バックアップJSONの対応版レジストリと移行境界（ADR-022）
 
 `ImportService`ではformatIdを最初に検査し、**対応済み現在exportSchemaVersionと、検証済み移行手順が定義された既知旧版だけ**を受ける。旧版ごとに厳密なスキーマ検証・明示的変換・現在版の全件再検証を行い、未知バージョンや旧空き家等の別アプリ用JSONは拒否。buildId・eventSchemaVersion・rulesVersion・catalogVersionを一つの比較値に統合しない。安全に読み取れないイベントを無断で削除して一部復元もしない。変換後も現在版のルール・公式出典で評価し、本人進捗は保持。プレビューと原子的コミット、2 MiB/100件制限はADR-015〜021どおり。実際の版番号・旧版の受入可否は公開前の検証記録で確定。[ADR-022](ADR_022_BACKUP_KNOWN_VERSION_COMPATIBILITY.md)。
+
+## 21. インポート時の保存日時検証（ADR-023）
+
+`ImportService`のJSON形式・版検証後、`exportedAt`と元EventRecordの`createdAt/updatedAt`を**実在日時・オフセット付き・順序整合**で検証し、ひとつでも不正なら全件拒否してDB無変更。有効な未来日時は件数・対象をU01プレビューへ出し、**本人の明示確認**を復元条件に追加する。元の日時は同じ瞬間を`importedFrom`に保持、新EventRecordはrevision=1かつ復元時のcreatedAt/updatedAt。未知旧形式の曖昧な日時は無断補完しない。Q3開催予定日の過去日許容は不変。[ADR-023](ADR_023_BACKUP_TIMESTAMP_STRICT_WITH_FUTURE_WARNING.md)。
