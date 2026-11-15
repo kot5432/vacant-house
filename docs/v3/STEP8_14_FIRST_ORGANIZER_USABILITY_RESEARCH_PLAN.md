@@ -61,3 +61,7 @@ P1/P2/P3の誤解：
 - まだ募集・調査・ヒアリングを実施していない。
 
 参照：[STEP8-⑪ U03状態別表示](STEP8_11_U03_STATE_COPY_AND_USABILITY_PLAN.md)、[STEP8-⑥品質チェック](STEP8_06_PREIMPLEMENTATION_VALIDATION_CHECKLIST.md)、[ADR-028優先順位](ADR_028_LIMITED_P2_PRIORITY_BY_EXISTING_INPUTS.md)。
+
+## 7. 実施に向けた具体化（2026-11-16追記）
+
+[STEP8-⑯ 初主催者インタビュー実施パック](STEP8_16_USER_RESEARCH_SESSION_KIT.md)に、**協力依頼文案・非誘導の質問・架空の5シナリオ・匿名の観察記録票・改善判断基準**を用意した。資料はそのまま協力者へ提示できる叩き台だが、**本人の送信指示や同意なく参加者へ連絡せず、ヒアリング・録音・計測は未実施**。未成年者の参加では適切な学校／保護者等の手続きに留意する。
