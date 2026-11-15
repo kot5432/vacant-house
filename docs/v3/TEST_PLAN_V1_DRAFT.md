@@ -644,3 +644,9 @@
 | UI-RULE-07 | JSONファイル入出力のMVP範囲を照合 | ADR-015以降に従い対象内、PDFは対象外 |
 
 参照：[STEP8-⑤](STEP8_05_RULE_UI_CONSISTENCY_REVIEW.md)。仕様の期待結果であり、実装や試験実行はしていない。
+
+## STEP8-⑦ 横断状態遷移の検証ケース（設計・未実行）
+
+U01→U02→U03→U04とJSON入出力の保存境界を[STEP8-⑦](STEP8_07_CROSS_SCREEN_STATE_TRANSITIONS.md)の**FLOW-01〜20**に追加整理した。特に①U02保存失敗で遷移しない、②U03進捗CASの別タブ競合、③U04施設固有入力の保存確定時だけの失効、④U01本人選択JSONの2 MiB・100件、⑤JSON復元時の全件拒否／revision=1・由来保持を統合確認する。**実際の試験結果ではない**。
+
+P01〜P04/P06/P07/P09〜P12の入力条件別優先度は[STEP8-⑧](STEP8_08_REMAINING_PRIORITY_POLICY_GATE.md)で未決。比較案A/B/Cいずれも**採用済み期待値としてテストに固定しない**。既決のP05/P08と同優先度ID昇順だけを確定期待値にする。
