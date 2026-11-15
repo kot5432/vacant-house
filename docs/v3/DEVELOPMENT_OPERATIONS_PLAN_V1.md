@@ -157,3 +157,7 @@ Chrome/Edge/Safari/Firefoxの現行主要版を、PC・スマホの実行可能�
 ## 28. 入力サイズ超過でもU03進捗CASを保護する試験条件（ADR-026）
 
 U03ProgressServiceとU04InputSaveServiceを分離し、旧入力が現行上限に不適合でも**U03進捗更新のみをrevision CAS付きで安全に保存する**。本人進捗・再確認の明示解除以外を変更しない、成功時revision+1・updatedAt更新、失敗時は保存済みと示さない。別タブ競合・イベント削除・未知schema・容量不足・連続タップをU03とU04で検証。**設計のみ・動作試験未実施**。[ADR-026](ADR_026_U03_PROGRESS_CAS_INDEPENDENT_OF_INVALID_INPUT.md)。
+
+## 29. 現行の設計で準備した検証計画（2026-11-16）
+
+[STEP8-⑬ 公開公式情報の部分照合](STEP8_13_OFFICIAL_SOURCE_PARTIAL_RECHECK_20261116.md)と[STEP8-⑭ 初主催者の利用者検証計画](STEP8_14_FIRST_ORGANIZER_USABILITY_RESEARCH_PLAN.md)を追加。前者は地域交流センター・市民活動相談窓口の**HTMLだけ一部確認**、PDF全体・対象施設別条件・第二確認者の承認は未完。後者は架空イベントに対するU02→U03→U04とU01の理解確認の**未実施計画**。検証者や評価値を実績として扱わない。公式出典の月次JST末日、公開前レビュー、ADR-028のP05/P08を含む優先度、既存進捗保護の受入条件を維持する。コード・テスト・公開開始は本人の明示承認が必要。
