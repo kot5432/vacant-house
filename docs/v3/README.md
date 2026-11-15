@@ -251,6 +251,14 @@
 - **次の利用者判断**：[STEP7-㉑ 既存レコードが新バイト上限を超える場合](STEP7_21_EXISTING_OVERSIZE_RECORD_OPTIONS.md)。A：閲覧を維持し、修正後に保存可（推奨）／B：旧版例外／C：自動切断。**未決**。
 - [STEP7実装前残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)はADR-001〜024へ更新。**現行の地域イベント準備支援アプリのみ**。旧空き家・物件診断・マッチングは引き継がない。**コード実装・実行試験・Vercel公開なし**。
 
+## 2026-11-15｜既存のサイズ超過イベントは閲覧維持・修正までU04保存不可（ADR-025正式採用）
+
+- **正式採用**：[ADR-025 現行サイズ上限を超える既存保存済みイベントは閲覧維持、本人の修正後のみU04保存可](ADR_025_LEGACY_OVERSIZED_RECORD_READ_ONLY_UNTIL_FIXED.md)。U01/U03に警告し、元の入力・進捗・revisionを自動切断・削除しない。
+- **JSONバックアップ**：上限違反のイベントを含むファイルのインポートは**全件拒否**。本人選択エクスポートに不適合レコードが含まれるときは**全体停止**し、本人が選択を見直すかU04で修正するよう案内。無断除外・無断切断・部分成功表示は禁止。
+- [データ設計](DATA_DESIGN_V1.md)、[入力バリデーション](STEP6_02_VALIDATION_CONTRACT.md)、[U01閲覧・JSON入出力UI](STEP5_02_HOME_SETUP_WIREFRAMES.md)、[U04編集・保存エラー](STEP5_04_EDIT_SAVE_ERROR_UI.md)、[テスト](TEST_PLAN_V1_DRAFT.md)、[要件](REQUIREMENTS_V1_DRAFT.md)、[アーキテクチャ](ARCHITECTURE_V1.md)、[開発運用](DEVELOPMENT_OPERATIONS_PLAN_V1.md)へ反映。[STEP7-㉑](STEP7_21_EXISTING_OVERSIZE_RECORD_OPTIONS.md)は採用前の比較履歴。
+- **次の正式判断**：[STEP8-① U03進捗保存を不適合な既存入力と切り離すか](STEP8_01_CORE_VALUE_RULES_AND_LEGACY_PROGRESS_REVIEW.md)。A（推奨）は入力を変更せず、進捗のみCAS付き保存。Bは修正まで進捗保存停止、Cは全EventRecord書き直しの特例。**いずれも未採用**。
+- [STEP7実装前残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)をADR-001〜025に更新。次段階はP01〜P12判定・中心価値の安全性レビュー。**現行の地域イベント準備支援アプリのみ**で、旧空き家データ・所有者診断・マッチングを引き継がない。**コード実装・試験実行・Vercel公開なし**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
