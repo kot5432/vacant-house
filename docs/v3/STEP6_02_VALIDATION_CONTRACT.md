@@ -104,3 +104,9 @@ region=takaoka AND venueStatus in {candidate, confirmed}
 ## 13. 互換性・Unicode書記素とIME（ADR-014）
 
 PC・スマホ主要現行Chrome・Edge・Safari・Firefoxを検証対象に採用。**100／500字は確定、書記素クラスタ計測は技術第一候補**。同じカウンター／保存検証関数を使い、`Intl.Segmenter`のある環境では書記素ごとに計数。非対応時にUTF-16の文字数へ黙って切り替えない。IMEでは`compositionstart/compositionend`などを重視し、`isComposing`単独に依存しない。変換中に`maxLength`や自動切断を強制しない。絵文字結合・濁点・改行・過大な単一書記素を境界試験に含む。技術上のUTF-8保護上限や正確な対象ブラウザ版は未決。[ADR-014](ADR_014_MAJOR_DESKTOP_MOBILE_BROWSER_SUPPORT.md)。
+
+## 14. 入力文字数と実UTF-8バイト長の二重制限（ADR-024正式採用）
+
+`venueNameMemo`は**最大100書記素かつ4,096 UTF-8バイト**、イベント説明は**最大500書記素かつ16,384 UTF-8バイト**。**二つの条件は独立**。書記素には`Intl.Segmenter`を第一候補に用いて実機確認し、非対応時に黙ってUTF-16長さへ変更しない。バイト数はUTF-8文字列実バイト（技術候補`TextEncoder`）で判定し、JSON全体の2 MiB制約とは別。上限ちょうどは有効、1文字または1バイト超は保存禁止。
+
+**IMEの変換中に強制切断しない**。確定後に超過理由を「文字数」「データサイズ」に分けて示し、U04のドラフトを保持して明示保存をブロック。JSONインポートも同じ検証に全件合格する必要があり、1件でも超過したら切断・部分復元せず既存DBは変更しない。既存保存レコードが新上限を超える場合の取扱いは[STEP7-㉑](STEP7_21_EXISTING_OVERSIZE_RECORD_OPTIONS.md)の後続判断。[ADR-024](ADR_024_UTF8_TEXT_BYTE_LIMITS.md)。
