@@ -180,3 +180,7 @@ U01からエクスポート／インポートを行う。設計上の責務は`E
 ## 22. 書記素・UTF-8サイズの共通バリデーション（ADR-024）
 
 `InputValidation`に施設名メモ100書記素／4,096 UTF-8バイト、イベント説明500書記素／16,384 UTF-8バイトの独立した条件を置く。UI表示カウンター、U04明示保存、バックアップインポート全件検証で**同一バリデーション契約**を使用し、書記素は`Intl.Segmenter`を第一候補、バイト数は`TextEncoder`相当のUTF-8エンコードを技術候補とする。非対応ブラウザで暗黙の計数単位変更なし。IME変換中は強制切断しない。完成JSON全体の2 MiB上限とは別のゲート。既存不適合レコードの扱いは後続判断。[ADR-024](ADR_024_UTF8_TEXT_BYTE_LIMITS.md)。
+
+## 23. 既存の不適合入力の閲覧と編集保存を分ける（ADR-025）
+
+保存済みEventRepositoryの読み取り成功と、現行InputValidationへの適合を**別の状態**として管理。旧データのサイズ超過があってもU01/U03表示は維持、DBの暗黙migrationや切断は行わない。U04の全入力保存は現在の上限に合格した場合だけ既存revision CASで更新。JSONインポートはスキーマ検証で1件でも上限超過なら全件拒否。ExportServiceは選択イベントの現行制約に違反があれば全体停止・理由表示、黙って一部除外しない。U03ProgressRepositoryとU04InputSaveの書込み境界はSTEP8-①で技術レビューし、inputの異常がprogressを無断で初期化しないことを守る。[ADR-025](ADR_025_LEGACY_OVERSIZED_RECORD_READ_ONLY_UNTIL_FIXED.md)。
