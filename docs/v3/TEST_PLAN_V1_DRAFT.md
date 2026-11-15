@@ -656,3 +656,7 @@ P01〜P04/P06/P07/P09〜P12の入力条件別優先度は[STEP8-⑧](STEP8_08_RE
 [ADR-028](ADR_028_LIMITED_P2_PRIORITY_BY_EXISTING_INPUTS.md)のPRIO-A01〜19を**正式な期待値**として追加。基本のP3からP2へ上げる条件は`eventType=other`（P01）、`audience=undecided`（P02）、`schedule=month/undecided`（P03）、`organizerForm=undecided`または`responsible`が明示未定（P04）、`venueStatus=undecided/candidate`（P07）、`equipmentNeed`が必要設備あり（P09）。P06/P10/P11/P12=P3固定。任意欄未回答と「未定」を取り違えず、存在しない「人数検討希望」「企画整理希望」フラグを参照しないこと。
 
 **回帰必須**：P05のminors/both=P1・adults/undecided=P2、P08=P2基本かつ施設出典でP1自動昇格なし、no_physical_venueのP07/P08/P09親`needs_information`と子項目非該当、P1→P2→P3／同区分ID順、progress・needsRecheck・revision不変。日付による架空の14日前昇格なし。**この節は期待値でありテストを実行していない**。
+
+## STEP8-⑨入力→理由→画面の追跡回帰（設計・未実行）
+
+[STEP8-⑨](STEP8_09_PRIORITY_TRACEABILITY_MATRIX.md)の**TRACE-01〜12**を追加受入ベクトルとして参照。混合P2時の代表ID順、未成年を含むP05 P1、物理会場なしのP07/P08/P09親と子の別扱い、任意の責任者・備品回答の明示値、人数1001人警告と優先度の分離、公式施設出典によるP08自動P1禁止、完了/needsRecheck/未保存ドラフトの保護を確認する。期待値のみ、実行済みとはしない。
