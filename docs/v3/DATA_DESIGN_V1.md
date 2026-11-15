@@ -282,3 +282,7 @@ U04保存時、バックアップJSONの取込み時の両方で**同じ検証�
 **既存レコードを読み取れた場合はU01/U03の表示を許可**。上限超過は補助的な不適合状態として計算できるが、イベント本文・進捗・revision・再確認を自動修復／自動削除する書込みはしない。U04明示保存では**現行の全入力を検証**し、上限超過の`venueNameMemo`・イベント説明が残れば保存拒否。修正され上限内となった場合にだけ既存のrevision CASと同一の保存処理で確定する。
 
 **バックアップ読込**は1件でも現行制約違反ならファイル全体を拒否、旧版であっても黙った切詰めなし。**本人選択エクスポート**は対象セットに不適合があれば全件生成停止し、選択を修正するか元EventRecordを本人が修正。これらの違反判定は文字数／UTF-8バイト制限を共通利用する。U03進捗更新のCASと入力全体の書換えを分離する技術設計は未決で、閲覧ができても進捗の永続化成功を無検証で保証しない。[ADR-025](ADR_025_LEGACY_OVERSIZED_RECORD_READ_ONLY_UNTIL_FIXED.md)。
+
+## 30. U03進捗とU04入力編集の分離したrevision CAS（ADR-026正式採用）
+
+U03の保存コマンドは**本人が変更した対象taskIdの進捗・本人の明示再確認フィールドに限定**し、EventRecordの最新revision一致と既知schema、既知taskId、進捗enumを検証して**同一Dexie readwriteトランザクション**で保存する。正常コミット時にrevisionを1増加し、updatedAtを保存日時へ更新。EventInput、createdAt、`importedFrom`、未変更タスク、既存`needsRecheck`は維持する。U04の全入力保存はADR-025の現行テキスト上限を必須とする。入力が旧バイト上限超でも**U03進捗更新が勝手に入力を初期化・切断してはいけない**。別タブでrevisionが変化した場合は競合として停止、古いEventRecordの丸ごとputで上書きしない。安全なDexie/IndexedDB実装パターンは実機検証対象。[ADR-026](ADR_026_U03_PROGRESS_CAS_INDEPENDENT_OF_INVALID_INPUT.md)。
