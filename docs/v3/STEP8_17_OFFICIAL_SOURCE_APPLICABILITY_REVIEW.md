@@ -70,3 +70,7 @@
 - この書面で公式API、施設予約連携、管理者への実際の連絡、コード実装、テスト実行を行ったわけではない。
 
 関連：[公式根拠台帳](OFFICIAL_SOURCE_REGISTER.md)、[STEP8-⑬](STEP8_13_OFFICIAL_SOURCE_PARTIAL_RECHECK_20261116.md)、[ADR-009](ADR_009_OFFICIAL_SOURCE_MONTHLY_RELEASE_REVIEWS.md)〜[ADR-012](ADR_012_BUNDLED_OFFICIAL_SOURCE_CATALOG.md)、[ADR-027](ADR_027_P08_P2_NO_FACILITY_AUTO_ESCALATION.md)。
+
+## 公開原文の2026-11-16再照合について
+
+[STEP8-㉑](STEP8_21_OFFICIAL_PRIMARY_SOURCE_VERIFICATION.md)で高岡市の地域交流センター案内HTML（現行URL）とR8.1改定の1ページPDFを再確認。別カテゴリの伏木・戸出コミュニティセンターは**独立ページの存在を確認する比較資料**であり、現在のセンター固有規則を適用する対象に追加していない。施設管理者の個別判断・二人目レビュー・本番掲載の承認は引き続き未完。
