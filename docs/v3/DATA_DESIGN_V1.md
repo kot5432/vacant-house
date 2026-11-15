@@ -286,3 +286,7 @@ U04保存時、バックアップJSONの取込み時の両方で**同じ検証�
 ## 30. U03進捗とU04入力編集の分離したrevision CAS（ADR-026正式採用）
 
 U03の保存コマンドは**本人が変更した対象taskIdの進捗・本人の明示再確認フィールドに限定**し、EventRecordの最新revision一致と既知schema、既知taskId、進捗enumを検証して**同一Dexie readwriteトランザクション**で保存する。正常コミット時にrevisionを1増加し、updatedAtを保存日時へ更新。EventInput、createdAt、`importedFrom`、未変更タスク、既存`needsRecheck`は維持する。U04の全入力保存はADR-025の現行テキスト上限を必須とする。入力が旧バイト上限超でも**U03進捗更新が勝手に入力を初期化・切断してはいけない**。別タブでrevisionが変化した場合は競合として停止、古いEventRecordの丸ごとputで上書きしない。安全なDexie/IndexedDB実装パターンは実機検証対象。[ADR-026](ADR_026_U03_PROGRESS_CAS_INDEPENDENT_OF_INVALID_INPUT.md)。
+
+## STEP8-⑩｜開催時期フィールドの別名と任意回答の整合
+
+既存`EventInput`概略型では開催時期の保存キーが**`date: DateAnswer`**、入力検証書／ADR-028の説明文では`schedule.kind`と呼ばれる。この2つは**1つの基本質問「開催時期」**を指す。初期実装で重複保存しない。正規名は型サンプルの`input.date`を推奨し、P03の`month/undecided`判定もこの値を参照する。任意の`responsible: Known<"decided"|"not_decided">`、`equipmentNeed: Known<"yes"|"none_identified">`は新しいフィールドを増やさず、ADR-028の明示P2条件に対応させる。具体的なJSONキーを最終確定するときはschemaVersion契約と一緒に型／UI／復元を検証する。[STEP8-⑩](STEP8_10_CANONICAL_INPUT_MAPPING_AND_ENUM.md)。
