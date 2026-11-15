@@ -352,3 +352,7 @@
 ## 2026-11-16｜STEP8-⑨優先度の追跡マトリクス
 
 [STEP8-⑨ P01〜P12の入力条件・優先度・U03理由・回帰ベクトル](STEP8_09_PRIORITY_TRACEABILITY_MATRIX.md)を作成し、正式採用したADR-028の期待表示とテストケースを追跡可能にした。**理由コード名は提案**であり、本人に承認されたP1/P2/P3の条件とは区別する。今後の大きな製品変更、実装開始、公式出典の最新版確認、ユーザビリティ検証は未実施。
+
+## 2026-11-16｜STEP8-⑩入力名・任意enumの整合レビュー
+
+[STEP8-⑩ 開催時期のschedule/date命名差とresponsible/equipmentNeedの正規化](STEP8_10_CANONICAL_INPUT_MAPPING_AND_ENUM.md)を作成。**既存データ設計では開催時期は`EventInput.date`、入力仕様の`schedule`は同じ一問の説明名**。任意`responsible`は`decided/not_decided`、`equipmentNeed`は`yes/none_identified`という型サンプルを使用し、ADR-028のP2分岐で未回答と未定を混同しない。**正式なJSONキー・初期版番号の固定は公開前の技術仕様残件**。新機能・旧空き家案なし、実装・実行試験なし。
