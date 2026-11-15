@@ -672,3 +672,7 @@ P01〜P04/P06/P07/P09〜P12の入力条件別優先度は[STEP8-⑧](STEP8_08_RE
 ## STEP8-⑫ JSONスキーマ草案・検証順序（すべて未実行）
 
 [STEP8-⑫](STEP8_12_BACKUP_JSON_V1_SCHEMA_DRAFT.md)の**JSON-S01〜12**を今後の受入ベクトルとして追加。formatIdと版の正確な照合、旧空き家JSONの拒否、date/scheduleの非推測変換、未知TaskID拒否、2 MiB/100件、出典をコピーしないこと、本人承認までDB不変、復元コミット失敗時の原子性を検証する。formatId文字列と初期schemaVersionは**候補のまま**なので、正式版固定後にテストフィクスチャを更新する。現段階は実施前の期待値のみ。
+
+## STEP8-⑬／⑭｜公式出典の再照合と初主催者検証の予定（未実行）
+
+[STEP8-⑬](STEP8_13_OFFICIAL_SOURCE_PARTIAL_RECHECK_20261116.md)のSOURCE-RECHECK-01〜06（HTMLだけ確認した情報をPDF全文・管理者確認の完了と混同しない、施設スコープ・参加者と利用主体の年齢を区別、月末失効で一般確認へ）と、[STEP8-⑭](STEP8_14_FIRST_ORGANIZER_USABILITY_RESEARCH_PLAN.md)のU02基本6問→U03優先理由→U04変更と再確認→U01選択式バックアップの観察項目を追加。**実際の利用者テストや公式PDFの全ページ最新照合を実施した記録ではない**。
