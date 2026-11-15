@@ -60,3 +60,7 @@
 
 ## 関連
 [ADR-001技術](ADR_001_TECH_STACK_ADOPTED.md) / [ADR-002物理会場なし](ADR_002_NO_PHYSICAL_VENUE_SCOPE.md) / [ADR-003優先度](ADR_003_PRIORITY_RULES_ADOPTED.md) / [STEP6-①](STEP6_01_PROGRESS_RECHECK_SPEC.md) / [データ設計](DATA_DESIGN_V1.md) / [テスト](TEST_PLAN_V1_DRAFT.md)
+
+## 後続決定（ADR-026：U03進捗CASによる保存）
+
+「再確認を終えた」の明示操作の**保存成功時にだけ解除**する本ADRを、U03の**進捗専用revision CASトランザクション**でも適用。旧入力のサイズ制限違反を理由に再確認情報・本人進捗を無断リセットせず、EventInputも書き換えない。別タブ競合や保存失敗時は解除済みと扱わない。[ADR-026](ADR_026_U03_PROGRESS_CAS_INDEPENDENT_OF_INVALID_INPUT.md)。
