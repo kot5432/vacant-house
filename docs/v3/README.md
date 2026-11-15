@@ -219,6 +219,14 @@
 - **次の判断**：[STEP7-⑰ バックアップ選択画面の初期状態](STEP7_17_EXPORT_SELECTION_UI_OPTIONS.md)。A案（推奨）：初期選択なし・保存済み100件以内のときだけ「すべて選択」可能。B/Cも比較、**未決**。
 - [STEP7実装前残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)はADR-001〜020に更新。現行地域イベント準備支援Webアプリのみ対象で、旧空き家案のデータやマッチング機能を混同しない。**実装・実行テスト・デプロイは未実施**。
 
+## 2026-11-15｜バックアップ書出しの初期未選択・全選択の条件（ADR-021正式採用）
+
+- **正式採用**：[ADR-021 U01のバックアップ書出しは初期0件・保存済み1〜100件の場合のみ「すべて選択」可能](ADR_021_EXPORT_INITIAL_NONE_SELECT_ALL_WITHIN_100.md)。101件以上は全選択を不可として理由を表示し、本人が最大100件を個別選択。100件チェック中の101件目は他のチェックを勝手に置換せず、0件選択時の書出し主操作は無効。
+- 画面には**選択件数／保存済み総数／今回ファイルに含めない件数**を表示。[ADR-019](ADR_019_JSON_BACKUP_LIMIT_2MIB_100_EVENTS.md)の完成JSON実UTF-8容量2 MiB上限、[ADR-020](ADR_020_MANUAL_EVENT_SELECTION_EXPORT.md)の本人選択式分割を維持。実データを書き換えたり未選択イベントを無断で出力したりしない。
+- [U01画面仕様](STEP5_02_HOME_SETUP_WIREFRAMES.md)、[データ設計](DATA_DESIGN_V1.md)、[アーキテクチャ](ARCHITECTURE_V1.md)、[要件](REQUIREMENTS_V1_DRAFT.md)、[テスト仕様](TEST_PLAN_V1_DRAFT.md)、[開発運用](DEVELOPMENT_OPERATIONS_PLAN_V1.md)へ反映。[STEP7-⑰](STEP7_17_EXPORT_SELECTION_UI_OPTIONS.md)は採用前の比較履歴。
+- **次の利用者判断**：[STEP7-⑱ JSONバックアップ形式のバージョン互換性](STEP7_18_BACKUP_VERSION_COMPATIBILITY_OPTIONS.md)。現在版＋検証済みの既知旧版を許すA案を推奨するが、未採用。
+- [STEP7残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)はADR-001〜021を反映。**現行の地域イベント準備支援アプリのみ**。旧空き家・物件・所有者の仕様は引き継がない。**コード実装・動作試験・Vercel公開なし**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
