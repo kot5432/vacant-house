@@ -243,6 +243,14 @@
 - **次の判断**：[STEP7-⑳ 任意入力のUnicode書記素制限に追加するUTF-8バイト上限](STEP7_20_TEXT_BYTE_SAFETY_LIMIT_OPTIONS.md)。A：施設名メモ4 KiB／イベント説明16 KiB（暫定推奨）、B：両方64 KiB、C：追加のバイト制限なし。**数値は未採用**。
 - [STEP7残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)をADR-001〜023に更新。現行地域イベント準備支援Webアプリのみ扱い、旧空き家所有者・物件マッチング案を取り込まない。**実装・実行テスト・Vercel公開なし**。
 
+## 2026-11-15｜Unicode書記素数と別のUTF-8技術上限を正式採用（ADR-024）
+
+- **正式採用**：[ADR-024 施設名メモ4 KiB・イベント説明16 KiBの追加UTF-8制限](ADR_024_UTF8_TEXT_BYTE_LIMITS.md)。既決の100/500書記素上限は維持し、両方を独立検証。上限値は施設名メモ**4,096バイト**、イベント説明**16,384バイト**。
+- [入力バリデーション契約](STEP6_02_VALIDATION_CONTRACT.md)、[データ設計](DATA_DESIGN_V1.md)、[U04編集・エラーUI](STEP5_04_EDIT_SAVE_ERROR_UI.md)、[U01 JSON取込エラー](STEP5_02_HOME_SETUP_WIREFRAMES.md)、[バックアップ安全契約](ADR_024_UTF8_TEXT_BYTE_LIMITS.md)、[テスト仕様](TEST_PLAN_V1_DRAFT.md)、[アーキテクチャ](ARCHITECTURE_V1.md)、[要件](REQUIREMENTS_V1_DRAFT.md)へ反映。[STEP7-⑳](STEP7_20_TEXT_BYTE_SAFETY_LIMIT_OPTIONS.md)は採用前の比較履歴。
+- IME変換中の強制切断をせず、確定後の超過エラー時は編集ドラフトを維持。JSON全体の2 MiB上限とは別の制限で、1イベントでも超過ならインポート全件を拒否する。
+- **次の利用者判断**：[STEP7-㉑ 既存レコードが新バイト上限を超える場合](STEP7_21_EXISTING_OVERSIZE_RECORD_OPTIONS.md)。A：閲覧を維持し、修正後に保存可（推奨）／B：旧版例外／C：自動切断。**未決**。
+- [STEP7実装前残件](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)はADR-001〜024へ更新。**現行の地域イベント準備支援アプリのみ**。旧空き家・物件診断・マッチングは引き継がない。**コード実装・実行試験・Vercel公開なし**。
+
 ## このプロダクトを使うのは誰？
 **2026-11-13のSTEP1で範囲を確定**：富山県（初期情報は高岡市）で、**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・立ち上げ前の小規模チーム**。団体への所属は不要。中心課題は**開催に必要な準備・手続きの全体像と順番が分からないこと**。継続的な子どもの居場所運営・長期学習支援は初期対象外。
 
