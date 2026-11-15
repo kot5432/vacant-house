@@ -264,3 +264,9 @@ U01は復元イベントに「バックアップから復元」、衝突に伴�
 **現在の対応形式＋検証済みの既知旧形式のみインポート**。ルート`formatId`は現行地域イベント準備支援アプリ専用、`exportSchemaVersion`（バックアップ形式）とイベント単位の`eventSchemaVersion`（保存データ形式）は別の版管理。未知の将来版、移行未検証の旧版、他アプリ／旧空き家JSONは拒否する。`buildId`・`rulesVersion`・`catalogVersion`もそれぞれ異なる識別子。
 
 旧版を受理するときは**旧形式の厳密な検証→実証済みのバージョン別移行→現行形式で全件再検証**。未知の進捗enum、TaskID、入力項目を黙って除去・改変しない。移行後の本人進捗・再確認情報を保持、公式出典・導出優先度は復元先の現行版で評価。**2 MiB/100件の取込制限と既存eventId衝突時の別IDコピー、全件原子性は維持**。具体的なformatId文字列、初期バージョン番号、対応旧版一覧は初回リリース前に確定する。存在しない旧版を対応済みとみなさない。[ADR-022](ADR_022_BACKUP_KNOWN_VERSION_COMPATIBILITY.md)。
+
+## 27. JSON復元の元日時の不正拒否・未来警告（ADR-023正式採用）
+
+`BackupEnvelope.exportedAt`および元EventRecordの`createdAt/updatedAt`は**実在暦日・解釈可能なISO-8601時刻・タイムゾーンを検証**し、元イベントに`updatedAt < createdAt`の矛盾があればファイル全体を拒否。タイムゾーンオフセットの違いは**同じ瞬間に正規化して比較**。有効な未来の日時は端末時計のずれの可能性を案内し、対象件数・イベントを示して**本人の明示再確認後だけ復元候補**とする。元時刻を黙って現在時刻に置き換えない。
+
+復元レコードの`importedFrom.originalCreatedAt/originalUpdatedAt`は**検証済みの元の瞬間**を保持。新レコードの`revision=1`・`createdAt=updatedAt=importedAt`はADR-018から変更しない。`exportedAt`の不正日時は全件拒否、形式上有効な未来の場合は別途警告。**開催予定日Q3の過去日（ADR-006）とは別**。インポートは全件検証・本人確認・原子的コミット、DB無断変更なし。詳細：[ADR-023](ADR_023_BACKUP_TIMESTAMP_STRICT_WITH_FUTURE_WARNING.md)。
