@@ -114,3 +114,7 @@ PC・スマホ主要現行Chrome・Edge・Safari・Firefoxを検証対象に採�
 ## 15. 上限超過の既存保存済みイベントに対する検証（ADR-025）
 
 既存EventRecordがADR-024の4 KiB／16 KiBなど現行制約を超えていても**読み取り・U01/U03の閲覧で入力値を暗黙に削除しない**。U04明示保存は全フィールドを検証し、該当欄を本人が上限内に直すまで保存不可（他項目の編集だけでは上限違反を免除しない）。U04保存失敗・キャンセル・別タブ競合でも元入力と編集ドラフトを保護。JSONバックアップへの取込は全件検証で拒否、本人選択エクスポートは違反イベントが含まれる場合に無断除外せず停止。U03進捗保存時の検証境界は別レビュー（STEP8-①）。[ADR-025](ADR_025_LEGACY_OVERSIZED_RECORD_READ_ONLY_UNTIL_FIXED.md)。
+
+## ADR-028優先度分岐の入力型チェック（2026-11-16）
+
+[ADR-028](ADR_028_LIMITED_P2_PRIORITY_BY_EXISTING_INPUTS.md)が参照するのは、既存基本6問`eventType`、`audience`、`schedule.kind`、`venueStatus`、`organizerForm`および既存任意欄`responsible`、`equipmentNeed`だけ。**新規の「企画整理希望」「人数検討希望」という入力は作らない**。任意質問の`unanswered`と`undecided`、回答済みの「未決定／設備が必要」の意味を正規化後に判別する。日本語ラベルや存在しないTS enumを直接条件に使わない。未回答から未定を補完しない。イベントの自由記述や任意人数の大きさでpriorityを操作しない。
