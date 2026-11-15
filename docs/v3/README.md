@@ -348,3 +348,7 @@
 - **正式採用**：[ADR-028 実在する入力値だけでP01〜P04・P07・P09をP3→P2へ限定分岐](ADR_028_LIMITED_P2_PRIORITY_BY_EXISTING_INPUTS.md)。P06/P10/P11/P12はP3固定。P05は未成年含むP1・それ以外P2、P08はP2基本・施設根拠だけではP1にしない。同順位はtaskId昇順。[比較資料STEP8-⑧](STEP8_08_REMAINING_PRIORITY_POLICY_GATE.md)は決定前の比較履歴。
 - [入力検証](STEP6_02_VALIDATION_CONTRACT.md)、[判定エンジン契約](RULE_ENGINE_CONTRACT_V1.md)、[理由コード](STEP8_04_REASON_CODE_AND_SCREEN_COPY_DRAFT.md)、[U03画面](STEP5_03_PREPARATION_PLAN_UI.md)、[要件](REQUIREMENTS_V1_DRAFT.md)、[テスト](TEST_PLAN_V1_DRAFT.md)、[画面・ルール整合](STEP8_05_RULE_UI_CONSISTENCY_REVIEW.md)、[残件一覧](STEP7_PREIMPLEMENTATION_OPEN_ITEMS.md)に反映。
 - **次の設計残件**：本人が明示できる任意責任者／設備回答の厳密な値と理由文の整合、公式情報の最新原ページ確認、実利用者による優先度説明の検証。新しいP1・6問の変更・法的義務判定は重要な変更なので再確認を要する。**旧空き家案は対象外／実装・テスト実行・デプロイなし**。
+
+## 2026-11-16｜STEP8-⑨優先度の追跡マトリクス
+
+[STEP8-⑨ P01〜P12の入力条件・優先度・U03理由・回帰ベクトル](STEP8_09_PRIORITY_TRACEABILITY_MATRIX.md)を作成し、正式採用したADR-028の期待表示とテストケースを追跡可能にした。**理由コード名は提案**であり、本人に承認されたP1/P2/P3の条件とは区別する。今後の大きな製品変更、実装開始、公式出典の最新版確認、ユーザビリティ検証は未実施。
