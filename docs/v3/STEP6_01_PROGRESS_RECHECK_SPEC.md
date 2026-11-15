@@ -91,3 +91,7 @@ progress.statusを保持したままneedsRecheck=false、recheckReasonCodesを�
 | not_started + needsRecheck=true | not_started + false | 未着手は未解決のまま |
 
 再確認解除は保存トランザクション成功後のみ確定。保存失敗・revision競合時に`needsRecheck=false`と永続保存されたと扱わない。現在の理由は空にするが、MVPが全変更履歴を監査保存することは意味しない。
+
+## U03進捗の入力非依存CAS保存（ADR-026正式採用）
+
+U03は本人操作したtaskIdの`progressByTask`および本人の「再確認を終えた」で解除する`needsRecheck/recheckReasonCodes`のみを、既存EventRecordの**revision一致を要求する独立トランザクション**で更新する。入力が現行4/16 KiBのバイト上限を超える既存イベントでも、**入力を無断変更・短縮・自動再保存しない**。CAS成功時だけrevision+1とupdatedAt更新、失敗では「保存済み」にしない。競合・削除・schema不明で自動併合やイベント再生成なし。本人の明示的な再確認解除のみをコミット時に反映し、完了履歴を維持する。[ADR-026](ADR_026_U03_PROGRESS_CAS_INDEPENDENT_OF_INVALID_INPUT.md)。設計のみ・実機試験なし。
