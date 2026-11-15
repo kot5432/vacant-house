@@ -161,3 +161,7 @@ U03ProgressServiceとU04InputSaveServiceを分離し、旧入力が現行上限�
 ## 29. 現行の設計で準備した検証計画（2026-11-16）
 
 [STEP8-⑬ 公開公式情報の部分照合](STEP8_13_OFFICIAL_SOURCE_PARTIAL_RECHECK_20261116.md)と[STEP8-⑭ 初主催者の利用者検証計画](STEP8_14_FIRST_ORGANIZER_USABILITY_RESEARCH_PLAN.md)を追加。前者は地域交流センター・市民活動相談窓口の**HTMLだけ一部確認**、PDF全体・対象施設別条件・第二確認者の承認は未完。後者は架空イベントに対するU02→U03→U04とU01の理解確認の**未実施計画**。検証者や評価値を実績として扱わない。公式出典の月次JST末日、公開前レビュー、ADR-028のP05/P08を含む優先度、既存進捗保護の受入条件を維持する。コード・テスト・公開開始は本人の明示承認が必要。
+
+## 30. 設計完了と外部検証・公開承認の線引き（2026-11-16）
+
+実装前の最新棚卸し正本は[STEP8-㉒](STEP8_22_FINAL_DECISION_AND_EVIDENCE_BACKLOG.md)。[STEP8-⑱技術契約](STEP8_18_TECHNICAL_CONTRACT_CONSOLIDATION.md)と[STEP8-⑲受入予定](STEP8_19_ACCEPTANCE_CASES_AND_EVIDENCE_TEMPLATE.md)は**設計資料**、[STEP8-⑳机上検証](STEP8_20_PRIORITY_DESK_WALKTHROUGH.md)は**実コードの試験結果でない**。[STEP8-㉑公式出典](STEP8_21_OFFICIAL_PRIMARY_SOURCE_VERIFICATION.md)は原文確認の証拠に限り、施設管理者・二人目の公開判断と別。本人から明示指示を得るまでは実装・CI・デプロイ、利用者への募集連絡なし。
