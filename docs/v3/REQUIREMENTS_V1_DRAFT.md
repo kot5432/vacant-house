@@ -118,3 +118,7 @@
 ## JSONバックアップのバージョン互換性（ADR-022正式採用）
 
 **FR-22**：現行の対応形式と、**厳密な検証・意味を損なわない移行手順・受入テストがそろった既知旧形式のみ**インポート可能。未知の新形式・未検証旧形式・旧空き家等の他プロダクトのバックアップは拒否し、DB不変。formatId、exportSchemaVersion、eventSchemaVersionを区別し、未知の入力・TaskId・progress値を黙って破棄しない。本人進捗を保持し、公式出典は現在版で再評価。まだ発行されていない過去版に互換性があるとは主張しない。[ADR-022](ADR_022_BACKUP_KNOWN_VERSION_COMPATIBILITY.md)。
+
+## JSON復元時の元保存日時の検証（ADR-023正式採用）
+
+**FR-23**：元EventRecordの`createdAt/updatedAt`に不正暦日・タイムゾーン不明・`updatedAt < createdAt`の矛盾がある場合、**ファイル全体を拒否し既存DB無変更**。日時が形式上有効で復元時点より未来なら、端末時計のずれを説明し、本人の明示確認後のみ復元候補にする。元の日時を補正せず`importedFrom`で保持し、新しい復元レコードはADR-018のrevision=1・復元日時に従う。ファイル`exportedAt`不正も拒否、未来は警告。Q3の開催日とは区別。[ADR-023](ADR_023_BACKUP_TIMESTAMP_STRICT_WITH_FUTURE_WARNING.md)。
