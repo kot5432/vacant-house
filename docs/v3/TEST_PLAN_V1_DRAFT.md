@@ -501,3 +501,22 @@
 | PICK-A10 | 小画面・キーボード・スクリーンリーダー | 件数・チェック状態・全選択不可理由を把握可能 |
 
 正本：[ADR-021](ADR_021_EXPORT_INITIAL_NONE_SELECT_ALL_WITHIN_100.md)。実際のブラウザ試験は実施していない。
+
+## 32. ADR-022 JSON形式の互換性・移行・U01エラー（期待値のみ／未実行）
+
+| ID | 条件 | 期待 |
+|---|---|---|
+| COMPAT-A01 | 現在のformatId・exportSchemaVersion・eventSchemaVersion | 検証成功後にプレビューし本人確定で復元可能 |
+| COMPAT-A02 | 厳密な移行手順とテストがある既知旧版 | 旧形式検証→無損失移行→現行形式再検証 |
+| COMPAT-A03 | 未対応の旧版 | 非対応理由と元ファイル保管案内、DB不変 |
+| COMPAT-A04 | 未知の将来版 | 不明プロパティを捨てずに拒否、DB不変 |
+| COMPAT-A05 | 旧空き家・他アプリのformatId | 現行イベントへの推測変換なしで拒否 |
+| COMPAT-A06 | 未知のtaskId、進捗enum、イベント条件 | 補正・切捨てなしで拒否 |
+| COMPAT-A07 | eventCountとevents.lengthが異なる | 拒否 |
+| COMPAT-A08 | 2 MiB超・101件 | 旧版でも制限適用、DB不変 |
+| COMPAT-A09 | 旧版移行後に既存IDと衝突 | 既存保持、別IDコピーを本人プレビュー確認 |
+| COMPAT-A10 | 移行・保存途中に失敗 | 全件ロールバック、部分復元成功と偽らない |
+| COMPAT-A11 | buildIdのみ異なるがJSON版は対応 | buildIdだけを理由に拒否しない |
+| COMPAT-A12 | 現行版でまだ旧版の検証実績なし | 旧版に対応済みと誤って宣言しない |
+
+正式採用：[ADR-022](ADR_022_BACKUP_KNOWN_VERSION_COMPATIBILITY.md)。現時点で実在旧版の移行実行テストはない。ここでのテストは期待値。
