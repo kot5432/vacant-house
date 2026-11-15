@@ -153,3 +153,7 @@ Chrome/Edge/Safari/Firefoxの現行主要版を、PC・スマホの実行可能�
 ## 27. 既存の上限超過イベントの後方互換試験（ADR-025）
 
 現行フィールド上限より長い既存EventRecordを用意し、U01/U03閲覧維持、U04で該当欄を直すまで保存不可、修正後はCAS整合に従い保存、選択エクスポート停止／再選択／JSONインポート全件拒否の期待値を確認する。ユーザーの既存メモ・タスク進捗・再確認を無断初期化しないことを別タブ競合やモバイルでも検証。**設計のみ・試験実施なし**。[ADR-025](ADR_025_LEGACY_OVERSIZED_RECORD_READ_ONLY_UNTIL_FIXED.md)。
+
+## 28. 入力サイズ超過でもU03進捗CASを保護する試験条件（ADR-026）
+
+U03ProgressServiceとU04InputSaveServiceを分離し、旧入力が現行上限に不適合でも**U03進捗更新のみをrevision CAS付きで安全に保存する**。本人進捗・再確認の明示解除以外を変更しない、成功時revision+1・updatedAt更新、失敗時は保存済みと示さない。別タブ競合・イベント削除・未知schema・容量不足・連続タップをU03とU04で検証。**設計のみ・動作試験未実施**。[ADR-026](ADR_026_U03_PROGRESS_CAS_INDEPENDENT_OF_INVALID_INPUT.md)。
