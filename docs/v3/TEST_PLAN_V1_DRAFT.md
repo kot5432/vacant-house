@@ -680,3 +680,7 @@ P01〜P04/P06/P07/P09〜P12の入力条件別優先度は[STEP8-⑧](STEP8_08_RE
 ## STEP8-⑯／⑰｜初主催者の非誘導検証と公式出典適用範囲（未実施）
 
 [STEP8-⑯](STEP8_16_USER_RESEARCH_SESSION_KIT.md)を実際の利用者検証用の進行台本・空の記録票として採用候補にする。**現段階では協力者募集・ヒアリング0件**。[STEP8-⑰](STEP8_17_OFFICIAL_SOURCE_APPLICABILITY_REVIEW.md)の施設適用マトリクスについて、地域外・施設カテゴリ未選択・センター以外・出典期限切れ・物理会場なし・参加対象未成年のみ／施設利用主体不明の各条件で、**固有の注意を根拠なく出さない**回帰を予定。二人目のレビューと施設管理者の個別確認・実端末での表示検証は別の未実施ゲート。
+
+## STEP8-⑱〜㉒｜最新受入条件・机上レビュー・証拠区分（未実行）
+
+[STEP8-⑱技術統合](STEP8_18_TECHNICAL_CONTRACT_CONSOLIDATION.md)を既決の判定・保存・復元境界の参照点、[STEP8-⑲受入ケース](STEP8_19_ACCEPTANCE_CASES_AND_EVIDENCE_TEMPLATE.md)のRULE-F01〜14、SAVE-F01〜07、BACKUP-F01〜10を試験計画とする。[STEP8-⑳](STEP8_20_PRIORITY_DESK_WALKTHROUGH.md)のDESK-01〜06は**文書仕様の机上計算**であって実行テストPASSではない。[STEP8-㉑](STEP8_21_OFFICIAL_PRIMARY_SOURCE_VERIFICATION.md)の公式HTML/PDF原文確認は[STEP8-㉒](STEP8_22_FINAL_DECISION_AND_EVIDENCE_BACKLOG.md)のV-03における施設管理者・別担当者の検証を代替しない。すべてのブラウザ試験の`actual/result/testedAt`は未実施のまま。
