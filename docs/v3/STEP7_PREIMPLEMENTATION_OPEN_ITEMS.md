@@ -202,3 +202,7 @@ JSONインポートにより復元先へ新規追加されたレコードは**�
 ## 23. STEP8-⑨ 既決の優先度とU03文言の追跡（設計のみ）
 
 [STEP8-⑨](STEP8_09_PRIORITY_TRACEABILITY_MATRIX.md)でADR-028の全12タスクについて**入力型→P2トリガー→理由コード案→U03の次の一歩**を対応付け、TRACE-01〜12の回帰を整理。**未決の技術詳細**：任意`responsible/equipmentNeed`の正規化enum実値、旧データ移行を含む型整合、公式施設原ページの最新版点検、初主催者による優先度・理由の理解検証。既決MVPの大きな変更と実装開始は本人承認が必要。コード・試験実行・公開なし。
+
+## 24. STEP8-⑩入力型の不一致を技術設計で解消（2026-11-16）
+
+[STEP8-⑩](STEP8_10_CANONICAL_INPUT_MAPPING_AND_ENUM.md)で既存データ型にある`EventInput.date`と入力検証書の`schedule`が同じ開催時期であることを明記。**別々の質問・DB列を増やさない**。責任者・必要設備の候補保存値も`Known<decided|not_decided>`／`Known<yes|none_identified>`と照合し、ADR-028のP2判定を実在する値だけに限定。残る技術作業はJSON`formatId`、`eventSchemaVersion`、初期固定キー、既知旧版移行の明示、実ブラウザでの入力型回帰。実装と試験は未着手。利用者の新しい製品判断は不要。
