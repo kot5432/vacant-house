@@ -576,3 +576,21 @@
 | LEGACY-A10 | Android/iOS/PCで古いイベントを開く | 長文表示とエラー・閲覧・修正を試験対象（未実行） |
 
 正本：[ADR-025](ADR_025_LEGACY_OVERSIZED_RECORD_READ_ONLY_UNTIL_FIXED.md)。テストは設計上の期待値、実行していない。
+
+## 36. ADR-026 既存入力不適合とU03進捗だけのCAS保存（期待値、未実行）
+
+| ID | 条件 | 期待 |
+|---|---|---|
+| U03-CAS01 | 既存メモ4,097バイトのイベントでP01完了 | P01進捗だけ保存、メモ等入力不変、revision+1 |
+| U03-CAS02 | 上限超過イベントをU04で開く | U03保存済みでもU04入力保存は修正まで不可 |
+| U03-CAS03 | P05完了かつneedsRecheck=trueの画面表示 | 再確認は勝手に解除されない |
+| U03-CAS04 | 「再確認を終えた」＋保存成功 | 対象だけneedsRecheck=false、進捗履歴は維持 |
+| U03-CAS05 | 再確認解除の保存失敗 | needsRecheck=trueのまま、保存済みと誤表示しない |
+| U03-CAS06 | U04別タブ更新によるrevision相違 | U03はCAS競合、古い内容で上書きしない |
+| U03-CAS07 | U03処理中に対象イベント削除 | 復活・新規作成せずエラー |
+| U03-CAS08 | 別タブでP02とP03を並行操作 | stale revisionで停止、他タスクを消さない |
+| U03-CAS09 | 不明schema・taskId・progress enum | 書込み禁止、既存DB不変 |
+| U03-CAS10 | 進捗保存済みだが元メモは上限超 | エクスポートADR-025の停止を維持 |
+| U03-CAS11 | Android/iOS/PCで連続タップ、容量不足 | 状態競合・保存失敗を確認し成功表示を偽らない |
+
+正本：[ADR-026](ADR_026_U03_PROGRESS_CAS_INDEPENDENT_OF_INVALID_INPUT.md)。テスト実行はしていない。
