@@ -68,3 +68,7 @@
 - 優先度の理由文の対象者による理解、必要性・納得度、実際の主催準備に役立つかの検証。
 - 高岡市の施設固有の公式原資料の**最新の再照合**、該当範囲と有効日の確認。
 - テストは表として追加するのみ。**実装や実行を開始する承認は得ていない**。
+
+## STEP8-⑩追記｜型名の実地照合
+
+P03の開催時期は入力文言・比較資料では`schedule.kind`と呼ぶが、既存の`EventInput`型サンプルでは**`input.date.kind`**。1問を指すため、正規保存候補は`date`に統一する。P04の`responsible`における明示未決定は`{kind:"undecided"}`または`{kind:"answered",value:"not_decided"}`、P09の設備必要は`{kind:"answered",value:"yes"}`（いずれも既存型サンプルの列挙値）。本人が回答していない場合に未定を推測しない。型ごとのNORM-01〜12のテスト期待値は[STEP8-⑩](STEP8_10_CANONICAL_INPUT_MAPPING_AND_ENUM.md)。
