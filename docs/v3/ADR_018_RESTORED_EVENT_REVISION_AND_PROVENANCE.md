@@ -59,3 +59,7 @@ importedFrom?: {
 **正式採用**：revision=1、復元時刻を新createdAt/updatedAtとして設定、`importedFrom`に直接の元ID・元作成日時・元更新日時・復元日時を保持。ADR-015〜017と矛盾しない。
 
 **技術／品質検証事項**：元revisionの由来保持の可否、JSON形式の具体的な版、UTC/JST時刻の正規化、異常日時の許容範囲、ファイルMB・件数の上限、既知旧版のインポート可否、プレビュー中に別タブが更新する場合の実際のDexie動作。これらは実装時に検証して仕様を確定する。ユーザーの追加判断が必要なものは次のSTEPで比較する。
+
+## 後続決定：元の保存日時の不正・未来の扱い（ADR-023）
+
+`originalCreatedAt/originalUpdatedAt`の由来値は不正暦日・形式不明・`updatedAt < createdAt`なら**ファイル全件拒否**。形式と順序が有効で端末時刻より未来の日時は、対象を警告し本人が明示確認した場合に限り**元の瞬間を改変せず由来情報として保持**。新しいEventRecordの`revision=1`、`createdAt=updatedAt=importedAt`は本ADRどおり変更しない。Q3開催予定日とは別。[ADR-023](ADR_023_BACKUP_TIMESTAMP_STRICT_WITH_FUTURE_WARNING.md)。
