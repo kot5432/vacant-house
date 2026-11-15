@@ -167,3 +167,7 @@
 **P05はADR-003**：未成年のみ／両方ならP1、成人のみ／未定ならP2。**P08はADR-027**：P2基本、施設固有条件だけでP1自動昇格なし、物理会場なしは親`needs_information`・P2。**P06/P10/P11/P12はP3固定**。物理会場なしのP07/P09親は`needs_information`・P3で一般確認を維持、建物専用の子項目のみ非該当（ADR-002）。過去の本書にある「P08が施設出典でP1候補」は**不採用**。
 
 入力は[STEP6-②](STEP6_02_VALIDATION_CONTRACT.md)の実在する6問と任意`responsible/equipmentNeed`のみ。「企画整理希望」「人数検討希望」等の存在しないフラグは禁止。優先度は進捗やrevisionを変更せず導出し、未解決タスクは**P1→P2→P3・同区分taskId昇順**。詳細・受入：[ADR-028](ADR_028_LIMITED_P2_PRIORITY_BY_EXISTING_INPUTS.md)。**この節が過去の未採用の優先候補表より優先する。実装・試験実行なし。**
+
+## STEP8-⑩｜実際の保存フィールドと判定条件の対応（技術設計・未実装）
+
+[STEP8-⑩](STEP8_10_CANONICAL_INPUT_MAPPING_AND_ENUM.md)で、入力検証書の`schedule.kind`と[EventInputの既存型サンプル](DATA_DESIGN_V1.md)の`date.kind`が**同じ開催時期の回答**であり、実装に2フィールドを追加してはならないことを確認。正規保存キーの推奨を`input.date`とし、**P03条件は`input.date.kind=month/undecided`→P2**。`responsible`は`Known<decided|not_decided>`（明示`undecided`または`answered/not_decided`でP04=P2）、`equipmentNeed`は`Known<yes|none_identified>`（`answered/yes`でP09=P2）と正規化する。未回答の推測変換なし。**ADR-028の製品判断は変えない**。
