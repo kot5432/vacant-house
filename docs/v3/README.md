@@ -356,3 +356,7 @@
 ## 2026-11-16｜STEP8-⑩入力名・任意enumの整合レビュー
 
 [STEP8-⑩ 開催時期のschedule/date命名差とresponsible/equipmentNeedの正規化](STEP8_10_CANONICAL_INPUT_MAPPING_AND_ENUM.md)を作成。**既存データ設計では開催時期は`EventInput.date`、入力仕様の`schedule`は同じ一問の説明名**。任意`responsible`は`decided/not_decided`、`equipmentNeed`は`yes/none_identified`という型サンプルを使用し、ADR-028のP2分岐で未回答と未定を混同しない。**正式なJSONキー・初期版番号の固定は公開前の技術仕様残件**。新機能・旧空き家案なし、実装・実行試験なし。
+
+## 2026-11-16｜STEP8-⑪ U03状態別文言・ユーザビリティ検証計画
+
+[STEP8-⑪](STEP8_11_U03_STATE_COPY_AND_USABILITY_PLAN.md)に、本人の未着手／進行中／完了／対象外、要再確認、出典の有効性、保存競合を分けて見せる画面文言案と検証手順を追記。U03の新画面・新機能は追加しない。**中心価値の実利用者検証、公式出典の原ページ再確認、実装・試験実行・デプロイはいずれも未実施**。
