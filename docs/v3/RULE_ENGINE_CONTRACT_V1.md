@@ -150,3 +150,20 @@
 既存のP08施設公式重要条件で`P1候補`とした記述や「承認待ち」は[ADR-027](ADR_027_P08_P2_NO_FACILITY_AUTO_ESCALATION.md)で**上書き**。**初期MVPのP08親はP2を基本**とし、条件付き公式出典が最新・対象一致であっても**その条件による自動P1昇格はしない**。一方、施設固有の公式出典を無条件に隠すのではなく、本人が明示したカテゴリ・地域・会場条件が一致し、出典が有効であれば、内容の対象範囲と「公式ページで確認する」という次の一歩を表示。期限切れなら施設固有の断定的説明を抑止し一般確認へ戻す。P08`no_physical_venue`はADR-003の`applicable=needs_information`かつP2を維持。P05未成年対象のP1、同優先度ID昇順、本人進捗の不変・再確認CASも維持。
 
 [STEP8-④](STEP8_04_REASON_CODE_AND_SCREEN_COPY_DRAFT.md)で理由コード・否定例・表示文言の詳細化を継続。コード実装・ルール実行テスト・公式原ページ検証なし。
+
+## 2026-11-16｜ADR-028 残りの優先順位を正式確定（以前の「候補」を上書き）
+
+**新しいP1は追加しない。** P01〜P04・P07・P09は原則P3、本人が回答可能な保存済み入力値の下記条件でのみP2。
+
+| タスク | P2となる既存入力条件 | それ以外 |
+|---|---|---|
+| P01 | `eventType=other` | P3 |
+| P02 | `audience=undecided` | P3。任意人数が未回答なだけでは昇格なし |
+| P03 | `schedule.kind=month`または`undecided` | P3。月を日付へ補完しない |
+| P04 | `organizerForm=undecided`または任意`responsible`の**明示的な未定／未決定** | P3。責任者欄未回答だけでは昇格なし |
+| P07 | `venueStatus=undecided`または`candidate` | P3。confirmedは許可済みでない |
+| P09 | 任意`equipmentNeed`で**必要な設備あり**と明示 | P3。空欄＝不要とみなさない |
+
+**P05はADR-003**：未成年のみ／両方ならP1、成人のみ／未定ならP2。**P08はADR-027**：P2基本、施設固有条件だけでP1自動昇格なし、物理会場なしは親`needs_information`・P2。**P06/P10/P11/P12はP3固定**。物理会場なしのP07/P09親は`needs_information`・P3で一般確認を維持、建物専用の子項目のみ非該当（ADR-002）。過去の本書にある「P08が施設出典でP1候補」は**不採用**。
+
+入力は[STEP6-②](STEP6_02_VALIDATION_CONTRACT.md)の実在する6問と任意`responsible/equipmentNeed`のみ。「企画整理希望」「人数検討希望」等の存在しないフラグは禁止。優先度は進捗やrevisionを変更せず導出し、未解決タスクは**P1→P2→P3・同区分taskId昇順**。詳細・受入：[ADR-028](ADR_028_LIMITED_P2_PRIORITY_BY_EXISTING_INPUTS.md)。**この節が過去の未採用の優先候補表より優先する。実装・試験実行なし。**
