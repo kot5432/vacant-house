@@ -1,3 +1,5 @@
+> **2026-11-15正式決定：A案「不正・矛盾のある元保存日時は全件拒否。有効な未来日時は警告と本人の明示確認後に復元可能」を採用。正本は[ADR-023](ADR_023_BACKUP_TIMESTAMP_STRICT_WITH_FUTURE_WARNING.md)。以下の比較は決定前の履歴です。**
+
 # STEP7-⑲｜バックアップ内の元イベント日時が異常な場合（利用者判断前）
 
 作成日：2026-11-15。**比較資料であり未採用**。前提：[ADR-018](ADR_018_RESTORED_EVENT_REVISION_AND_PROVENANCE.md)（復元先のrevision=1、新createdAt/updatedAtは復元時刻、元ID・元createdAt/updatedAtはimportedFromで保持）、[ADR-022](ADR_022_BACKUP_KNOWN_VERSION_COMPATIBILITY.md)（現在と検証済み既知旧形式のみ）、[ADR-019](ADR_019_JSON_BACKUP_LIMIT_2MIB_100_EVENTS.md)（2 MiB・100件）。現行地域イベント準備支援アプリのみ。旧空き家案のデータは対象外。コード・実行テスト・公開なし。
