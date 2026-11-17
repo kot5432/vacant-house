@@ -1,3 +1,5 @@
+> **2026-11-18 機能・開発単位の設計案**：[4人AI開発向け｜機能構成・フォルダ責任・Issue分割案](FEATURE_MODULES_AND_GITHUB_ISSUES_PLAN.md)。F0〜F7の責務、予定フォルダ、16件の仮Issue、最初の縦断導線、PRレビューと完了条件を整理。**GitHub Issue・コード・テスト実行・デプロイは未作成／未実施**。
+
 > **2026-11-17 最新の開発前決定**：ユーザーがJSON初期識別子A案、複数施設比較B案、AIコーディング中心の4人開発を指定。正式決定は[ADR-029](ADR_029_JSON_V1_IDENTIFIERS_AND_DATE_ADOPTED.md)、机上施設比較は[4施設比較](PREDEV_MULTI_FACILITY_COMPARISON_20261117.md)、開発の仮役割とPR運用は[4人AI開発計画](PREDEV_FOUR_PERSON_AI_DEVELOPMENT_PLAN_20261117.md)。以前の「JSON版・formatId未採用／施設1件／人数未確定」は**過去時点の記録**。実装・実行試験・デプロイ・施設照会はなし。
 
 > **2026-11-17 開発前準備（アンケート以外）**：[JSON初期形式の推奨セット・高岡市公式出典再閲覧・3人以上の仮役割と工程](PREDEV_NON_SURVEY_ACTIONS_20261117.md)。新規ADR未採用、個別施設照会なし、実装・実行試験・デプロイなし。
