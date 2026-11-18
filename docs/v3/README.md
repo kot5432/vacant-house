@@ -1,3 +1,5 @@
+> **2026-11-18 STEP10追加監査（実装なし）**：[P01〜P12理由コード・子ID・設備カテゴリの区別](STEP10_04_TASK_IDS_AND_REASON_AUDIT_20261118.md)、[参加の情報鮮度・掲載停止と更新担当レビュー手順](STEP10_05_PARTICIPATION_FRESHNESS_AND_EDITORIAL_WORKFLOW_20261118.md)。Issue #1/#14/#17へ反映済み。**既決ADRは維持。詳細enum・子ID、二人目レビュー、掲載/実装は未完了。**
+
 > **2026-11-18 STEP10 実装前の残件整理**：[参加の募集鮮度・根拠状態と主催JSON/子IDの横断レビュー](STEP10_02_CROSS_MODULE_CONTRACT_REVIEW_20261118.md)、[実装前ゲートとレビュー順](STEP10_03_PREIMPLEMENTATION_GATE_AND_REVIEW_ORDER_20261118.md)。Issue #1/#14/#15/#16/#17 に参照を追加。**ADR-030のMVP範囲は採用済み、個別enum・募集の期限・主催の完全な子IDはレビュー待ち。実装・テスト・CI・公開・外部連絡なし**。
 
 > **2026-11-18 最新MVPの正式採用**：[ADR-030｜富山の「参加D00〜D02＋企画U01〜U04」二入口を採用](ADR_030_TOYAMA_PARTICIPATE_AND_ORGANIZE_MVP_SCOPE_ADOPTED.md)。[参加カタログの詳細な掲載・更新設計](STEP10_PARTICIPATION_CATALOG_PUBLICATION_RULES_V03.md)は**技術レビュー前の案**。下記の「参加案は未採用」はADR-030採用前の記録として読み替える。既存ADR-001〜029、主催の基本6問・P01〜P12・JSON v1は不変。**実装・テスト・CI・デプロイ・外部連絡なし**。
