@@ -1,3 +1,5 @@
+> **2026-11-18 最新・正式採用**：[ADR-031｜MVPで子チェックを不採用、P01〜P12親進捗のみ](ADR_031_PARENT_TASK_PROGRESS_ONLY_NO_CHILD_CHECKS_ADOPTED.md)。[保存・JSON・U03画面の差分](STEP10_09_PARENT_ONLY_SAVE_BACKUP_UI_IMPACT_20261118.md)。旧子チェック案24件は**不採用の履歴**。初回v1から`checkedItemIds`を除外し、親status/needsRecheck/CAS、基本6問・優先順位、参加D00〜02を維持。**実装・実行試験・公開なし**。
+
 > **2026-11-18 STEP10 設計候補とレビュー用ケースを追加（未実装）**：[主催P01〜P12の子チェック24件・再確認理由8種・設備4種の**正式採用前の提案**](STEP10_06_PROPOSED_CHILD_IDS_RECHECK_CODES_AND_EQUIPMENT_20261118.md)、[参加16件＋主催12件の受入期待ケース（全件not_run）](STEP10_07_PARTICIPATE_ORGANIZE_ACCEPTANCE_MATRIX_20261118.md)、[4人チームのレビュー引継ぎと確認が必要な残件](STEP10_08_FOUR_PERSON_REVIEW_AND_DECISION_BACKLOG_20261118.md)。GitHub #1/#3/#4/#14〜#17へ参照追記。**ADR-030のMVP範囲以外の技術詳細は別人レビュー前。人員割当・掲載承認・実装/試験/公開なし。**
 
 > **2026-11-18 STEP10追加監査（実装なし）**：[P01〜P12理由コード・子ID・設備カテゴリの区別](STEP10_04_TASK_IDS_AND_REASON_AUDIT_20261118.md)、[参加の情報鮮度・掲載停止と更新担当レビュー手順](STEP10_05_PARTICIPATION_FRESHNESS_AND_EDITORIAL_WORKFLOW_20261118.md)。Issue #1/#14/#17へ反映済み。**既決ADRは維持。詳細enum・子ID、二人目レビュー、掲載/実装は未完了。**
