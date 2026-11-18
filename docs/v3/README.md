@@ -1,3 +1,5 @@
+> **2026-11-18 最新MVPの正式採用**：[ADR-030｜富山の「参加D00〜D02＋企画U01〜U04」二入口を採用](ADR_030_TOYAMA_PARTICIPATE_AND_ORGANIZE_MVP_SCOPE_ADOPTED.md)。[参加カタログの詳細な掲載・更新設計](STEP10_PARTICIPATION_CATALOG_PUBLICATION_RULES_V03.md)は**技術レビュー前の案**。下記の「参加案は未採用」はADR-030採用前の記録として読み替える。既存ADR-001〜029、主催の基本6問・P01〜P12・JSON v1は不変。**実装・テスト・CI・デプロイ・外部連絡なし**。
+
 > **2026-11-18 参加＋企画MVPの実装直前設計（未採用・コードなし）**：[画面・データ・判定・運用・受入の詳細](TOYAMA_PARTICIPATE_ORGANIZE_IMPLEMENTATION_HANDOFF_V02_20261118.md)、[高岡の一次資料候補と掲載審査台帳](TOYAMA_PARTICIPATION_PRIMARY_SOURCE_CANDIDATES_20261118.md)。設計Issue [#14〜#17](https://github.com/kot5432/vacant-house/issues)を追加。**主催側ADR-001〜029・U01〜U04は未変更。参加機能の正式採用／情報の二人目レビュー／実装許可は未了。**
 
 > **2026-11-18 新MVP拡張案（採用前・実装なし）**：[富山特化「参加する・企画する」MVP設計](TOYAMA_PARTICIPATE_ORGANIZE_MVP_PROPOSAL_20261118.md)。既存U01〜U04/基本6問/P01〜P12の既決ADRは**不変**。参加D00〜D02、公開情報の出典/鮮度/未確認の区別、公式外部導線、機能除外、受入ケースを設計。**未承認の提案であり既存実装Issue・正式ADRは変更していない**。
