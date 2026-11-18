@@ -1,3 +1,5 @@
+> **2026-11-18 参加＋企画MVPの実装直前設計（未採用・コードなし）**：[画面・データ・判定・運用・受入の詳細](TOYAMA_PARTICIPATE_ORGANIZE_IMPLEMENTATION_HANDOFF_V02_20261118.md)、[高岡の一次資料候補と掲載審査台帳](TOYAMA_PARTICIPATION_PRIMARY_SOURCE_CANDIDATES_20261118.md)。設計Issue [#14〜#17](https://github.com/kot5432/vacant-house/issues)を追加。**主催側ADR-001〜029・U01〜U04は未変更。参加機能の正式採用／情報の二人目レビュー／実装許可は未了。**
+
 > **2026-11-18 新MVP拡張案（採用前・実装なし）**：[富山特化「参加する・企画する」MVP設計](TOYAMA_PARTICIPATE_ORGANIZE_MVP_PROPOSAL_20261118.md)。既存U01〜U04/基本6問/P01〜P12の既決ADRは**不変**。参加D00〜D02、公開情報の出典/鮮度/未確認の区別、公式外部導線、機能除外、受入ケースを設計。**未承認の提案であり既存実装Issue・正式ADRは変更していない**。
 
 > **2026-11-18 実装以外の準備を追加**：[入力/保存型・ID監査](PREIMPLEMENTATION_INPUT_AND_ID_AUDIT_20261118.md)、[全12タスク×架空5シナリオ／保存・復元の受入ケース](PREIMPLEMENTATION_FIXED_ACCEPTANCE_VECTORS_20261118.md)、[4人AI開発の運用手順とキックオフ](FOUR_PERSON_AI_TEAM_OPERATING_GUIDE_20261118.md)。GitHub設計Issue #1/#2/#3/#4に参照追記。**設計提案であり別人レビュー・厳密schema凍結・Project作成は未完、実装/試験/CI/公開/外部連絡なし**。
