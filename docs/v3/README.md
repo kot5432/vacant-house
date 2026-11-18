@@ -1,3 +1,5 @@
+> **2026-11-19｜STEP13〜17 設計PR候補（レビュー前・未実装）**：[STEP13 5人の機能間インターフェース](STEP13_CROSS_FEATURE_INTERFACE_CONTRACT_20261119.md) → [STEP14 7画面の状態/異常系](STEP14_SCREEN_BEHAVIOR_AND_ERROR_MATRIX_20261119.md) → [STEP15 富山掲載情報と運用](STEP15_PARTICIPATION_CATALOG_EVIDENCE_WORKFLOW_20261119.md) → [STEP16 機能別Issue・開発依存順](STEP16_TEAM_ISSUE_DEPENDENCY_AND_ACCEPTANCE_PLAN_20261119.md) → [STEP17 最終レビュー/未決台帳](STEP17_PREIMPLEMENTATION_REVIEW_AND_DECISION_REGISTER_20261119.md)。**現行役割はA参加/B主催プラン/C進捗編集/D保存/E地域・品質**。既決ADR-030/031を維持。技術enum・実掲載データ・担当者アサイン・実装許可は未決。**この文書は設計ブランチ上でレビュー待ち。**
+
 > **2026-11-19 GitHubチーム運用最新版**：[チーム共通Gitルール](../../CONTRIBUTING.md)／[ブランチ名・作成/コミット/PR/マージ/削除の手順](GIT_WORKFLOW_AND_BRANCH_RULES.md)。5人＝4人機能別開発＋Eが地域情報/品質レビュー。**実装・テスト・ブランチ保護の設定は未実施**。
 
 > **2026-11-19 STEP12｜実装前の設計整理・個人別役割最新版**：[未確定技術値の推奨案一本化](STEP12_01_FINAL_TECHNICAL_REVIEW_DEFAULTS_20261119.md)、[4人の主担当・相互レビューと引継ぎ](STEP12_02_FOUR_MEMBER_OWNERSHIP_REVIEW_PLAN_20261119.md)、[富山県公式コンテスト応募要項・10分以内動画/AI活用の説明準備](STEP12_03_TOYAMA_CONTEST_SUBMISSION_REQUIREMENTS_20261119.md)。ADR-030/031維持。**再確認enum・設備分類などの新たな技術候補は未承認**。本名/GitHub担当・掲載更新責任・実装開始許可はまだない。コード実装、試験実行、CI、デプロイ、応募・外部連絡なし。
