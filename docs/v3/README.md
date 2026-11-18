@@ -1,3 +1,5 @@
+> **2026-11-19 GitHubチーム運用最新版**：[チーム共通Gitルール](../../CONTRIBUTING.md)／[ブランチ名・作成/コミット/PR/マージ/削除の手順](GIT_WORKFLOW_AND_BRANCH_RULES.md)。5人＝4人機能別開発＋Eが地域情報/品質レビュー。**実装・テスト・ブランチ保護の設定は未実施**。
+
 > **2026-11-19 STEP12｜実装前の設計整理・個人別役割最新版**：[未確定技術値の推奨案一本化](STEP12_01_FINAL_TECHNICAL_REVIEW_DEFAULTS_20261119.md)、[4人の主担当・相互レビューと引継ぎ](STEP12_02_FOUR_MEMBER_OWNERSHIP_REVIEW_PLAN_20261119.md)、[富山県公式コンテスト応募要項・10分以内動画/AI活用の説明準備](STEP12_03_TOYAMA_CONTEST_SUBMISSION_REQUIREMENTS_20261119.md)。ADR-030/031維持。**再確認enum・設備分類などの新たな技術候補は未承認**。本名/GitHub担当・掲載更新責任・実装開始許可はまだない。コード実装、試験実行、CI、デプロイ、応募・外部連絡なし。
 
 > **2026-11-18 STEP11｜実装前ハンドオフ最新版（設計のみ）**：[親タスクだけのEventRecord/JSON v1必須・任意と厳密検証](STEP11_01_PARENT_ONLY_EVENT_RECORD_BACKUP_CONTRACT_20261118.md)、[再確認8理由コード案・CAS状態遷移](STEP11_02_PARENT_RECHECK_CODE_AND_TRANSITION_CONTRACT_20261118.md)、[参加D00〜02の公開/次の一歩判定契約](STEP11_03_PARTICIPATION_PUBLISHING_AND_NEXT_ACTION_CONTRACT_20261118.md)、[最終の開始ゲート・担当レビュー](STEP11_04_FINAL_PREIMPLEMENTATION_GATE_20261118.md)。**正式ADR-030/031の範囲は確定、機械可読Schema・enumの人間承認/一次活動の掲載審査/実人員割当は未完。実装・テスト実行・CI・デプロイ・外部連絡はなし。**
