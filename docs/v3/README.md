@@ -1,3 +1,5 @@
+> **2026-11-18 実装以外の準備を追加**：[入力/保存型・ID監査](PREIMPLEMENTATION_INPUT_AND_ID_AUDIT_20261118.md)、[全12タスク×架空5シナリオ／保存・復元の受入ケース](PREIMPLEMENTATION_FIXED_ACCEPTANCE_VECTORS_20261118.md)、[4人AI開発の運用手順とキックオフ](FOUR_PERSON_AI_TEAM_OPERATING_GUIDE_20261118.md)。GitHub設計Issue #1/#2/#3/#4に参照追記。**設計提案であり別人レビュー・厳密schema凍結・Project作成は未完、実装/試験/CI/公開/外部連絡なし**。
+
 > **2026-11-18 GitHub登録状況**：[実際のIssue #1〜#13とProject未設定の一覧](GITHUB_EXECUTION_BOARD_20261118.md)。設計5件・実装待ち8件を起票し、[技術値の一本化案](PREIMPLEMENTATION_TECHNICAL_FREEZE_CANDIDATES_20261118.md)と`.github`のIssue/PRテンプレートを作成。**Project/ラベル/担当アサインは未設定、実装・テスト実行・CI・デプロイなし**。
 
 > **2026-11-18 実装直前の設計レビュー（コード作成なし）**：[共通データ契約レビュー](PREIMPLEMENTATION_SHARED_DATA_CONTRACT_REVIEW.md)、[U01〜U04サービス・エラー境界](PREIMPLEMENTATION_UI_SERVICES_AND_ERROR_CONTRACT.md)、[GitHub Issue分割・4人レビュー・開始ゲート](PREIMPLEMENTATION_GITHUB_ISSUE_READY_PLAN.md)。**設計済みと正式採用済みを区別**。未確定の厳密JSONフィールド／技術値・個人割当・実装許可は別途確認が必要。実装・CI・実行試験・デプロイ・外部連絡なし。
