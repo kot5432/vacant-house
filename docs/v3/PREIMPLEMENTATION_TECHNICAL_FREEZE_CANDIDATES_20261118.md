@@ -1,3 +1,5 @@
+> **2026-11-18 ADR-031正式採用**：この草案の`checkedItemIds`検証・子ID全件確認は**MVP不要**。初回v1からフィールド除外、親P01〜12のstatus/再確認のみを保存。未採用の別項目（`recheckReasonCodes`・`equipmentCategories`・`optionalDescription`・`importedFrom`）は引き続き最終レビュー。[正本](ADR_031_PARENT_TASK_PROGRESS_ONLY_NO_CHILD_CHECKS_ADOPTED.md)。
+
 # 実装直前の技術決定候補・検証正本（2026-11-18）
 
 **状態：設計仕様案。利用者による最終技術レビュー待ち。実装・テスト実行・CI・デプロイなし。** 現行v3.1地域イベント準備支援アプリ専用。正式採用されたADR-001〜029を維持する。本書は実装済みTypeScript/JSON Schemaファイルではない。
