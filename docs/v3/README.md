@@ -1,3 +1,5 @@
+> **2026-11-18 実装直前の設計レビュー（コード作成なし）**：[共通データ契約レビュー](PREIMPLEMENTATION_SHARED_DATA_CONTRACT_REVIEW.md)、[U01〜U04サービス・エラー境界](PREIMPLEMENTATION_UI_SERVICES_AND_ERROR_CONTRACT.md)、[GitHub Issue分割・4人レビュー・開始ゲート](PREIMPLEMENTATION_GITHUB_ISSUE_READY_PLAN.md)。**設計済みと正式採用済みを区別**。未確定の厳密JSONフィールド／技術値・個人割当・実装許可は別途確認が必要。実装・CI・実行試験・デプロイ・外部連絡なし。
+
 > **2026-11-18 機能・開発単位の設計案**：[4人AI開発向け｜機能構成・フォルダ責任・Issue分割案](FEATURE_MODULES_AND_GITHUB_ISSUES_PLAN.md)。F0〜F7の責務、予定フォルダ、16件の仮Issue、最初の縦断導線、PRレビューと完了条件を整理。**GitHub Issue・コード・テスト実行・デプロイは未作成／未実施**。
 
 > **2026-11-17 最新の開発前決定**：ユーザーがJSON初期識別子A案、複数施設比較B案、AIコーディング中心の4人開発を指定。正式決定は[ADR-029](ADR_029_JSON_V1_IDENTIFIERS_AND_DATE_ADOPTED.md)、机上施設比較は[4施設比較](PREDEV_MULTI_FACILITY_COMPARISON_20261117.md)、開発の仮役割とPR運用は[4人AI開発計画](PREDEV_FOUR_PERSON_AI_DEVELOPMENT_PLAN_20261117.md)。以前の「JSON版・formatId未採用／施設1件／人数未確定」は**過去時点の記録**。実装・実行試験・デプロイ・施設照会はなし。
