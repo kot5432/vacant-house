@@ -1,3 +1,5 @@
+> **STEP8決定（2026-11-19）**：パッケージ管理は**npm**を採用。`package.json`＋`package-lock.json`に統一し、既存lockfileからの再現インストールは`npm ci`。[STEP7環境構築ガイド](STEP7_REPOSITORY_AUDIT_AND_ENVIRONMENT_BOOTSTRAP_20261119.md)へ反映。Node.js/npmの具体版は未決、コード・依存は未導入。
+
 > **STEP7決定（2026-11-19）**：[現行mainの実ファイル監査と共有環境の担当・構築手順](STEP7_REPOSITORY_AUDIT_AND_ENVIRONMENT_BOOTSTRAP_20261119.md)。現時点のmainにReact/Vite本体・package.jsonは存在しません。Dによる最小雛形、Eレビューを提案。**まだコードを生成・実行していません**。
 
 > **2026-11-19｜開発担当がまず読む最新の作業分割・静的監査**：[12件の機能別作業パッケージ・依存関係・着手ガイド](WORK_PACKAGE_DEPENDENCIES_AND_START_GUIDES_20261119.md)／[JSON Schema・保存境界の静的ギャップ10件](STATIC_VALIDATION_AUDIT_AND_GAP_REGISTER_20261119.md)。計画Issue [#34〜#45](https://github.com/kot5432/vacant-house/issues?q=is%3Aissue+is%3Aopen+%22plan%28%22)を作成し、親Issue #23〜#27と関連付け済み。**未実装・検証not_run・実担当未割当**。
