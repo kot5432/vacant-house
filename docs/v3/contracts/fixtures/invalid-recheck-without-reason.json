@@ -1,0 +1,55 @@
+{
+  "formatId": "toyama-community-event-prep-backup",
+  "exportSchemaVersion": 1,
+  "exportedAt": "2026-11-19T12:00:00+09:00",
+  "sourceBuildId": "design-fixture-not-a-real-build",
+  "eventCount": 1,
+  "events": [
+    {
+      "eventId": "example-001",
+      "schemaVersion": 1,
+      "rulesVersionAtLastReview": "design-v1",
+      "revision": 1,
+      "createdAt": "2026-11-19T12:00:00+09:00",
+      "updatedAt": "2026-11-19T12:00:00+09:00",
+      "input": {
+        "eventType": "workshop",
+        "audience": "minors",
+        "date": {
+          "kind": "month",
+          "value": "2027-02"
+        },
+        "venueStatus": "candidate",
+        "region": "takaoka",
+        "organizerForm": "group",
+        "attendeeCount": {
+          "kind": "unanswered"
+        },
+        "responsible": {
+          "kind": "undecided"
+        },
+        "equipmentNeed": {
+          "kind": "answered",
+          "value": "yes"
+        },
+        "equipmentCategories": [],
+        "venueCategory": {
+          "kind": "unanswered"
+        },
+        "facilityUsersAge": {
+          "kind": "unanswered"
+        },
+        "optionalDescription": "地域の体験会（架空例）"
+      },
+      "progressByTask": {
+        "P05": {
+          "taskId": "P05",
+          "status": "completed",
+          "needsRecheck": true,
+          "recheckReasonCodes": [],
+          "updatedAt": "2026-11-19T13:00:00+09:00"
+        }
+      }
+    }
+  ]
+}
