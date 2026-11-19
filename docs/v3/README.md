@@ -1,3 +1,5 @@
+> **STEP9確定（2026-11-19）**：Node.js **v26.13.1 LTS**を全員共通のバージョンに採用。D担当が11/23以降の環境構築PRで `.node-version` に `26.13.1` を記録し、npmとViteの実機互換性を確認。[STEP7〜9環境構築方針](STEP7_REPOSITORY_AUDIT_AND_ENVIRONMENT_BOOTSTRAP_20261119.md)を参照。**まだ実機テスト・アプリ実装・デプロイは行っていません**。
+
 > **STEP8決定（2026-11-19）**：パッケージ管理は**npm**を採用。`package.json`＋`package-lock.json`に統一し、既存lockfileからの再現インストールは`npm ci`。[STEP7環境構築ガイド](STEP7_REPOSITORY_AUDIT_AND_ENVIRONMENT_BOOTSTRAP_20261119.md)へ反映。Node.js/npmの具体版は未決、コード・依存は未導入。
 
 > **STEP7決定（2026-11-19）**：[現行mainの実ファイル監査と共有環境の担当・構築手順](STEP7_REPOSITORY_AUDIT_AND_ENVIRONMENT_BOOTSTRAP_20261119.md)。現時点のmainにReact/Vite本体・package.jsonは存在しません。Dによる最小雛形、Eレビューを提案。**まだコードを生成・実行していません**。
