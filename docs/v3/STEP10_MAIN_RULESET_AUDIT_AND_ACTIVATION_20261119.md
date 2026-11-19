@@ -1,3 +1,5 @@
+> **2026-11-20の再確認結果（現在の状態）**：管理者が有効化し、GitHub API `GET /repos/kot5432/vacant-house/rulesets/27586848`で **`enforcement: active`** を確認しました。以下の`disabled`の記述は**2026-11-19に行った監査時点の履歴**です。現在はPR必須・1人承認・スレッド解決・force push/削除禁止がactive。未承認マージを試みる侵入的なテストは実行していません。強制設定でE主レビュー者まで指名されるわけではありません。詳細は[STEP14のPR整合計画](STEP14_PR_REVIEW_PRIORITY_AND_CONFLICT_RESOLUTION_20261120.md)（未統合PR）を参照。
+
 # STEP10｜mainのRuleset保護を有効にするための設定・検証手順（A案採用）
 
 - 決定日：2026-11-19
