@@ -1,3 +1,5 @@
+> **2026-11-20 状態更新：protect-main（ID 27586848）はGitHub APIで`active`再確認済み。** この下の「disabled」は有効化前の監査履歴であり、現時点の状態ではありません。PR＋承認1人のルールは有効です。
+
 > **STEP10重要（2026-11-19）**：mainの既存Ruleset `protect-main` は現在 **disabled**。PR＋1人承認の設定は登録済みでも未強制。管理者Eが既存ルールをActiveに変更し、再確認するまで**main直接push禁止・別人レビューはチーム内の運用規約**です。[管理者用チェックリスト](docs/v3/STEP10_MAIN_RULESET_AUDIT_AND_ACTIVATION_20261119.md)。
 
 # Git・GitHubチーム開発ルール（5人用）
