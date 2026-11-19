@@ -1,3 +1,5 @@
+> **STEP5-①確定（2026-11-19）：2026年11月23日（月）を計画上の開発開始日に採用**。[週次計画](STEP5_NOVEMBER_PARALLEL_SCHEDULE_PROPOSAL_20261119.md)。5人の作業可能時間・コード実装/テスト実行の明示許可はまだ未確認。
+
 > **STEP5（2026-11-19）**：利用者は**11月中の開発開始**を採用。[11/23開始を仮置きしたA〜D並行開発・週次到達ゲート・遅延対応のスケジュール案](STEP5_NOVEMBER_PARALLEL_SCHEDULE_PROPOSAL_20261119.md)。具体的な日付・作業時間はチーム未合意、実装・試験・公開も未許可。
 
 > **2026-11-19｜開発担当がまず読む最新の作業分割・静的監査**：[12件の機能別作業パッケージ・依存関係・着手ガイド](WORK_PACKAGE_DEPENDENCIES_AND_START_GUIDES_20261119.md)／[JSON Schema・保存境界の静的ギャップ10件](STATIC_VALIDATION_AUDIT_AND_GAP_REGISTER_20261119.md)。計画Issue [#34〜#45](https://github.com/kot5432/vacant-house/issues?q=is%3Aissue+is%3Aopen+%22plan%28%22)を作成し、親Issue #23〜#27と関連付け済み。**未実装・検証not_run・実担当未割当**。
