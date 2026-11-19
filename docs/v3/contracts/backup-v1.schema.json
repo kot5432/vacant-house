@@ -1,0 +1,584 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/kot5432/vacant-house/blob/main/docs/v3/contracts/backup-v1.schema.json",
+  "title": "Toyama community event preparation backup envelope v1 (design artifact)",
+  "description": "Shape validation only. See VALIDATION_NOTES.md for duplicate JSON keys, bytes, dates, graphemes, cross-field and atomicity constraints. Not executed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "formatId",
+    "exportSchemaVersion",
+    "exportedAt",
+    "sourceBuildId",
+    "eventCount",
+    "events"
+  ],
+  "properties": {
+    "formatId": {
+      "const": "toyama-community-event-prep-backup"
+    },
+    "exportSchemaVersion": {
+      "const": 1
+    },
+    "exportedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceBuildId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "eventCount": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "events": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "eventId",
+          "schemaVersion",
+          "rulesVersionAtLastReview",
+          "revision",
+          "createdAt",
+          "updatedAt",
+          "input",
+          "progressByTask"
+        ],
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "schemaVersion": {
+            "const": 1
+          },
+          "rulesVersionAtLastReview": {
+            "type": "string",
+            "minLength": 1
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "input": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "eventType",
+              "audience",
+              "date",
+              "venueStatus",
+              "region",
+              "organizerForm",
+              "attendeeCount",
+              "responsible",
+              "equipmentNeed",
+              "equipmentCategories",
+              "venueCategory",
+              "facilityUsersAge"
+            ],
+            "properties": {
+              "eventType": {
+                "enum": [
+                  "workshop",
+                  "lecture",
+                  "exchange",
+                  "other"
+                ]
+              },
+              "audience": {
+                "enum": [
+                  "minors",
+                  "adults",
+                  "both",
+                  "undecided"
+                ]
+              },
+              "date": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind",
+                      "value"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "date"
+                      },
+                      "value": {
+                        "type": "string",
+                        "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind",
+                      "value"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "month"
+                      },
+                      "value": {
+                        "type": "string",
+                        "pattern": "^[0-9]{4}-[0-9]{2}$"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "undecided"
+                      }
+                    }
+                  }
+                ]
+              },
+              "venueStatus": {
+                "enum": [
+                  "undecided",
+                  "candidate",
+                  "confirmed",
+                  "no_physical_venue"
+                ]
+              },
+              "region": {
+                "enum": [
+                  "takaoka",
+                  "toyama_other",
+                  "outside_toyama",
+                  "undecided"
+                ]
+              },
+              "organizerForm": {
+                "enum": [
+                  "solo",
+                  "group",
+                  "undecided"
+                ]
+              },
+              "attendeeCount": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "unanswered"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "undecided"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind",
+                      "value"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "answered"
+                      },
+                      "value": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      }
+                    }
+                  }
+                ]
+              },
+              "responsible": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "unanswered"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "undecided"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind",
+                      "value"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "answered"
+                      },
+                      "value": {
+                        "enum": [
+                          "decided",
+                          "not_decided"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "equipmentNeed": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "unanswered"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "undecided"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind",
+                      "value"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "answered"
+                      },
+                      "value": {
+                        "enum": [
+                          "yes",
+                          "none_identified"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "equipmentCategories": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "tables_chairs",
+                    "audio_visual",
+                    "power_internet",
+                    "other"
+                  ]
+                },
+                "maxItems": 4
+              },
+              "venueCategory": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "unanswered"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "undecided"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind",
+                      "value"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "answered"
+                      },
+                      "value": {
+                        "enum": [
+                          "takaoka_community_center",
+                          "other"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "facilityUsersAge": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "unanswered"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "undecided"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "kind",
+                      "value"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "const": "answered"
+                      },
+                      "value": {
+                        "enum": [
+                          "minors_only",
+                          "includes_adults"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "venueNameMemo": {
+                "type": "string"
+              },
+              "optionalDescription": {
+                "type": "string"
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "equipmentNeed": {
+                      "type": "object",
+                      "required": [
+                        "kind",
+                        "value"
+                      ],
+                      "properties": {
+                        "kind": {
+                          "const": "answered"
+                        },
+                        "value": {
+                          "const": "yes"
+                        }
+                      }
+                    }
+                  }
+                },
+                "then": {},
+                "else": {
+                  "properties": {
+                    "equipmentCategories": {
+                      "maxItems": 0
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "progressByTask": {
+            "type": "object",
+            "maxProperties": 12,
+            "patternProperties": {
+              "^P(0[1-9]|1[0-2])$": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "taskId",
+                  "status",
+                  "needsRecheck",
+                  "recheckReasonCodes",
+                  "updatedAt"
+                ],
+                "properties": {
+                  "taskId": {
+                    "type": "string",
+                    "pattern": "^P(0[1-9]|1[0-2])$"
+                  },
+                  "status": {
+                    "enum": [
+                      "not_started",
+                      "in_progress",
+                      "completed",
+                      "not_applicable"
+                    ]
+                  },
+                  "needsRecheck": {
+                    "type": "boolean"
+                  },
+                  "recheckReasonCodes": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "enum": [
+                        "RECHECK_EVENT_TYPE_CHANGED",
+                        "RECHECK_AUDIENCE_CHANGED",
+                        "RECHECK_DATE_CHANGED",
+                        "RECHECK_ORGANIZER_CHANGED",
+                        "RECHECK_VENUE_CHANGED",
+                        "RECHECK_EQUIPMENT_CHANGED",
+                        "RECHECK_ATTENDEE_COUNT_CHANGED",
+                        "RECHECK_OFFICIAL_SOURCE_CHANGED"
+                      ]
+                    }
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "needsRecheck": {
+                          "const": true
+                        }
+                      },
+                      "required": [
+                        "needsRecheck"
+                      ]
+                    },
+                    "then": {
+                      "properties": {
+                        "recheckReasonCodes": {
+                          "minItems": 1
+                        }
+                      }
+                    },
+                    "else": {
+                      "properties": {
+                        "recheckReasonCodes": {
+                          "maxItems": 0
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "importedFrom": {
+            "type": "object",
+            "required": [
+              "originalEventId",
+              "originalCreatedAt",
+              "originalUpdatedAt",
+              "importedAt"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "originalEventId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "originalCreatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "originalUpdatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "importedAt": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
