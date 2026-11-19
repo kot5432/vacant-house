@@ -1,3 +1,11 @@
+# 現行MVP正本への入口（2026-11-19横断監査）
+
+> **まずここを参照：** [最新ADRと旧仕様の衝突監査](FINAL_SOURCE_OF_TRUTH_AND_LEGACY_CONFLICT_AUDIT_20261119.md)｜[あなた・チームが行う残作業](HUMAN_ONLY_ACTIONS_AND_FINAL_GATE_20261119.md)｜[競合の一次資料比較と独自性仮説](COMPETITOR_POSITIONING_AND_FALSIFICATION_20261119.md)｜[配布前アンケート・ヒアリングキット](USER_VALIDATION_INTERVIEW_SURVEY_PACK_20261119.md)｜[7画面UX受入シナリオ](MVP_UI_REVIEW_SCENARIOS_AND_RELEASE_MINIMUM_20261119.md)｜[コンテスト応募・動画チェック](CONTEST_DELIVERY_REQUIREMENTS_AND_PROJECT_DECISION_GATES_20261119.md)。
+>
+> 正式なプロダクト設計は**富山の地域活動に参加/企画する2入口**（ADR-030）で、旧空き家案ではありません。**親タスク12件だけ**（ADR-031）、技術保存仕様（ADR-032）、`input.date`（ADR-029）が正本です。旧資料に残る子チェック・MVPバックアップ不採用・古いA〜D役割分担は採用しません。**実装/実行試験/外部公開は未実施。**
+
+---
+
 > **2026-11-19｜STEP28 高岡の活動一次資料・掲載前レビュー**：[個別活動の出典照合と要レビュー台帳](STEP28_TAKAOKA_VERIFIED_SOURCE_REVIEW_REGISTER_20261119.md)。公式ページの個別日時・費用・申込締切を照合し、**掲載候補4件と期限経過の候補1件**を区別。**公開承認済みの`visible`は0件、最新の残席保証なし**。調査後の別人確認・継続運用・実装・実行テストは未実施。
 
 > **2026-11-19｜実装前の機械可読なバックアップ設計**：[JSON Schema Draft 2020-12](contracts/backup-v1.schema.json)、[検証の注意点と全fixture一覧](contracts/VALIDATION_NOTES.md)、[正常サンプル](contracts/fixtures/valid-one-event.json)、[要再確認の正常サンプル](contracts/fixtures/valid-parent-recheck.json)。A〜Eの開発・品質計画Issue [#23](https://github.com/kot5432/vacant-house/issues/23)／[#24](https://github.com/kot5432/vacant-house/issues/24)／[#25](https://github.com/kot5432/vacant-house/issues/25)／[#26](https://github.com/kot5432/vacant-house/issues/26)／[#27](https://github.com/kot5432/vacant-house/issues/27)。**保存形式の構造と静的サンプルは作成済み、パーサ/テスト実行・アプリ実装・デプロイは未実施。**
