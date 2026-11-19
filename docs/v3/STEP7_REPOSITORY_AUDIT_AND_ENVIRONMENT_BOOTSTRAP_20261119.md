@@ -24,7 +24,7 @@
 ## 2. 技術の採用済み・未確定を区別
 
 - 採用：**React + TypeScript + Vite、IndexedDB + Dexie、サーバーDB/Authなし**（[ADR-001](ADR_001_TECH_STACK_ADOPTED.md)と[ADR-032](ADR_032_TECHNICAL_V1_DATA_RECHECK_EQUIPMENT_AND_API_ADOPTED.md)）。
-- **未確定：** 使用Node.js/npmの具体バージョン、Vitest/Playwright、CSS方式、ルーティング、Zod等の追加依存。Dが候補と理由を提示、Eと関連担当で確認し、採用後に固定する。存在しないバージョン番号を決め打ちしない。
+- **未確定：** 使用Node.jsの具体バージョン、Vitest/Playwright、CSS方式、ルーティング、Zod等の追加依存。**パッケージマネージャはSTEP8 A案によりnpmを正式採用**。Node.jsとnpmの実際の対応版はDが確認して提案し、Eと関連担当のレビュー後に固定する。存在しないバージョン番号を決め打ちしない。
 - **デプロイ先に不整合：** ADR-001にはVercel採用と記載がある一方、最近の計画ではCloudflare想定という履歴あり。**STEP7ではどちらにもデプロイせず、環境構築にホスティング固有設定は入れない**。公開前に本人の最終判断を別途ADRへ記録。
 - STEP6 A案：**11/23からローカル実装・実行/テストを許可**、CI・公開・デプロイ・外部送信・応募は未許可。
 
@@ -43,7 +43,7 @@
 
 1. GitHub `main`から作業ブランチを作成（`main`を直接編集しない）。現行文書や`.github`は削除しない。
 2. ルート直下に**React + TypeScriptのVite最小構成**を配置。アプリ初期表示は「参加」「企画」の2入口の**枠だけ**でよく、ドメイン機能・旧空き家の画面は実装しない。画面担当と重複しないようDは見た目を作り込まない。
-3. ローカルで使う**Nodeのサポート対象版とパッケージマネージャを1種類**選び、版条件とlockfileをコミット。`node_modules`、`dist`、`.env`等を`.gitignore`に設定。既存docsを残す。
+3. ローカルで使う**Nodeのサポート対象版と**npm**を**選び、版条件と**package-lock.json**をコミット。`node_modules`、`dist`、`.env`等を`.gitignore`に設定。既存docsを残す。
 4. `package.json`に最低限のscripts（例：`dev`、`build`、必要なら`typecheck`）を用意。テストランナー導入/CIは**別検討**（CI設定は未許可）。
 5. `README.md`に、クローン・依存導入・ローカル起動・終了・担当画面へのリンク・プライバシー注意・Node版を追記。旧文書の「実装前」記述は履歴と実際の状態を区別して更新する。
 6. **11/23以降の許可範囲内で**Dが自身のPCにてローカル起動とビルドを確認し、コマンド・結果・環境をPRに記録。今ここで起動やテストを実行したとは書かない。
@@ -58,7 +58,7 @@
 /README.md                    （追記）
 /CONTRIBUTING.md              （保持・必要時更新）
 /package.json                 （新規）
-/package-lock.json            （新規：npm採用の場合。npm以外ならそのlockfile）
+/package-lock.json            （新規：STEP8でnpm採用確定）
 /index.html                   （新規）
 /tsconfig*.json               （新規）
 /vite.config.ts               （必要なら新規）
@@ -85,10 +85,22 @@
 
 ## 6. 未確認
 - メンバー各自のNode/npm/Git環境や使用OS、11/23開始に参加できるか、週5〜8時間の実際の確保
-- Node/package managerの具体版と追加テストライブラリ
+- Node/npmの具体的な対応版と追加テストライブラリ
 - GitHub mainのbranch protection（この接続では確認権限なし）
 - PR #47〜#50の別人承認とmain統合
 - デプロイ先はホスティング議論時に正式照合。**このSTEPで公開・デプロイはしない**。
 
 ## 7. 次の質問（STEP8）
 **初期雛形をDが担当することを実作業の正式方針として確認し、担当IssueとEレビューを確定する。** STEP7 C案によって「既存物の確認後に提案」まで実施した。D以外へ責任を移すならIssueの担当と依存順を変更する。
+
+
+## STEP8正式決定（2026-11-19）：パッケージ管理はnpm
+
+利用者が**A案＝npm**を採用。D @milkyaraの初期環境Issue #51と、以後の全員のローカル作業に適用する。
+
+- **唯一のパッケージマネージャ：npm**。依存関係の正本はルート`package.json`と`package-lock.json`。pnpm/yarn/bunのロックファイルを追加しない。
+- **初期環境の担当：D**。11/23以降に雛形PRで`npm install`により依存を確定、`package-lock.json`を含めてコミットする。Node.jsの具体版・npmの対応版は正式に調べてからREADMEに記録し、未確認の版を決め打ちしない。
+- **他の4人：共通環境のPRがmainへ統合された後、最新mainを取得して原則`npm ci`で依存を復元**。`npm install`は依存追加・更新でlockfile変更が必要なときのみ使用し、変更理由をPRに記載する。
+- ローカル手順案：`git clone` → `npm ci` → `npm run dev`。ビルド確認は`npm run build`。**これは将来の手順であり、実行済みの記録ではない**。
+- バージョン不一致・起動失敗があれば、エラーを保持しDに共有。lockfileを各自が勝手に削除・再生成しない。
+- CI環境の構築や自動公開はSTEP6で未許可、npm採用によって許可されない。
