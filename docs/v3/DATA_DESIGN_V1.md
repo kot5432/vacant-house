@@ -1,3 +1,5 @@
+> **2026-11-19 最新正本への注意：このファイルは2026-11-15当時の設計草案・履歴です。** 図・型に残る`checkedItemIds`や「JSONバックアップはMVP対象外」は現行決定ではありません。最新は[ADR-030](ADR_030_TOYAMA_PARTICIPATE_AND_ORGANIZE_MVP_SCOPE_ADOPTED.md)・[ADR-031](ADR_031_PARENT_TASK_PROGRESS_ONLY_NO_CHILD_CHECKS_ADOPTED.md)・[ADR-032](ADR_032_TECHNICAL_V1_DATA_RECHECK_EQUIPMENT_AND_API_ADOPTED.md)・[保存Schema](contracts/backup-v1.schema.json)を優先してください。**本ファイル内の旧コード例をそのまま実装にコピーしないでください。** [衝突監査](FINAL_SOURCE_OF_TRUTH_AND_LEGACY_CONFLICT_AUDIT_20261119.md)。
+
 # データ設計書 v1｜イベント保存・進捗・再確認（2026-11-15）
 
 > **技術採用済み**：React + TypeScript + Vite、IndexedDB + Dexie、Vercel。**データ詳細は実装前の仕様草案・未試験**。現行の単発小規模非営利地域イベント準備支援Webアプリ専用。旧空き家所有者／物件／マッチングのDBを継承・移行しない。

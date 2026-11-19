@@ -1,3 +1,5 @@
+> **状態の更新（2026-11-19）：本書はADR-032・JSON Schema実ファイルが作成される前の履歴です。** 初版保存値8コード/設備4分類/APIは[ADR-032](ADR_032_TECHNICAL_V1_DATA_RECHECK_EQUIPMENT_AND_API_ADOPTED.md)にて採用済み、Schemaと静的サンプルは[contracts](contracts/VALIDATION_NOTES.md)に作成済みです。ただし人による検証・実装・テストは未実施です。以下の「最新正式ADR=030/031」「Schema未作成」などは作成当時の記述であり現状ではありません。現行の未決は[人間の必要作業](HUMAN_ONLY_ACTIONS_AND_FINAL_GATE_20261119.md)参照。
+
 # STEP23｜実装前最終ゲートと未承認仕様の整理
 
 2026-11-19。STEP18〜22は**設計レビュー案**であり正式なADR採用ではない。実装・実行テスト・CI・デプロイ・募集/取材なし。最新の正式採用はADR-030/031。
