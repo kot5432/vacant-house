@@ -1,3 +1,5 @@
+> **STEP11（2026-11-20）**：[5人のGit/Node/npm環境確認・報告テンプレート・支援手順](STEP11_TEAM_ENVIRONMENT_CHECK_AND_SHARE_20261120.md)。ユーザーはC案（メンバーの環境は未確認）を採用。回答集約は[Issue #55](https://github.com/kot5432/vacant-house/issues/55)。**A〜D本人のPC確認は未回収**。
+
 > **2026-11-19｜開発担当がまず読む最新の作業分割・静的監査**：[12件の機能別作業パッケージ・依存関係・着手ガイド](WORK_PACKAGE_DEPENDENCIES_AND_START_GUIDES_20261119.md)／[JSON Schema・保存境界の静的ギャップ10件](STATIC_VALIDATION_AUDIT_AND_GAP_REGISTER_20261119.md)。計画Issue [#34〜#45](https://github.com/kot5432/vacant-house/issues?q=is%3Aissue+is%3Aopen+%22plan%28%22)を作成し、親Issue #23〜#27と関連付け済み。**未実装・検証not_run・実担当未割当**。
 
 > **まず作業に取りかかるならこちら（2026-11-19）**：[担当・順序・完了条件・期限目安を具体化した実行チェックリスト](ACTION_CHECKLIST_OWNER_DELIVERABLES_20261119.md)。**H01〜H05が最初の本人作業**。実装・テスト・応募はまだ未実施で、予定日はチームで決める提案です。
