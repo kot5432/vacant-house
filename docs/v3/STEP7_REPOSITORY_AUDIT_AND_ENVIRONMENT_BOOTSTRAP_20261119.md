@@ -104,3 +104,18 @@
 - ローカル手順案：`git clone` → `npm ci` → `npm run dev`。ビルド確認は`npm run build`。**これは将来の手順であり、実行済みの記録ではない**。
 - バージョン不一致・起動失敗があれば、エラーを保持しDに共有。lockfileを各自が勝手に削除・再生成しない。
 - CI環境の構築や自動公開はSTEP6で未許可、npm採用によって許可されない。
+
+
+## STEP9正式決定：Node.jsをLTSのv26.13.1に固定（2026-11-19）
+
+- ユーザーは**A案：対応するLTS版を1つ選んで全員固定する**を採用した。
+- **選定：Node.js `v26.13.1`（Lithium、Active LTSの26.x系列）**。Node.jsの公式LTS日程では26.xが2026-10-28にLTSへ、v26.13.1は2026-11-11のセキュリティリリース。公式出典：
+  - https://github.com/nodejs/Release/blob/main/README.md
+  - https://nodejs.org/ja/blog/release/v26.13.1
+  - https://nodejs.org/en/blog/vulnerability/november-2026-security-releases/
+- Vite公式ガイドのNode.js最低要件は20.19+ / 22.12+であり、26.xはこれより新しいLTS系列。公式出典：https://vite.dev/guide/ および https://vite.dev/blog/announcing-vite8 。**個別依存のNode 26互換・実機の起動/ビルドは未検証**。環境PRで実際のVite/React/TS組合せを確認して証拠を残す。
+- **Dの初期雛形PR（Issue #51）で作るファイル**：`.node-version`の内容は`26.13.1`の1行。READMEにもバージョンと確認方法`node --version`を記載する。必要なら`package.json`の`engines.node`にも整合する指定を加える（利用PCとnpmの実挙動を確認）。
+- npmの具体バージョンはNode.js 26.13.1に同梱されるものをDが調べ、`npm --version`で実測し記録。npmの別バージョンを今ここで捏造しない。
+- **全員が同じNode.js 26.13.1・npm・package-lock.jsonで作業**する。Node.js版管理ツール自体（fnm/nvm等）は各自のOSと環境に合わせてよいが、版指定は共通とする。
+- **11月23日以降の作業**：Dが`node --version`、`npm --version`、`npm ci`、`npm run dev`、`npm run build`の実行結果をPRに記録。現在は未実行。問題があればEと確認して、版を無断変更せず正式な改訂とする。
+- **デプロイ、CI、外部公開、Node.js実行環境のクラウド設定はSTEP6では未許可**。
