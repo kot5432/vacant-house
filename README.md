@@ -1,3 +1,8 @@
+> ## 🔰 初めて開発するメンバーへ
+> **まずは[初心者向けの操作ガイド](docs/BEGINNER_START_HERE.md)を読んでください。** GitHubへのログイン、GitHub Desktop、環境確認、PRの見方・提出方法を順番に説明しています。
+> **[A〜Dの担当別開発手順](docs/BEGINNER_OWNER_WORKFLOWS.md)** では、最初のIssue、AIコーディング用の指示例、確認方法を説明しています。
+> 担当Issue：[A #34](https://github.com/kot5432/vacant-house/issues/34)・[B #36](https://github.com/kot5432/vacant-house/issues/36)・[C #38](https://github.com/kot5432/vacant-house/issues/38)・[D #51](https://github.com/kot5432/vacant-house/issues/51)。[環境確認 #55](https://github.com/kot5432/vacant-house/issues/55)。
+>
 > **5人チームのGit運用ルール（2026-11-19）**：[CONTRIBUTING.md](CONTRIBUTING.md) にPR/レビューの約束、[ブランチの使い方・命名規則](docs/v3/GIT_WORKFLOW_AND_BRANCH_RULES.md)に具体的な操作とトラブル対応を記録しました。4人機能開発＋1人品質/地域情報の構成で、**コード実装・実行テスト・ブランチ保護設定はまだ行っていません**。
 
 # 地域イベント開催準備ガイド（仮称） — 現行設計 v3.1
