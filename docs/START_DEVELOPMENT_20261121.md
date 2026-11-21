@@ -1,3 +1,5 @@
+> **2026-11-21 現行のCodex開発入口：[docs/CODEX_START_HERE.md](CODEX_START_HERE.md) → [AGENTS.md](../AGENTS.md) → 自分のIssue。** 共通UI [PR #66](https://github.com/kot5432/vacant-house/pull/66)はmainへ統合済み。旧記述（lockfile未作成、環境未構築、共通UIレビュー中、旧PR番号）は作成時点の履歴で、現在の作業指示ではありません。正式仕様は採用済みADRと現行担当Issueを優先します。
+
 > **【最新・2026-11-21】共通環境の準備完了：** [PR #63](https://github.com/kot5432/vacant-house/pull/63)で`package-lock.json`をmainにマージ済み。EのWindows/Node v26.13.1で`npm ci`・`doctor`・`typecheck`・`build`・`dev`起動とブラウザー仮画面表示を確認。**A〜Dは[セットアップガイド](ALL_MEMBERS_PC_SETUP.md)に沿って各自のPCで`npm ci`以降を実行可能**。別途`npm install`でlockfileを作り直す必要はありません。個人PCの成功は本人が確認してIssue #55に報告してください。旧い未検証・未反映の記述はこの案内を優先。
 
 # 開発開始ガイド（2026-11-21 更新）
