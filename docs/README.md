@@ -1,3 +1,5 @@
+> **2026-11-21 更新：開発開始の最新案内**：[共通React環境とA〜Dの最新手順](START_DEVELOPMENT_20261121.md)。Eが最小React+TypeScript+Viteファイルをmainへ追加しました。**依存取得ができなかったためpackage-lock.json生成・起動テストは未実施**。Dの初手は環境構築#51ではなく**共通型#40**に変更。**この更新案内と矛盾する古い説明は更新案内を優先**してください。
+
 # docs｜まず読む資料
 
 ## 初めてGitHubでチーム開発をする人
@@ -15,9 +17,9 @@ GitHubにログインするところから、GitHub Desktop、Node.js/npm、Issu
 2. [開発環境の確認とIssue #55への回答](BEGINNER_START_HERE.md#1-全員githubにログインして自分の環境を報告する最初の作業)
 3. [自分に依頼されたPRのレビュー方法](BEGINNER_START_HERE.md#2-全員github上でレビューをする今すぐできる作業)
 4. [GitHub Desktopでリポジトリを取得](BEGINNER_START_HERE.md#3-全員自分のpcにリポジトリを取得する)
-5. [Dの初期環境整備](BEGINNER_START_HERE.md#4-d担当だけみんなの共通開発環境を最初に作る1123以降)／[A〜Cの最初の開発](BEGINNER_START_HERE.md#5-abc担当自分の機能を作る1123以降)
+5. [共通環境の最新の状態と担当別開始手順](START_DEVELOPMENT_20261121.md)／[A〜Cの最初の開発](BEGINNER_START_HERE.md#5-abc担当自分の機能を作る1123以降)
 
-**注意：アプリの実行手順はDの環境PRがmainに統合されてから使用**します。今はdocs中心で`package.json`が存在しません。
+**注意：package.jsonはありますがpackage-lock.jsonは未生成、実行テストは未実施**です。先に[初回npm installと検証の手順](START_DEVELOPMENT_20261121.md)を参照。
 
 ## 詳細仕様と開発ルール
 - [現行仕様・開発設計の正本（v3）](v3/README.md)
