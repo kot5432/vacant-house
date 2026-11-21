@@ -1,3 +1,5 @@
+> **2026-11-21 更新：開発開始の最新案内**：[共通React環境とA〜Dの最新手順](START_DEVELOPMENT_20261121.md)。Eが最小React+TypeScript+Viteファイルをmainへ追加しました。**依存取得ができなかったためpackage-lock.json生成・起動テストは未実施**。Dの初手は環境構築#51ではなく**共通型#40**に変更。**この更新案内と矛盾する古い説明は更新案内を優先**してください。
+
 # A〜D初心者用：自分のIssueを開いた後の「次に何をする？」ガイド
 
 **最終更新：2026-11-21／対象：11月23日からの最初の1週間。** このページは**行動手順**です。正式なアプリ仕様はADR-029〜032と各Issueが優先します。実際のアプリ実装・動作テストはこの文書の追加時点では実施していません。
@@ -7,18 +9,18 @@
 1. [GitHubのチーム置き場](https://github.com/kot5432/vacant-house)にログイン。
 2. [初心者向けGitHub操作ガイド（mainに掲載済み）](BEGINNER_START_HERE.md)を開く。GitHub Desktop・Git・Nodeなどの操作やPR提出が分からない場合はこちら。
 3. [環境確認Issue #55](https://github.com/kot5432/vacant-house/issues/55)を開き、ページ下のコメント欄にGit・Node.js・npmが使えるか報告。**Node.js v26.13.1**を目標とするが、違う版でも無理に変更せずDに相談。
-4. 自分の担当Issue（[A #34](https://github.com/kot5432/vacant-house/issues/34)／[B #36](https://github.com/kot5432/vacant-house/issues/36)／[C #38](https://github.com/kot5432/vacant-house/issues/38)／[D #51](https://github.com/kot5432/vacant-house/issues/51)）を開く。**一番上の「最初にすること」から**進める。
+4. 自分の担当Issue（[A #34](https://github.com/kot5432/vacant-house/issues/34)／[B #36](https://github.com/kot5432/vacant-house/issues/36)／[C #38](https://github.com/kot5432/vacant-house/issues/38)／[D #40](https://github.com/kot5432/vacant-house/issues/40)）を開く。**一番上の「最初にすること」から**進める。
 5. 不明な点はIssue最下部に「やろうとしたこと／今見えている状況／何を聞きたいか」をコメントする。トークン・パスワード・個人のPCパスは貼らない。
 
-> **大事：現時点のmainにはアプリ本体（package.json / src）がありません。** Dが#51で共通環境を追加し、そのPRがmainに統合されてからA〜Cが`npm ci`と`npm run dev`を実行します。それ以前に「アプリを起動できない」のは想定どおりで、各自別々にViteを初期化しません。
+ > **大事（2026-11-21更新）**：EがReact雛形をmainへ追加済み。ただし**package-lock.jsonと動作確認が未完**。Eまたは協力者が[共通環境の初回確認](START_DEVELOPMENT_20261121.md)を終えるまで、A〜Dは個別に環境を初期化しないでください。Dは#40の共通データ型から着手します。
 
 ## 1. 作業の流れ（A〜D共通）
 
 ```text
 自分のIssueを読む
   ↓ 分からなければIssueに質問
-Dの共通環境が準備できるまで → 画面構成・入力例・確認ケースを整理
-  ↓ Dの#51 PRがmainへ統合
+共通環境のlockfile・検証が終わるまで → 画面構成・入力例・確認ケースを整理
+  ↓ lockfileを追加したPRがmainへ統合
 GitHub Desktopでmainを最新版に更新
   ↓
 mainから自分の作業ブランチを作成
@@ -54,7 +56,7 @@ GitHub Desktopでのクリック方法は、[操作ガイド 第3〜5章](BEGINN
 2. D00の2ボタン、D01の検索/絞り込み、0件案内に必要な見出し・文言・画面遷移をメモする。
 3. 「正式に掲載してよい活動は0件」の条件をEへ確認する。架空の活動を実際のイベントとして掲載しない。
 
-**Dの共通環境がmainへ入った後（11/23以降）**
+**lockfileがmainへ入った後（11/23以降）**
 1. GitHub Desktopで最新mainへ更新し、`feature/34-participation-entry`ブランチを作る。
 2. エディタで**参加入口と一覧の画面部品だけ**を作る。まずD00の2つのボタン、次にD01の「0件案内」を表示する。
 3. D01で検索項目を変えたあと戻っても入力状態を保つ形を検討。**未承認活動を表示しない**。主催イベントの保存データと参加活動カタログを混ぜない。
@@ -88,7 +90,7 @@ D01の参加活動一覧（公開承認済み0件の空状態）を小さい変�
 2. 画面に出す6問、未回答・未定の選択肢、入力ミスの案内を整理。
 3. Dと`EventInput`型・`createEvent`の使い方をIssueで相談。**独自の別型を作らない**。
 
-**Dの共通環境がmainへ入った後（11/23以降）**
+**lockfileがmainへ入った後（11/23以降）**
 1. 最新mainから`feature/36-organizer-input`ブランチを作る。
 2. 6問の入力欄を順番に作る。未回答`unanswered`／未定`undecided`／回答済み`answered`の違いを壊さない。
 3. 入力データの日付名は`input.date`（`schedule`ではない）、設備リストは初期`[]`。Reactの画面状態として途中入力を維持。
@@ -123,7 +125,7 @@ B以外の担当領域を書き換えず、変更点と確認手順を説明し�
 2. B担当はU03のカード本文、C担当は操作部分、D担当はデータ保存を作ることを整理。
 3. 完了後に要再確認が付いた場合や、保存に失敗した場合の画面表示を考える。DのCAS API仕様を質問する。
 
-**Dの共通環境がmainへ入った後（11/23以降）**
+**lockfileがmainへ入った後（11/23以降）**
 1. 最新mainから`feature/38-parent-progress`ブランチを作る。
 2. P01〜P12の**親単位**で状態を選択する操作部品を作る。`status`と`needsRecheck`を別々に扱う。
 3. `completed`かつ`needsRecheck=true`を維持。要再確認の解除はユーザーの明示操作だけ。**子チェック`checkedItemIds`は作らない**。
@@ -150,43 +152,28 @@ Bの読み取りカード・優先度判定・Dの保存処理は書き換えず
 
 **今週は作らない**：U04編集#39、独自の保存DB、Bの優先度判定。
 
-## 5. D担当：全員の開発土台（#51）
+## 5. D担当：共通データ型・保存の実装（最初は#40）
 
-**完成イメージ：**リポジトリ直下に、React+TypeScript+Viteの**最小アプリ**、`package.json`・`package-lock.json`・`.node-version`・`.gitignore`があり、みんなが同じコマンドでローカル起動できる。
+**共通React雛形の作成はEが前倒しで担当済み**。Dは[Issue #40](https://github.com/kot5432/vacant-house/issues/40)を最初に開き、EventInput/EventRecord、ParentTaskProgress、Repository契約の型と検証境界を作ります。次は[#41 保存・一覧](https://github.com/kot5432/vacant-house/issues/41)、[#42 バックアップ](https://github.com/kot5432/vacant-house/issues/42)です。
 
-**11/23前でもできること**
-1. [Issue #51](https://github.com/kot5432/vacant-house/issues/51)を開き、[STEP7〜9の環境構築方針（PR #52）](https://github.com/kot5432/vacant-house/pull/52)を読む。
-2. `git --version`、`node --version`、`npm --version`を確認して#55にコメント。Nodeの目標は**v26.13.1**。
-3. **すでにmainにある`docs/`・`.github/`・READMEを消さない**方針を確認。
+1. [最新のD向け指示](START_DEVELOPMENT_20261121.md)と[Issue #40](https://github.com/kot5432/vacant-house/issues/40)を読む。
+2. 実装開始（11/23）までにADR-029〜032・Schema・fixturesを確認し、B/Cへ共通型の要件を確認。
+3. Eが配布する`feature/40-domain-types`ブランチで作業する。別のVite環境を作らない。
+4. TypeScriptの型・Repository結果型・メソッド署名を実装。既存契約に列挙された**10メソッドを省略しない**。
+5. `input.date`、親タスク進捗の5キー、`completed + needsRecheck=true`、JSONスキーマバージョンの制約を守る。子チェック`checkedItemIds`を追加しない。
+6. 本番のDexie・一覧・バックアップは#41/#42の別PR。mockの場合は本番保存と混同しない。
+7. 自分が実施した型チェック/ビルドの結果を記録。lockfile未整備なら`not_run`と理由を記載。
+8. Commit→Push→PR、Reviewer E。B/Cにも型の確認を依頼する。
 
-**11/23以降に実行する作業**
-1. GitHub Desktopでmainを最新にし、`chore/51-vite-foundation`ブランチを作る。**mainのまま編集しない**。
-2. エディタでリポジトリの既存ファイルを確認。**非空のリポジトリでViteの生成コマンドを無確認で実行しない**。既存の資料を保ったまま、React+TypeScript+Viteの最小構成をルートに追加する。AIで生成する場合も削除・上書き予定ファイルを先に確認する。
-3. `.node-version`は`26.13.1`。npmのみを使い、`package-lock.json`を作る。`node_modules/`、`dist/`、秘密を含む`.env`などを`.gitignore`で対象外にする。必要な`dev`/`build`スクリプトを`package.json`へ設定。
-4. 初回の依存インストールで`npm install`を使用。lockfileができてから`npm ci`、`npm run dev`、`npm run build`を確認。**失敗した結果も正しく記録**。実行中の`dev`サーバーはCtrl+Cで止めてから次のコマンド。
-5. GitHub Desktopで変更一覧を確認。`node_modules`や個人情報が含まれていないこと、既存資料が消えていないことを確認。
-6. Commit→Publish branch/Push→PR作成。本文へ「何を追加したか」「Node/npmのバージョン」「実行したコマンドと結果」「未実施項目」を記録。ReviewerにE @kot5432を指定。
-7. Eの承認と必要な確認でmainへ統合されたらA〜Cへ共有。**型定義#40は別ブランチ/別PRで進める**。
-
-**AIに渡す指示例**
+**AIへの指示例**
 ```text
-私はIssue #51のD担当です。既存の公開リポジトリにReact + TypeScript + Viteの
-最小開発環境を追加します。既存のdocs/ .github/ README CONTRIBUTING等は
-削除も上書きもしないでください。まず現在のファイル一覧と変更予定ファイルを示してください。
-npmとpackage-lock.jsonのみ、Node.js v26.13.1を.node-versionとenginesに反映、
-node_modules/dist/.envを.gitignoreで除外します。CI・デプロイ設定は追加しません。
-導入後に私が実行するnpm install / npm ci / npm run dev / npm run buildの手順と
-期待結果を教えてください。#40の共有型やA〜Cの画面はまだ実装しません。
+私はD担当、Issue #40です。ADR-029〜032とdocs/v3/contractsのSchema/fixturesに従い、
+EventInput/EventRecord/ParentTaskProgressとRepository API（契約にある10件）を
+TypeScriptで定義してください。まず変更予定ファイルと型の名前を列挙し、B/Cとの接続を
+壊さない構成にしてください。input.date、進捗の親5キー、JSON v1条件を守り、
+checkedItemIdsや旧空き家機能は作らないでください。IndexedDB/Dexie/バックアップ
+実装は次の#41/#42で別PRにします。変更後はレビューすべき点と確認方法を示してください。
 ```
-
-**初回PRの合格チェック**
-- [ ] 既存の資料を残したままReact+TS+Viteの最小アプリを作った
-- [ ] Node v26.13.1とnpm/lockfileが揃っている
-- [ ] `npm ci`／`npm run dev`／`npm run build`の**実際の結果**をPRに記録した（未実施ならそう記録）
-- [ ] CI/デプロイ/秘密情報を追加していない
-- [ ] Eレビュー後にmainへ統合し、A〜Cへ連絡した
-
-**今週は作らない**：共通型#40、Dexie保存#41、バックアップ#42、A〜Cの画面。
 
 ## 6. PRを出すときにコピーする説明文
 
@@ -210,7 +197,7 @@ node_modules/dist/.envを.gitignoreで除外します。CI・デプロイ設定�
 
 ## 7. 迷ったときは、この順番に質問する
 
-1. どのIssueかを確認（A #34、B #36、C #38、D #51）。
+1. どのIssueかを確認（A #34、B #36、C #38、D #40）。
 2. Issue一番下のコメントに**「どこまでやった」「どこで止まった」「何を聞きたい」**を書く。
 3. 共通環境やNode/npmならD、仕様の判断やレビューならEへメンション。
 4. 返答がなくても勝手に危険な操作をしない。**mainを直接変更、既存docsを一括削除、秘密の貼り付け、未承認PRのマージはしない**。
