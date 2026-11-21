@@ -66,3 +66,7 @@
 - [初週の各担当詳細](../BEGINNER_OWNER_WORKFLOWS.md)
 - [作業の依存関係](WORK_PACKAGE_DEPENDENCIES_AND_START_GUIDES_20261119.md)
 - [全体の実行チェックリスト](ACTION_CHECKLIST_OWNER_DELIVERABLES_20261119.md)
+
+## 共有開発・UI統一ルール
+
+全員が作業開始前に[共通開発・統合・UIルール](TEAM_SHARED_DEVELOPMENT_AND_UI_RULES_20261121.md)を確認する。mainへマージされた機能は各自がGitHub Desktopで取り込み、APIは共通型に従う。画面の色・余白・共通部品の仮基準はチーム確認後に確定する。
