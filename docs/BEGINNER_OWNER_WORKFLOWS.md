@@ -1,4 +1,4 @@
-> **2026-11-21 更新：開発開始の最新案内**：[共通React環境とA〜Dの最新手順](START_DEVELOPMENT_20261121.md)。Eが最小React+TypeScript+Viteファイルをmainへ追加しました。**依存取得ができなかったためpackage-lock.json生成・起動テストは未実施**。Dの初手は環境構築#51ではなく**共通型#40**に変更。**この更新案内と矛盾する古い説明は更新案内を優先**してください。
+> **最新（2026-11-21）：共通React開発環境は準備完了。** EがNode v26.13.1でdoctor・typecheck・build・dev起動・ブラウザー表示を確認し、[PR #63](https://github.com/kot5432/vacant-house/pull/63)で`package-lock.json`をmainに統合しました。A〜Dは[PC環境構築ガイド](ALL_MEMBERS_PC_SETUP.md)に沿って各自のPCで`npm ci`から確認できます。**各自でViteプロジェクトを新規作成したり`npm install`でlockfileを作り直したりしません。** 11/23から機能実装を開始します。
 
 # A〜D初心者用：自分のIssueを開いた後の「次に何をする？」ガイド
 
@@ -12,18 +12,18 @@
 4. 自分の担当Issue（[A #34](https://github.com/kot5432/vacant-house/issues/34)／[B #36](https://github.com/kot5432/vacant-house/issues/36)／[C #38](https://github.com/kot5432/vacant-house/issues/38)／[D #40](https://github.com/kot5432/vacant-house/issues/40)）を開く。**一番上の「最初にすること」から**進める。
 5. 不明な点はIssue最下部に「やろうとしたこと／今見えている状況／何を聞きたいか」をコメントする。トークン・パスワード・個人のPCパスは貼らない。
 
- > **大事（2026-11-21更新）**：EがReact雛形をmainへ追加済み。ただし**package-lock.jsonと動作確認が未完**。Eまたは協力者が[共通環境の初回確認](START_DEVELOPMENT_20261121.md)を終えるまで、A〜Dは個別に環境を初期化しないでください。Dは#40の共通データ型から着手します。
+ > **現在の状態：** 共通のReact雛形と`package-lock.json`はmainにあり、EのPCで動作確認済みです。**A〜Dも各自のPCで動作を確認し、結果をIssue #55に報告**してください。Dは#40の共通データ型から着手します。
 
 ## 1. 作業の流れ（A〜D共通）
 
 ```text
 自分のIssueを読む
   ↓ 分からなければIssueに質問
-共通環境のlockfile・検証が終わるまで → 画面構成・入力例・確認ケースを整理
-  ↓ lockfileを追加したPRがmainへ統合
+各自のPCで共有環境を確認（Node v26.13.1、npm ci、doctor、typecheck、build、dev）
+  ↓ 各自の環境確認結果をIssue #55へ報告
 GitHub Desktopでmainを最新版に更新
   ↓
-mainから自分の作業ブランチを作成
+用意済みの自分の作業ブランチに切り替え、最新mainの変更を取り込む
   ↓
 エディタで自分の担当部分を編集（AIコーディング可）
   ↓
@@ -57,7 +57,7 @@ GitHub Desktopでのクリック方法は、[操作ガイド 第3〜5章](BEGINN
 3. 「正式に掲載してよい活動は0件」の条件をEへ確認する。架空の活動を実際のイベントとして掲載しない。
 
 **lockfileがmainへ入った後（11/23以降）**
-1. GitHub Desktopで最新mainへ更新し、`feature/34-participation-entry`ブランチを作る。
+1. GitHub Desktopで最新mainへ更新し、用意済みの`feature/34-participation-entry`ブランチに切り替え、最新mainを取り込む。
 2. エディタで**参加入口と一覧の画面部品だけ**を作る。まずD00の2つのボタン、次にD01の「0件案内」を表示する。
 3. D01で検索項目を変えたあと戻っても入力状態を保つ形を検討。**未承認活動を表示しない**。主催イベントの保存データと参加活動カタログを混ぜない。
 4. 起動して、参加入口→0件案内、戻る、スマホ幅、キーボードでボタンを押せるか確認する。試せなかった項目は`not_run`と記録。
@@ -91,7 +91,7 @@ D01の参加活動一覧（公開承認済み0件の空状態）を小さい変�
 3. Dと`EventInput`型・`createEvent`の使い方をIssueで相談。**独自の別型を作らない**。
 
 **lockfileがmainへ入った後（11/23以降）**
-1. 最新mainから`feature/36-organizer-input`ブランチを作る。
+1. 最新mainから用意済みの`feature/36-organizer-input`ブランチに切り替え、最新mainを取り込む。
 2. 6問の入力欄を順番に作る。未回答`unanswered`／未定`undecided`／回答済み`answered`の違いを壊さない。
 3. 入力データの日付名は`input.date`（`schedule`ではない）、設備リストは初期`[]`。Reactの画面状態として途中入力を維持。
 4. Dの保存機能が未完成なら**UI確認用のmock**を使い、画面上・PRに「実際には保存していない」と明記。保存失敗時に入力内容を消さず、実際の保存成功前にU03へ遷移しない。
@@ -126,7 +126,7 @@ B以外の担当領域を書き換えず、変更点と確認手順を説明し�
 3. 完了後に要再確認が付いた場合や、保存に失敗した場合の画面表示を考える。DのCAS API仕様を質問する。
 
 **lockfileがmainへ入った後（11/23以降）**
-1. 最新mainから`feature/38-parent-progress`ブランチを作る。
+1. 最新mainから用意済みの`feature/38-parent-progress`ブランチに切り替え、最新mainを取り込む。
 2. P01〜P12の**親単位**で状態を選択する操作部品を作る。`status`と`needsRecheck`を別々に扱う。
 3. `completed`かつ`needsRecheck=true`を維持。要再確認の解除はユーザーの明示操作だけ。**子チェック`checkedItemIds`は作らない**。
 4. Dの`updateTaskProgress`/`clearRecheck`が未完成ならmockで表示・操作だけ確認。**保存済みと偽装しない**。競合や失敗時は状態が確定したふりをしない。
