@@ -11,7 +11,7 @@
 公式サイト https://nodejs.org/en/download から必要なWindows用の方法でNode.js v26.13.1を導入、あるいは使用中のNodeバージョン管理ツールで切替。**ほかの開発でNodeを使用している場合は既存の環境を確認してから**進める。PowerShellを新しく開き、以下を実行。
 
 ```powershell
-cd "C:\Users\kkyog\cousor\vacant-house"
+# GitHubでクローンしたvacant-houseフォルダのPowerShellを開いて実行
 node --version
 npm --version
 ```
