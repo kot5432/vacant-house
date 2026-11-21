@@ -1,0 +1,24 @@
+:root {
+  /* 暫定トークン：正式なデザイン確定前にレビューする */
+  --color-bg: #f7faf9;
+  --color-surface: #ffffff;
+  --color-text: #18322e;
+  --color-muted: #60736f;
+  --color-primary: #167b72;
+  --color-primary-text: #ffffff;
+  --color-border: #d9e5e1;
+  --color-danger: #a82935;
+  --color-focus: #125fbe;
+  --radius-card: 12px;
+  --radius-control: 8px;
+  --space-unit: 4px;
+  --content-max: 960px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
