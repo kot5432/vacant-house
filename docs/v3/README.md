@@ -1,3 +1,5 @@
+> **2026-11-21｜A〜D共通開発ルール**：[mainの取り込み、PR、担当間API、共通UI、暫定デザイントークン](TEAM_SHARED_DEVELOPMENT_AND_UI_RULES_20261121.md)。共通部品は未実装、仮の色値はチーム承認待ち。
+
 > **2026-11-21｜需要調査STEP2・Googleフォーム設計**：[Q13自由記述の採用](STEP2_SURVEY_Q13_ADOPTED_20261121.md)／[Q1〜Q13統合版・7セクションの分岐・配布前チェック](STEP2_GOOGLE_FORM_FINAL_STRUCTURE_AND_BRANCHING_20261121.md)。Q3は2小問で計14小問、Googleフォーム作成・配布・回答収集・分岐テストは未実施。3〜5分は目標で実測前。
 
 > **2026-11-21｜参加から主催へつながる体験の整理（設計のみ）**：[2ペルソナとユーザーストーリー](PERSONAS_AND_PARTICIPATION_TO_ORGANIZATION_JOURNEY_20261121.md)／[D00〜D02の条件表示・主催導線・二入口アーキテクチャ・受入ケース](DUAL_ENTRY_UX_SEARCH_ARCHITECTURE_REVIEW_20261121.md)。**ADR-030〜032等は変更なし**。参加検索は地域・活動分野の2軸、掲載は別人審査の承認前、実装・実行テスト・公開は未実施。
