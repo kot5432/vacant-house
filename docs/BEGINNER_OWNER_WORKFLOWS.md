@@ -1,3 +1,5 @@
+> **2026-11-21 ペルソナと構成の共有（設計PR）**：主役は[初めて地域の小規模イベントを企画する一人](v3/PRIMARY_PERSONA_AND_SUCCESS_SCENARIO_20261121.md)。[現行アーキテクチャ](v3/ARCHITECTURE_CURRENT_TWO_ENTRANCES_20261121.md)と[作品部門の資料計画](v3/CONTEST_SUBMISSION_EVIDENCE_PACK_20261121.md)を参照。参加入口はADR-030どおり維持。架空の一人に向けてUX・デモ・受入を考えるが、実際の需要はまだ未検証。
+
 > **最新（2026-11-21）：共通React開発環境は準備完了。** EがNode v26.13.1でdoctor・typecheck・build・dev起動・ブラウザー表示を確認し、[PR #63](https://github.com/kot5432/vacant-house/pull/63)で`package-lock.json`をmainに統合しました。A〜Dは[PC環境構築ガイド](ALL_MEMBERS_PC_SETUP.md)に沿って各自のPCで`npm ci`から確認できます。**各自でViteプロジェクトを新規作成したり`npm install`でlockfileを作り直したりしません。** 11/23から機能実装を開始します。
 
 # A〜D初心者用：自分のIssueを開いた後の「次に何をする？」ガイド
