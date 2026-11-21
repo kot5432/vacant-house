@@ -5,7 +5,7 @@
 ## 0. 最初の10分（A〜D共通）
 
 1. [GitHubのチーム置き場](https://github.com/kot5432/vacant-house)にログイン。
-2. [初心者向けGitHub操作ガイド（PR #61、レビュー中）](BEGINNER_START_HERE.md)を開く。GitHub Desktop・Git・Nodeなどの操作やPR提出が分からない場合はこちら。
+2. [初心者向けGitHub操作ガイド（mainに掲載済み）](BEGINNER_START_HERE.md)を開く。GitHub Desktop・Git・Nodeなどの操作やPR提出が分からない場合はこちら。
 3. [環境確認Issue #55](https://github.com/kot5432/vacant-house/issues/55)を開き、ページ下のコメント欄にGit・Node.js・npmが使えるか報告。**Node.js v26.13.1**を目標とするが、違う版でも無理に変更せずDに相談。
 4. 自分の担当Issue（[A #34](https://github.com/kot5432/vacant-house/issues/34)／[B #36](https://github.com/kot5432/vacant-house/issues/36)／[C #38](https://github.com/kot5432/vacant-house/issues/38)／[D #51](https://github.com/kot5432/vacant-house/issues/51)）を開く。**一番上の「最初にすること」から**進める。
 5. 不明な点はIssue最下部に「やろうとしたこと／今見えている状況／何を聞きたいか」をコメントする。トークン・パスワード・個人のPCパスは貼らない。
@@ -215,4 +215,4 @@ node_modules/dist/.envを.gitignoreで除外します。CI・デプロイ設定�
 3. 共通環境やNode/npmならD、仕様の判断やレビューならEへメンション。
 4. 返答がなくても勝手に危険な操作をしない。**mainを直接変更、既存docsを一括削除、秘密の貼り付け、未承認PRのマージはしない**。
 
-[詳しいGitHub操作ガイド（PR #61）](BEGINNER_START_HERE.md)／[環境確認 #55](https://github.com/kot5432/vacant-house/issues/55)／[各担当の初週計画（PR #57）](https://github.com/kot5432/vacant-house/pull/57)
+[詳しいGitHub操作ガイド（mainに掲載済み）](BEGINNER_START_HERE.md)／[環境確認 #55](https://github.com/kot5432/vacant-house/issues/55)／[各担当の初週計画（PR #57、別途レビュー中）](https://github.com/kot5432/vacant-house/pull/57)
