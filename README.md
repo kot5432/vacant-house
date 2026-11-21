@@ -1,9 +1,11 @@
+> **2026-11-21 更新：開発開始の最新案内**：[共通React環境とA〜Dの最新手順](docs/START_DEVELOPMENT_20261121.md)。Eが最小React+TypeScript+Viteファイルをmainへ追加しました。**依存取得ができなかったためpackage-lock.json生成・起動テストは未実施**。Dの初手は環境構築#51ではなく**共通型#40**に変更。**この更新案内と矛盾する古い説明は更新案内を優先**してください。
+
 > ## 🔰 初めて開発するメンバーへ
 > **まずは[初心者向けの操作ガイド](docs/BEGINNER_START_HERE.md)を読んでください。** GitHubへのログイン、GitHub Desktop、環境確認、PRの見方・提出方法を順番に説明しています。
 > **[A〜Dの担当別開発手順](docs/BEGINNER_OWNER_WORKFLOWS.md)** では、最初のIssue、AIコーディング用の指示例、確認方法を説明しています。
-> 担当Issue：[A #34](https://github.com/kot5432/vacant-house/issues/34)・[B #36](https://github.com/kot5432/vacant-house/issues/36)・[C #38](https://github.com/kot5432/vacant-house/issues/38)・[D #51](https://github.com/kot5432/vacant-house/issues/51)。[環境確認 #55](https://github.com/kot5432/vacant-house/issues/55)。
+> 担当Issue：[A #34](https://github.com/kot5432/vacant-house/issues/34)・[B #36](https://github.com/kot5432/vacant-house/issues/36)・[C #38](https://github.com/kot5432/vacant-house/issues/38)・[D #40](https://github.com/kot5432/vacant-house/issues/40)。[環境確認 #55](https://github.com/kot5432/vacant-house/issues/55)。
 >
-> **5人チームのGit運用ルール（2026-11-19）**：[CONTRIBUTING.md](CONTRIBUTING.md) にPR/レビューの約束、[ブランチの使い方・命名規則](docs/v3/GIT_WORKFLOW_AND_BRANCH_RULES.md)に具体的な操作とトラブル対応を記録しました。4人機能開発＋1人品質/地域情報の構成で、**コード実装・実行テスト・ブランチ保護設定はまだ行っていません**。
+> **5人チームのGit運用ルール（2026-11-19）**：[CONTRIBUTING.md](CONTRIBUTING.md) にPR/レビューの約束、[ブランチの使い方・命名規則](docs/v3/GIT_WORKFLOW_AND_BRANCH_RULES.md)に具体的な操作とトラブル対応を記録しました。4人機能開発＋1人品質/地域情報の構成で、**2026-11-21に共通React雛形だけを先行追加済み（依存取得と実行テストは未実施）**。
 
 # 地域イベント開催準備ガイド（仮称） — 現行設計 v3.1
 
@@ -34,7 +36,8 @@
 ## 状態
 - [x] 机上調査、競合監査、v3.1設計、利用者検証の方法を整理。
 - [ ] 活動希望者への聞き取りと紙プロトタイプ比較（責任者・同意等の確認が必要）。
-- [ ] コード、実行テスト、Web公開、提出物の作成。
+- [x] React/TypeScript/Viteの最小ファイルを追加（2026-11-21、動作未確認）。
+- [ ] 依存取得、package-lock.json生成、実行テスト、Web公開、提出物の作成。
 
 生成AI利用を含む設計変更の履歴：[docs/v3/DECISION_AND_AI_LOG.md](docs/v3/DECISION_AND_AI_LOG.md)。
 
