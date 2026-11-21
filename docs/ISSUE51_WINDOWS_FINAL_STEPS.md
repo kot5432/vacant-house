@@ -1,3 +1,5 @@
+> **【最新・2026-11-21】共通環境の準備完了：** [PR #63](https://github.com/kot5432/vacant-house/pull/63)で`package-lock.json`をmainにマージ済み。EのWindows/Node v26.13.1で`npm ci`・`doctor`・`typecheck`・`build`・`dev`起動とブラウザー仮画面表示を確認。**A〜Dは[セットアップガイド](ALL_MEMBERS_PC_SETUP.md)に沿って各自のPCで`npm ci`以降を実行可能**。別途`npm install`でlockfileを作り直す必要はありません。個人PCの成功は本人が確認してIssue #55に報告してください。旧い未検証・未反映の記述はこの案内を優先。
+
 # Issue #51を終わらせるための最後の操作（Windows初心者向け）
 
 **2026-11-21。共通Reactソースはmainに反映済みです。** ユーザーのPC（Node v24.20.0）では`npm ci`、`npm run typecheck`、`npm run build`（2回）、`npm run dev`（Vite起動）まで成功しています。**ブラウザー画面の表示確認・Node v26.13.1での再確認・lockfileのGitHub反映は未完**です。
