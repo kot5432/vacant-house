@@ -1,3 +1,5 @@
+> **2026-11-21 現行のCodex開発入口：[docs/CODEX_START_HERE.md](CODEX_START_HERE.md) → [AGENTS.md](../AGENTS.md) → 自分のIssue。** 共通UI [PR #66](https://github.com/kot5432/vacant-house/pull/66)はmainへ統合済み。旧記述（lockfile未作成、環境未構築、共通UIレビュー中、旧PR番号）は作成時点の履歴で、現在の作業指示ではありません。正式仕様は採用済みADRと現行担当Issueを優先します。
+
 > **最新（2026-11-21）：共通React開発環境は準備完了。** EがNode v26.13.1でdoctor・typecheck・build・dev起動・ブラウザー表示を確認し、[PR #63](https://github.com/kot5432/vacant-house/pull/63)で`package-lock.json`をmainに統合しました。A〜Dは[PC環境構築ガイド](ALL_MEMBERS_PC_SETUP.md)に沿って各自のPCで`npm ci`から確認できます。**各自でViteプロジェクトを新規作成したり`npm install`でlockfileを作り直したりしません。** 11/23から機能実装を開始します。
 
 # A〜D初心者用：自分のIssueを開いた後の「次に何をする？」ガイド

@@ -1,4 +1,4 @@
-> **共通UIの実装案（レビュー中）**：[PR #66](https://github.com/kot5432/vacant-house/pull/66)／[共有コンポーネントの使い方・編集責任](v3/SHARED_UI_IMPLEMENTATION_AND_OWNERSHIP_20261121.md)。PRのレビュー・テスト・main統合前はA〜Dのmainにまだ反映されません。
+> **🔰 A〜DとCodexは最初に[開発スタートページ](CODEX_START_HERE.md)を見てください。** [AGENTS.md](../AGENTS.md) にCodex共通指示があります。2026-11-21時点で共通UI [PR #66](https://github.com/kot5432/vacant-house/pull/66) はmain統合済み（専用の実画面操作テストは未実施）。過去の「レビュー中」記述は履歴です。
 
 # docs｜開発メンバー向け資料の入口
 
