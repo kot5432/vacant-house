@@ -1,3 +1,5 @@
+> **【最新・2026-11-21】共通環境の準備完了：** [PR #63](https://github.com/kot5432/vacant-house/pull/63)で`package-lock.json`をmainにマージ済み。EのWindows/Node v26.13.1で`npm ci`・`doctor`・`typecheck`・`build`・`dev`起動とブラウザー仮画面表示を確認。**A〜Dは[セットアップガイド](ALL_MEMBERS_PC_SETUP.md)に沿って各自のPCで`npm ci`以降を実行可能**。別途`npm install`でlockfileを作り直す必要はありません。個人PCの成功は本人が確認してIssue #55に報告してください。旧い未検証・未反映の記述はこの案内を優先。
+
 # 開発開始ガイド（2026-11-21 更新）
 
 **これを最初に読んでください。** このリポジトリは富山県の地域活動に「参加する／企画する」Webアプリです。**旧空き家案を開発しません。**
