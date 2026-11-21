@@ -1,6 +1,4 @@
-> **【最新・2026-11-21】共通環境の準備完了：** [PR #63](https://github.com/kot5432/vacant-house/pull/63)で`package-lock.json`をmainにマージ済み。EのWindows/Node v26.13.1で`npm ci`・`doctor`・`typecheck`・`build`・`dev`起動とブラウザー仮画面表示を確認。**A〜Dは[セットアップガイド](ALL_MEMBERS_PC_SETUP.md)に沿って各自のPCで`npm ci`以降を実行可能**。別途`npm install`でlockfileを作り直す必要はありません。個人PCの成功は本人が確認してIssue #55に報告してください。旧い未検証・未反映の記述はこの案内を優先。
-
-> **2026-11-21 更新：開発開始の最新案内**：[共通React環境とA〜Dの最新手順](START_DEVELOPMENT_20261121.md)。Eが最小React+TypeScript+Viteファイルをmainへ追加しました。**依存取得ができなかったためpackage-lock.json生成・起動テストは未実施**。Dの初手は環境構築#51ではなく**共通型#40**に変更。**この更新案内と矛盾する古い説明は更新案内を優先**してください。
+> **2026-11-21｜現在の正式な進め方は [Codex開発スタート（5段階）](CODEX_START_HERE.md) です。** このページはGitHub Desktopの詳細操作を調べるための補助資料です。古いPR #47〜#60はクローズ済み、共通React土台・package-lock.json・共通UIはmain統合済みです。以下に残る「lockfileがまだない」「旧PRをレビューする」などの記述は過去の作業手順であり、**今は実施しないでください**。
 
 # 初めてのチーム開発ガイド｜ここから始めてください
 
