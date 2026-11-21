@@ -1,3 +1,5 @@
+> **A〜D全員必読：PCの準備とアプリ起動の手順**：[WindowsのNode v26.13.1・GitHub Desktop・npm ci・確認コマンド](ALL_MEMBERS_PC_SETUP.md)。EがIssue #51で共有lockfileをmainに反映してから、各自が`npm ci`と起動確認を行います。
+
 > **2026-11-21 更新：開発開始の最新案内**：[共通React環境とA〜Dの最新手順](START_DEVELOPMENT_20261121.md)。Eが最小React+TypeScript+Viteファイルをmainへ追加しました。**依存取得ができなかったためpackage-lock.json生成・起動テストは未実施**。Dの初手は環境構築#51ではなく**共通型#40**に変更。**この更新案内と矛盾する古い説明は更新案内を優先**してください。
 
 # docs｜まず読む資料
