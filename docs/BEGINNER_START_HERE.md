@@ -1,10 +1,12 @@
+> **2026-11-21 更新：開発開始の最新案内**：[共通React環境とA〜Dの最新手順](START_DEVELOPMENT_20261121.md)。Eが最小React+TypeScript+Viteファイルをmainへ追加しました。**依存取得ができなかったためpackage-lock.json生成・起動テストは未実施**。Dの初手は環境構築#51ではなく**共通型#40**に変更。**この更新案内と矛盾する古い説明は更新案内を優先**してください。
+
 # 初めてのチーム開発ガイド｜ここから始めてください
 
 **対象：富山県プログラミングコンテスト・5人チーム（A〜E）／最終更新：2026-11-20**
 
 このガイドは**GitHubをほとんど使ったことがない人向け**です。まずは「0 → 1 → 2 → 3」の順に進めれば大丈夫です。難しい用語はその都度説明します。
 
-> **大切なこと**：現時点で `main` にはアプリ本体（`package.json`, `src/`）がありません。Dが2026-11-23以降に共通の土台を作る予定です。**そのPRがmainへマージされるまでは `npm ci` や `npm run dev` は実行できません**。本書の「アプリを動かす」はその後で行ってください。
+ > **大切なこと（2026-11-21更新）**：共通React雛形はEがmainへ追加しましたが、**package-lock.jsonと起動確認はまだ**です。初回はnpm installでlockfileを作って検証する必要があります。[最新の手順](START_DEVELOPMENT_20261121.md)を優先してください。
 >
 > 開発するのは**富山の地域活動に「参加する／企画する」ためのWebアプリ**です。リポジトリ名が `vacant-house` でも、昔の空き家アプリは作りません。
 >
@@ -19,7 +21,7 @@
 | A | `Gr3311Moonn` | 参加する入口と「現在0件」の活動一覧 | [Issue #34](https://github.com/kot5432/vacant-house/issues/34) |
 | B | `unoyuyu0913-design` | 地域イベント主催者向けの基本6問入力 | [Issue #36](https://github.com/kot5432/vacant-house/issues/36) |
 | C | `ynykrrc1219-stack` | 親12タスクの進捗操作部分 | [Issue #38](https://github.com/kot5432/vacant-house/issues/38) |
-| D | `milkyara` | **最初に全員共通のReact開発環境を作る** | [Issue #51](https://github.com/kot5432/vacant-house/issues/51) → [#40](https://github.com/kot5432/vacant-house/issues/40) |
+| D | `milkyara` | **共通データ型を作る** → 保存・一覧・バックアップ | [Issue #40](https://github.com/kot5432/vacant-house/issues/40) → [#41](https://github.com/kot5432/vacant-house/issues/41) → [#42](https://github.com/kot5432/vacant-house/issues/42) |
 | E | `kot5432` | 全体調整・一次情報の確認・A〜DのPRレビュー | [Issue #45](https://github.com/kot5432/vacant-house/issues/45) |
 
 **Issue（イシュー）**とは「何を作るか書いた作業カード」です。自分のIssueをクリックし、本文を上から読んでください。質問があればそのページの一番下のコメント欄を使います。
@@ -137,34 +139,20 @@ npm：OK（表示された番号） / 使えない / 未確認
 
 ---
 
-## 4. D担当だけ：みんなの共通開発環境を最初に作る（11/23以降）
+## 4. 共通開発環境の初回確認（Eまたは協力者）
 
-**D以外の人はこの章を実行せず、次の第5章へ。**
-
-1. [Issue #51](https://github.com/kot5432/vacant-house/issues/51) を読む。
-2. GitHub Desktopで **Current branch → New branch** を選び、`chore/51-vite-foundation` と入力。
-3. **Create branch**。以後は`main`ではなくこのブランチで作業する。
-4. Node.js `v26.13.1` と npm を確認。
-5. 既存の`docs/`・`.github/`・READMEを**消さずに**、React+TypeScript+Viteの**最小プロジェクト**をリポジトリのルートへ作る。初期化コマンドの実際のオプションは使用するViteの公式ガイドを確認して選ぶ（誤って別ディレクトリに二重プロジェクトを作らない）。
-6. `.node-version`は`26.13.1`、npmの`package-lock.json`と`.gitignore`を作る。**pnpm/yarnは使わない**。
-7. ターミナルで`npm ci`、`npm run dev`、`npm run build`を実際に確認し、実行結果やエラーをメモする。**通らなければ直したふりをせずPRに書く**。
-8. GitHub Desktopで変えたファイルを確認 → 左下の **Summary** に`chore: 共通開発環境を追加`と入力 → **Commit to chore/51-vite-foundation**。
-9. 上部の **Publish branch** → **Create Pull Request** を押す。GitHubのブラウザーが開いたらPR本文に`#51`と変更・実行結果・未確認を記載して作成。**Reviewerに E @kot5432**を指定。
-10. Eのレビューと必要な動作確認を経て、mainに統合してもらう。
-11. **次の仕事#40（データ型）は別ブランチ・別PR**にする。
-
-この作業は11/23からの予定です。**本書を作った時点では実装していません**。
+**2026-11-21にEがReact/TS/Viteの最小構成をmainへコミット済み**です。ただし、npmのネットワーク取得ができず**package-lock.jsonがありません**。Eか確認を引き受けたメンバーが[最新の初回検証手順](START_DEVELOPMENT_20261121.md)どおり、Node v26.13.1で`npm install`し、lockfileをPRで追加し、実際に起動・ビルドを確認します。**Dは環境構築#51担当ではなくなり、共通型#40から始めます。** 未検証を成功扱いしないでください。
 
 ---
 
 ## 5. A・B・C担当：自分の機能を作る（11/23以降）
 
-### 5-1 Dの環境が完成するまで
+### 5-1 共通環境のlockfile・実機検証が終わるまで
 - Aは参加入口と「活動0件」の画面仕様、Bは6問入力、Cは親タスク進捗UIをそれぞれのIssueで確認。
 - 共有型や画面の決定に迷ったら**Issueにコメントして質問**。勝手に独自のデータ型やVite環境を作らない。
 - すでに作れる**独立したコンポーネントや設計**は準備してよいが、共通環境の完成を偽装したり、mainを直接編集したりしない。
 
-### 5-2 Dの共通環境PRがmainへ統合された後
+### 5-2 共通環境のlockfile PRがmainに統合された後
 1. GitHub Desktopで **Current branch → main** に切り替え、**Fetch origin → Pull origin** で最新mainを取得。
 2. **Current branch → New branch** で自分用のブランチを作る。
 
@@ -265,8 +253,8 @@ PRリンク（なければなし）：
 - [ ] GitHub Desktopでリポジトリをcloneした（未整備ならD/Eに相談）
 
 **11月23日以降**
-- [ ] Dが共通の開発環境Issue #51に着手した
-- [ ] Dの環境PRが承認・main統合されたことを確認した
+- [ ] Eまたは協力者が#51にlockfileと動作確認の実測結果を記録した
+- [ ] 共通環境のlockfile PRが承認・main統合されたことを確認した
 - [ ] A〜Cはmainから自分のブランチを作り、`npm ci`と`npm run dev`を実行できた
 - [ ] 各担当が小さな変更をCommit→Push→PR提出した（11/29目標）
 - [ ] 別人レビューと必要な確認を経てからmainへ統合した
