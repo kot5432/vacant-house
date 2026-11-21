@@ -4,14 +4,14 @@
 
 ## 開発メンバーへ：ここから始める
 
-<https://github.com/kot5432/vacant-house/blob/main/docs/README.md>
+<https://github.com/kot5432/vacant-house/blob/main/docs/CODEX_START_HERE.md>
 
-**[📚 docs：開発資料の入口](docs/README.md)** に、最初に読む資料・A〜D担当Issue・開発スケジュール・共有UIとGit統合ルールをまとめています。
+**[🔰 Codex開発スタートガイド](docs/CODEX_START_HERE.md)** をA〜D全員の最初の入口とします。GitHubのdocsを全件読む必要はありません。開発に使う正式仕様は[短い目次](docs/v3/README.md)、古い設計履歴の扱いは[文書整理方針](docs/DOCUMENT_POLICY.md)にまとめています。
 
 | 目的 | まず開くもの |
 |---|---|
 | 初めてPCの開発環境を用意 | [全員のセットアップガイド](docs/ALL_MEMBERS_PC_SETUP.md) ／ [環境報告 #55](https://github.com/kot5432/vacant-house/issues/55) |
-| 自分の担当と最初のPR | [担当別初心者ガイド](docs/BEGINNER_OWNER_WORKFLOWS.md) |
+| 自分の担当と最初のPR | **[Codex開発スタート](docs/CODEX_START_HERE.md)** / [担当別の詳細説明](docs/BEGINNER_OWNER_WORKFLOWS.md) |
 | 期限・完成予定 | [A〜D個別スケジュール案](docs/v3/TEAM_INDIVIDUAL_DEVELOPMENT_SCHEDULE_PROPOSAL_20261121.md) |
 | Gitでの取り込みとUI統一 | [チーム共通開発・UIルール](docs/v3/TEAM_SHARED_DEVELOPMENT_AND_UI_RULES_20261121.md) |
 | 実装する機能の正式仕様 | [v3の正式仕様・技術資料目次](docs/v3/README.md) |
@@ -36,6 +36,6 @@
 
 ## 文書の扱い
 
-以前のSTEP/ADR/設計資料は**消していません**。開発に使う入口は[docs/README.md](docs/README.md)に一本化し、技術的な詳細は[docs/v3/README.md](docs/v3/README.md)へ整理。過去の長い更新履歴は[こちら](docs/v3/README_HISTORY_20261121.md)に全文保存しました。
+**普段読むのは [Codex開発スタート](docs/CODEX_START_HERE.md)、担当Issue、必要なADRだけ**です。既存docsには設計履歴が多数ありますが、採用済み仕様や根拠へのリンクを壊さないため保管しています。分類は[文書整理方針](docs/DOCUMENT_POLICY.md)、着手前の残確認は[開発前チェック](docs/DEVELOPMENT_READINESS_20261121.md)、時系列履歴は[旧README](docs/v3/README_HISTORY_20261121.md)です。
 
 **現在の作業状態は、GitHubのPR・Issue・本人の実行結果で確認してください。** このREADMEや設計文書の更新は、機能実装・デプロイ・イベント掲載承認・応募を済ませたことを意味しません。
