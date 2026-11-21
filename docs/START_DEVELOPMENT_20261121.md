@@ -11,11 +11,26 @@
 
 ## 共通土台の初回確認（Eまたは協力者が行う・優先）
 1. GitHub Desktopで[リポジトリ](https://github.com/kot5432/vacant-house)をclone、`main`を最新版にする。
-2. **Node.js v26.13.1**を使用。ターミナルで`node --version`と`npm --version`を記録。
+2. **Node.js v26.13.1**を使用。ターミナルで`node --version`と`npm --version`を記録。`npm run doctor`で不足条件が一覧表示されます（不足がある場合は終了コード1になります）。
 3. `package.json`のあるリポジトリ直下で`npm install`を実行。これは**初回の依存解決とpackage-lock.jsonの生成**です。失敗したら実際のエラーを#51へ報告し、lockfileを手作業で創作しない。
-4. 成功したら`npm ci` → `npm run build` → `npm run dev`を順番に実行。起動URLが表示されたら自分のブラウザーで開き、仮画面が表示されるか確認する。`npm run dev`は**Ctrl+Cで停止**。
+4. 成功したら`npm ci` → `npm run doctor` → `npm run typecheck` → `npm run build` → `npm run dev`を順番に実行。起動URLが表示されたら自分のブラウザーで開き、仮画面が表示されるか確認する。`npm run dev`は**Ctrl+Cで停止**。
 5. `package-lock.json`だけを含め、必要な修正があれば小PRで提出。**node_modules/、dist/、個人情報は絶対にコミットしない**。レビューを経てmainに反映し、その後全員に`npm ci`を案内する。
 6. **現時点は未検証**。テストが成功した場合のみ#51にコマンドと実際の結果を書く。
+
+### いま分かっている実行結果（2026-11-21）
+- この作業環境の`node --version` → **v22.16.0**（指定v26.13.1とは不一致）
+- `npm --version` → **10.9.2**
+- npmへのアクセス → `EAI_AGAIN registry.npmjs.org`（DNS名前解決失敗）
+- `npm run doctor`の内部スクリプトをNode v22で実行し、Node版・lockfile・node_modulesの**不足を正しく検出**することを確認（想定した失敗）。
+- **npm install・npm ci・typecheck・build・devは未実施（not_run）**。成功したとは扱わない。
+- 追加した検査スクリプト：[`scripts/check-environment.mjs`](../scripts/check-environment.mjs)。このスクリプトは依存をインストールせず、実際のアプリ起動も保証しない。
+
+### エラー別の確認
+- **`EAI_AGAIN` / `ENOTFOUND`**：npmの公開パッケージレジストリに接続できていません。ネットワークやDNS/プロキシ環境を確認し、ネットワークが利用できる場所で再試行。公開のパスワードやトークンを貼らない。
+- **`npm ci`でlockfile不在**：#51で初回`npm install`を完了し、`package-lock.json`がmainに反映されるまで待つ。各人が独自のlockfileを作らない。
+- **`EBADENGINE`**：`node --version`が**v26.13.1**かを確認。別バージョンを無断で採用しない。
+- **`npm run doctor`でNG**：不足項目をIssue #51に報告する。`doctor`だけがOKでも起動テスト合格ではない。
+
 
 ## 担当A〜Dの開発の入口
 | 担当 | GitHub | 最初のIssue | 作るもの |
