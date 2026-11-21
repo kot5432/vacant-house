@@ -1,8 +1,8 @@
 # A〜D全員：開発を始める前のPC準備（Windows・初心者向け）
 
-**更新：2026-11-21／全員必須の事前確認**。A〜DもそれぞれのPCで、GitHubのコードを取得し、同じNode.js/npm環境でアプリを起動できるか確認します。Eが一度成功したからといって、A〜DのPCでも成功するとは限りません。
+**更新：2026-11-21／全員必須の事前確認（EのNode v26実機成功・PR #63作成済み）**。A〜DもそれぞれのPCで、GitHubのコードを取得し、同じNode.js/npm環境でアプリを起動できるか確認します。Eが一度成功したからといって、A〜DのPCでも成功するとは限りません。
 
-> **重要：EのIssue #51は完了前です。** EのWindows PCではNode v24.20.0で`npm ci`・型チェック・ビルド・Vite起動に成功しましたが、指定Node **v26.13.1**での確認と、`package-lock.json`のGitHub **mainへの反映はまだ**です。**A〜Dは`npm install`で各自ロックファイルを生成しない**でください。Eの#51が完了してから、下の手順3以降へ進みます。
+> **重要：EのIssue #51は完了前です。** EのWindows PCで指定Node **v26.13.1**、npm 11.20.0を用いて `npm run doctor`（全項目OK）、`npm run typecheck`、`npm run build`、`npm run dev` の成功を確認しました。実機生成した `package-lock.json` は [PR #63](https://github.com/kot5432/vacant-house/pull/63) に提出済みで、レビュー・mainへのマージ待ちです。**A〜Dは `npm install` で各自lockfileを生成しない**でください。PR #63がmainに統合されたら、下の手順3以降へ進みます。
 
 ## 1. まず準備するもの（全員）
 
@@ -37,7 +37,7 @@ Nodeが違う版の場合は、まずバージョン切替を行う。複数のN
 
 ## 3. Eから「Issue #51完了・lockfileがmainに入った」と連絡が来た後に実行
 
-**まだEの#51が完了していなければこの章は実行しない。**
+**PR #63がmainにマージされ共有lockfileが入るまでは、この章は実行しない。**
 
 1. GitHub Desktopで`main`に切り替え、**Fetch origin → Pull origin**。
 2. 自分の担当ブランチを選ぶ（下の表）。作成済みなので**新しいブランチを作らなくてよい**。担当ブランチが最新mainより古ければ、GitHub Desktopの **Branch → Update from main** などでmainの変更を取り込む（**自分の未コミット変更がない状態で**実行。競合したら自分で強制上書きせず相談）。
