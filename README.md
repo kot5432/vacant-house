@@ -1,52 +1,41 @@
-> **【最新・2026-11-21】共通環境の準備完了：** [PR #63](https://github.com/kot5432/vacant-house/pull/63)で`package-lock.json`をmainにマージ済み。EのWindows/Node v26.13.1で`npm ci`・`doctor`・`typecheck`・`build`・`dev`起動とブラウザー仮画面表示を確認。**A〜Dは[セットアップガイド](docs/ALL_MEMBERS_PC_SETUP.md)に沿って各自のPCで`npm ci`以降を実行可能**。別途`npm install`でlockfileを作り直す必要はありません。個人PCの成功は本人が確認してIssue #55に報告してください。旧い未検証・未反映の記述はこの案内を優先。
+# 富山県プログラミングコンテスト｜地域活動「参加・企画」Webアプリ
 
-> **A〜D全員必読：PCの準備とアプリ起動の手順**：[WindowsのNode v26.13.1・GitHub Desktop・npm ci・確認コマンド](docs/ALL_MEMBERS_PC_SETUP.md)。EがIssue #51で共有lockfileをmainに反映してから、各自が`npm ci`と起動確認を行います。
+> **最新の開発案内（2026-11-21）**：A〜Dの共通React/TypeScript/Vite土台とpackage-lock.jsonはmainへ反映済み。EのPCで仮画面の起動・型チェック・ビルドが確認されています。**各担当者の環境確認は別途必要**です。旧空き家案ではなく、富山県の地域活動への参加と初めてのイベント企画を支援する単一アプリです。
 
-> **Issue #51の最終操作（Windows）**：[Nodeの確認・lockfileのPR・起動確認](docs/ISSUE51_WINDOWS_FINAL_STEPS.md)。Node v24での型チェック・ビルド・Vite起動は実測成功。Node v26確認とlockfileのmain反映は未完了。
+## 開発メンバーへ：ここから始める
 
-> **2026-11-21 更新：開発開始の最新案内**：[共通React環境とA〜Dの最新手順](docs/START_DEVELOPMENT_20261121.md)。Eが最小React+TypeScript+Viteファイルをmainへ追加しました。**依存取得ができなかったためpackage-lock.json生成・起動テストは未実施**。Dの初手は環境構築#51ではなく**共通型#40**に変更。**この更新案内と矛盾する古い説明は更新案内を優先**してください。
+<https://github.com/kot5432/vacant-house/blob/main/docs/README.md>
 
-> ## 🔰 初めて開発するメンバーへ
-> **まずは[初心者向けの操作ガイド](docs/BEGINNER_START_HERE.md)を読んでください。** GitHubへのログイン、GitHub Desktop、環境確認、PRの見方・提出方法を順番に説明しています。
-> **[A〜Dの担当別開発手順](docs/BEGINNER_OWNER_WORKFLOWS.md)** では、最初のIssue、AIコーディング用の指示例、確認方法を説明しています。
-> 担当Issue：[A #34](https://github.com/kot5432/vacant-house/issues/34)・[B #36](https://github.com/kot5432/vacant-house/issues/36)・[C #38](https://github.com/kot5432/vacant-house/issues/38)・[D #40](https://github.com/kot5432/vacant-house/issues/40)。[環境確認 #55](https://github.com/kot5432/vacant-house/issues/55)。
->
-> **5人チームのGit運用ルール（2026-11-19）**：[CONTRIBUTING.md](CONTRIBUTING.md) にPR/レビューの約束、[ブランチの使い方・命名規則](docs/v3/GIT_WORKFLOW_AND_BRANCH_RULES.md)に具体的な操作とトラブル対応を記録しました。4人機能開発＋1人品質/地域情報の構成で、**2026-11-21に共通React雛形だけを先行追加済み（依存取得と実行テストは未実施）**。
+**[📚 docs：開発資料の入口](docs/README.md)** に、最初に読む資料・A〜D担当Issue・開発スケジュール・共有UIとGit統合ルールをまとめています。
 
-# 地域イベント開催準備ガイド（仮称） — 現行設計 v3.1
+| 目的 | まず開くもの |
+|---|---|
+| 初めてPCの開発環境を用意 | [全員のセットアップガイド](docs/ALL_MEMBERS_PC_SETUP.md) ／ [環境報告 #55](https://github.com/kot5432/vacant-house/issues/55) |
+| 自分の担当と最初のPR | [担当別初心者ガイド](docs/BEGINNER_OWNER_WORKFLOWS.md) |
+| 期限・完成予定 | [A〜D個別スケジュール案](docs/v3/TEAM_INDIVIDUAL_DEVELOPMENT_SCHEDULE_PROPOSAL_20261121.md) |
+| Gitでの取り込みとUI統一 | [チーム共通開発・UIルール](docs/v3/TEAM_SHARED_DEVELOPMENT_AND_UI_RULES_20261121.md) |
+| 実装する機能の正式仕様 | [v3の正式仕様・技術資料目次](docs/v3/README.md) |
+| PRレビューの基本規則 | [CONTRIBUTING.md](CONTRIBUTING.md) |
 
-> 2026-11-13：**STEP1とSTEP2の方針を確定**。設計・公開資料の調査のみ／アプリ未実装／実際の利用需要は未確認。
+## アプリの構成
 
-## 何のアプリ？
-**初めて単発・小規模の非営利イベントや体験会を主催しようとする個人・小規模チーム**が、**自分の開催準備の全体像と現在の状況に合う優先順位を理解し、次に動ける**ように支援するWebアプリの設計案です。地域の公的な確認条件と最初の一歩は中心価値を支える要素。富山県を想定し、公式情報はまず高岡市に絞ります。**STEP1・STEP2はユーザーが方針確定、STEP3以降は順に再設計します**。
+- **参加する（A）**：D00二入口→D01活動一覧・絞り込み→D02活動詳細・公式情報。実在活動はEと別人による根拠審査で承認したもののみ表示。承認済み活動がなくても0件画面が成立する。
+- **企画する（B/C/D）**：U01保存済み一覧→U02基本6問→U03親P01〜P12の理由付き準備プランと進捗→U04編集。本人のイベントデータはIndexedDB/Dexieに保存し、JSON書出し・取込に対応する。
+- **E**：富山の一次情報と掲載承認、利用者検証、各PRの品質レビュー、全体統合と応募資料。
 
-市民活動相談窓口、既存団体、公共施設のサービスを**置き換えず、その前の準備を助ける**ことを狙います。会場の予約、仲間のマッチング、空き家の具体的な物件探し、助成金・許認可の適格判定はしません。
+**技術**：React + TypeScript + Vite ／ IndexedDB + Dexie ／ Vercel（公開は別途承認が必要）。[ADR-030](docs/v3/ADR_030_TOYAMA_PARTICIPATE_AND_ORGANIZE_MVP_SCOPE_ADOPTED.md)、[ADR-031](docs/v3/ADR_031_PARENT_TASK_PROGRESS_ONLY_NO_CHILD_CHECKS_ADOPTED.md)、[ADR-032](docs/v3/ADR_032_TECHNICAL_V1_DATA_RECHECK_EQUIPMENT_AND_API_ADOPTED.md)を守り、旧空き家マッチング機能や親タスクの子チェックを追加しません。
 
-## 【現行の正本はこちら】
-**[docs/v3/README.md — v3.1の設計、競合・需要の検証計画](docs/v3/README.md)**
+## 直近の目標（チーム承認前の計画）
 
-**開発前に決めることは [6ステップ計画](docs/v3/PREDEVELOPMENT_PLAN.md) へ。STEP1の[確定ターゲット・課題](docs/v3/STEP1_PROBLEM_TARGET.md)と、STEP2の[確定した価値・独自性](docs/v3/STEP2_VALUE_DIFFERENTIATION.md)を正本とします。** 課題・対象者→提供価値・独自性→MVP→入力/データ・判定→画面→コンテスト・開発着手条件の順に、設計の結論と未検証事項を分けて整理しています。
+- **2026/11/23**：担当機能の実装開始
+- **2026/11/29**：A〜D全員が最初の小PRを1本提出
+- **2026/12/20**：MVPの主要機能実装・統合の目標
+- **2026/12/27**：実機受入と重大な不具合修正の目標
+- **2027/01/03**：応募用動画・資料の完成目標
+- **2027/01/07**：応募の目標日（公式の募集期限を再確認すること）
 
-参照順：
-[製品仕様](docs/v3/PRODUCT_SPEC.md) → [画面](docs/v3/USER_FLOW.md) → [判断ルール](docs/v3/DECISION_RULES.md) → [需要・競合の監査](docs/v3/DEMAND_AND_COMPETITOR_AUDIT.md) → [実際の検証方法](docs/v3/VALIDATION_PROTOCOL_V31.md)
+## 文書の扱い
 
-## 旧仕様を混ぜないこと
-`PROJECT_CONCEPT.md` と `docs/` 直下の旧v1/v2文書は**経緯・参考資料**。かつての「空き家所有者向け6用途診断」や営利活動を含む場所タイプ分類は現MVPの仕様ではありません。v3.0もGit履歴に保存され、**現在はv3.1が最新版**です。
+以前のSTEP/ADR/設計資料は**消していません**。開発に使う入口は[docs/README.md](docs/README.md)に一本化し、技術的な詳細は[docs/v3/README.md](docs/v3/README.md)へ整理。過去の長い更新履歴は[こちら](docs/v3/README_HISTORY_20261121.md)に全文保存しました。
 
-## 今回の調査で分かったこと
-- 高岡の子どもの居場所への希望、他都市の既存団体の活動初期の課題は公開資料から確認できる。
-- 高岡にはすでに市民活動相談窓口・活動情報ポータル・公共施設予約システムがある。
-- 高岡の地域交流センターの公式注意では**未成年者のみの利用は不可**。こうした地域条件に気づき、適切に相談する支援に独自の価値があるかが仮説。
-- **活動したい個人や立ち上げ前チームが実際に使う需要は未確認**。ユーザー調査や既存サービスとの比較で確かめてから開発判断する。
-
-## 状態
-- [x] 机上調査、競合監査、v3.1設計、利用者検証の方法を整理。
-- [ ] 活動希望者への聞き取りと紙プロトタイプ比較（責任者・同意等の確認が必要）。
-- [x] React/TypeScript/Viteの最小ファイルを追加（2026-11-21、動作未確認）。
-- [ ] 依存取得、package-lock.json生成、実行テスト、Web公開、提出物の作成。
-
-生成AI利用を含む設計変更の履歴：[docs/v3/DECISION_AND_AI_LOG.md](docs/v3/DECISION_AND_AI_LOG.md)。
-
-## 最新の設計引き継ぎ（2026-11-17）
-
-[STEP9〜14 実装前設計の最終統合・引き継ぎ](docs/v3/STEP9_14_FINAL_DESIGN_HANDOFF.md) に、判定ロジック・画面・保存/例外・テスト仕様・開発順序・需要アンケートを含む外部実証待ちを整理しました。**既存ADRは変更なし／実装・テスト実行・公開なし**。
+**現在の作業状態は、GitHubのPR・Issue・本人の実行結果で確認してください。** このREADMEや設計文書の更新は、機能実装・デプロイ・イベント掲載承認・応募を済ませたことを意味しません。
