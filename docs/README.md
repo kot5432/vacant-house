@@ -1,34 +1,49 @@
-> **【最新・2026-11-21】共通環境の準備完了：** [PR #63](https://github.com/kot5432/vacant-house/pull/63)で`package-lock.json`をmainにマージ済み。EのWindows/Node v26.13.1で`npm ci`・`doctor`・`typecheck`・`build`・`dev`起動とブラウザー仮画面表示を確認。**A〜Dは[セットアップガイド](ALL_MEMBERS_PC_SETUP.md)に沿って各自のPCで`npm ci`以降を実行可能**。別途`npm install`でlockfileを作り直す必要はありません。個人PCの成功は本人が確認してIssue #55に報告してください。旧い未検証・未反映の記述はこの案内を優先。
+# docs｜開発メンバー向け資料の入口
 
-> **A〜D全員必読：PCの準備とアプリ起動の手順**：[WindowsのNode v26.13.1・GitHub Desktop・npm ci・確認コマンド](ALL_MEMBERS_PC_SETUP.md)。EがIssue #51で共有lockfileをmainに反映してから、各自が`npm ci`と起動確認を行います。
+> **最終整理：2026-11-21**。このページから始めれば、過去の長い設計履歴を順に読む必要はありません。**現在作るのは1つのReactアプリ（地域活動に参加する／自分で企画する）**です。
 
-> **2026-11-21 更新：開発開始の最新案内**：[共通React環境とA〜Dの最新手順](START_DEVELOPMENT_20261121.md)。Eが最小React+TypeScript+Viteファイルをmainへ追加しました。**依存取得ができなかったためpackage-lock.json生成・起動テストは未実施**。Dの初手は環境構築#51ではなく**共通型#40**に変更。**この更新案内と矛盾する古い説明は更新案内を優先**してください。
+## 🔰 最初に読む3つ
 
-# docs｜まず読む資料
+1. **[PCセットアップ・共通環境の確認](ALL_MEMBERS_PC_SETUP.md)** — GitHub Desktopでclone、Node.js、`npm ci`、起動、[Issue #55](https://github.com/kot5432/vacant-house/issues/55)へ報告。共通lockfileは[PR #63](https://github.com/kot5432/vacant-house/pull/63)でmainに統合済み。各自のPCでの成功は個別確認が必要。
+2. **[自分の担当・初心者向け開発手順](BEGINNER_OWNER_WORKFLOWS.md)** — A〜Dが初週に何を作るか、AIコーディングの依頼例、PRの出し方。
+3. **[チーム共通開発・UI・main取り込みルール](v3/TEAM_SHARED_DEVELOPMENT_AND_UI_RULES_20261121.md)** — 他メンバーの変更を自分のPCへ取り込む方法、共通UI/共有型、レビュー。デザインの具体値は仮基準でチーム確認待ち。
 
-## 初めてGitHubでチーム開発をする人
+Git/GitHub操作に不慣れなら[GitHub DesktopやPRの初心者ガイド](BEGINNER_START_HERE.md)も確認。古い手順内の「lockfile未作成」などは記述当時の状態です。現在の環境状態は[PCセットアップ](ALL_MEMBERS_PC_SETUP.md)の2026-11-21の案内を優先してください。
 
-**最初にこちらを読んでください。**
+## 担当別の開発入口
 
-### [初心者向け：GitHub・PC準備からPR提出まで一からの操作ガイド](BEGINNER_START_HERE.md)
+| 担当 | 今取りかかるIssue | 次のIssue | 何を開発？ |
+|---|---|---|---|
+| A @Gr3311Moonn | [#34](https://github.com/kot5432/vacant-house/issues/34) | [#35](https://github.com/kot5432/vacant-house/issues/35) | D00入口、D01一覧/検索、D02詳細 |
+| B @unoyuyu0913-design | [#36](https://github.com/kot5432/vacant-house/issues/36) | [#37](https://github.com/kot5432/vacant-house/issues/37) | U02基本6問、P01〜P12判定とU03カード |
+| C @ynykrrc1219-stack | [#38](https://github.com/kot5432/vacant-house/issues/38) | [#39](https://github.com/kot5432/vacant-house/issues/39) | U03親進捗・再確認、U04編集 |
+| D @milkyara | [#40](https://github.com/kot5432/vacant-house/issues/40) | [#41](https://github.com/kot5432/vacant-house/issues/41) → [#42](https://github.com/kot5432/vacant-house/issues/42) | 共通データ型→Dexie/一覧→JSONバックアップ |
+| E @kot5432 | [#43](https://github.com/kot5432/vacant-house/issues/43) | [#44](https://github.com/kot5432/vacant-house/issues/44)、[#45](https://github.com/kot5432/vacant-house/issues/45) | 地域情報の根拠・需要調査・PRレビュー・全体受入 |
 
-### [担当A〜D別：最初に作るもの・AIへの依頼例・PR完了条件](BEGINNER_OWNER_WORKFLOWS.md)
+[**A〜Dの期限入り個別開発スケジュール**](v3/TEAM_INDIVIDUAL_DEVELOPMENT_SCHEDULE_PROPOSAL_20261121.md)：11/23開始、11/29小PR、12/20機能完成、12/27品質確認は**提案日程**。各人の作業可能時間で調整してください。
 
-GitHubにログインするところから、GitHub Desktop、Node.js/npm、Issueへの環境報告、レビュー、コード編集、コミット、PR作成まで、**画面上でどこを押すか**を順番に説明しています。A〜DとEで読む章が分かれています。
+## 技術とUIの正本
 
-初回作業：
-1. [担当表・GitHubの用語](BEGINNER_START_HERE.md#0-まず自分の担当を確認する)
-2. [開発環境の確認とIssue #55への回答](BEGINNER_START_HERE.md#1-全員githubにログインして自分の環境を報告する最初の作業)
-3. [自分に依頼されたPRのレビュー方法](BEGINNER_START_HERE.md#2-全員github上でレビューをする今すぐできる作業)
-4. [GitHub Desktopでリポジトリを取得](BEGINNER_START_HERE.md#3-全員自分のpcにリポジトリを取得する)
-5. [共通環境の最新の状態と担当別開始手順](START_DEVELOPMENT_20261121.md)／[A〜Cの最初の開発](BEGINNER_START_HERE.md#5-abc担当自分の機能を作る1123以降)
+詳しい仕様が必要になったら**[現行v3仕様・分野別索引](v3/README.md)**を開いてください。主な資料：
 
-**注意：package.jsonはありますがpackage-lock.jsonは未生成、実行テストは未実施**です。先に[初回npm installと検証の手順](START_DEVELOPMENT_20261121.md)を参照。
+| 知りたいこと | 開く資料 |
+|---|---|
+| MVPの採用範囲 | [ADR-030](v3/ADR_030_TOYAMA_PARTICIPATE_AND_ORGANIZE_MVP_SCOPE_ADOPTED.md)、[ADR-031](v3/ADR_031_PARENT_TASK_PROGRESS_ONLY_NO_CHILD_CHECKS_ADOPTED.md) |
+| 技術型・保存のルール | [ADR-029](v3/ADR_029_JSON_V1_IDENTIFIERS_AND_DATE_ADOPTED.md)、[ADR-032](v3/ADR_032_TECHNICAL_V1_DATA_RECHECK_EQUIPMENT_AND_API_ADOPTED.md) |
+| 画面共通UI・操作 | [共通開発/UI](v3/TEAM_SHARED_DEVELOPMENT_AND_UI_RULES_20261121.md)、[7画面契約](v3/STEP14_SCREEN_BEHAVIOR_AND_ERROR_MATRIX_20261119.md) |
+| 機能間の接続とデータ | [インターフェース契約](v3/STEP13_CROSS_FEATURE_INTERFACE_CONTRACT_20261119.md)、[型/API](v3/STEP25_TYPESCRIPT_DOMAIN_TYPES_AND_REPOSITORY_SIGNATURES_20261119.md) |
+| どこまで実装する？ | [作業パッケージ依存表](v3/WORK_PACKAGE_DEPENDENCIES_AND_START_GUIDES_20261119.md) |
+| 正式仕様と古い設計の差 | [新旧仕様の衝突監査](v3/FINAL_SOURCE_OF_TRUTH_AND_LEGACY_CONFLICT_AUDIT_20261119.md) |
 
-## 詳細仕様と開発ルール
-- [現行仕様・開発設計の正本（v3）](v3/README.md)
-- [Git・GitHubの詳しい運用ルール](v3/GIT_WORKFLOW_AND_BRANCH_RULES.md)
-- [技術方針 ADR-001](v3/ADR_001_TECH_STACK_ADOPTED.md)
-- [現在の参加/主催MVP ADR-030](v3/ADR_030_TOYAMA_PARTICIPATE_AND_ORGANIZE_MVP_SCOPE_ADOPTED.md)
+## Gitでの統合（重要）
 
-設計正本と初心者用説明が矛盾するときは**採用済みのADRと最新のIssueで確認**し、担当へ相談してください。READMEの履歴的な「まだ未許可」という文言よりも、2026-11-23からローカル実装/テスト許可というSTEP6の正式決定が優先します。CI/デプロイ/外部公開は未許可です。
+**別々のアプリを作りません。** 自分の担当ブランチで作業→小PR→別人レビュー→mainへマージ→各自が最新mainを取得し自分のブランチへ反映、を繰り返します。他人のファイルを手でコピーしないでください。
+
+[GitHub Desktopの手順](v3/GIT_WORKFLOW_AND_BRANCH_RULES.md) ／ [チームのPRルール](../CONTRIBUTING.md)
+
+## 履歴と古い資料
+
+- 過去の設計資料を削除・移動しないで、**現在の資料へのリンクを先に整えました**。
+- [旧v3 READMEの全文履歴](v3/README_HISTORY_20261121.md)には、これまでのSTEP・ADR・検討経緯を残しています。
+- 旧空き家活用案、古い役割表、子チェック採用前の仕様は**実装しない**。最新の正式ADRを優先する。
+- CI、Vercel公開、アンケート配布、イベント掲載、応募はこの文書整理では実行しない。
