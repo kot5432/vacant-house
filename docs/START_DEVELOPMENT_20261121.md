@@ -30,7 +30,7 @@
 ### Eが配布した担当ブランチを使う
 A: `feature/34-participation-entry`、B: `feature/36-organizer-input`、C: `feature/38-parent-progress`、D: `feature/40-domain-types`。**GitHub DesktopでFetch origin → Current branch → 自分のブランチを選択**し、`main`に直接変更を加えません。
 
-ブランチは最初のIssue専用。次のIssueは新しいブランチで作業します。**A〜Dのブランチは依存ファイルを更新したmainから作るため、作成前にはIssueの案内を確認してください。**
+ブランチは最初のIssue専用。次のIssueは新しいブランチで作業します。**A〜Dの4ブランチは2026-11-21にEがmainから作成済みです。** 初回lockfile PRが後でmainへ統合されたら、その最新版を担当ブランチに取り込んでから依存インストールを実行してください。各ブランチはEが配布したものを使い、新規作成しないでください。
 
 ### AIコーディングの安全な使い方
 1. 自分のIssueを開き、仕様と今週やらないことを確認。
