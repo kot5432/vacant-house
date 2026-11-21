@@ -153,8 +153,8 @@ npm：OK（表示された番号） / 使えない / 未確認
 - すでに作れる**独立したコンポーネントや設計**は準備してよいが、共通環境の完成を偽装したり、mainを直接編集したりしない。
 
 ### 5-2 共通環境のlockfile PRがmainに統合された後
-1. GitHub Desktopで **Current branch → main** に切り替え、**Fetch origin → Pull origin** で最新mainを取得。
-2. **Current branch → New branch** で自分用のブランチを作る。
+1. GitHub Desktopで **Fetch origin** を押して更新を取得する。
+2. **Current branch**からEが用意した**自分の担当ブランチ**を選ぶ（新規作成しない）。共通lockfileが追加された後は、その変更を失わないようmainから取り込む。
 
 | 担当 | ブランチ名の例 |
 |---|---|
@@ -205,8 +205,8 @@ npm run dev
 | 「Repository not found」 | GitHubにログインできているか、URLが正しいか確認。Eへ相談 |
 | `git` / `node` が見つからない | そのツールのインストールや再起動を確認。Dへ相談 |
 | Node.jsが`v26.13.1`ではない | バージョンを報告。勝手に共通指定を変更せずDと相談 |
-| `npm ci`が失敗する | **先にDの雛形がmainへ統合されているか確認**。まだなら待つ。統合済みならエラーの種類だけDへ共有 |
-| `package.json`がない | Dの環境PRが未統合。まだアプリ起動の段階ではない |
+| `npm ci`が失敗する | **2026-11-21現在、package-lock.jsonがまだありません**。E管理の[#51](https://github.com/kot5432/vacant-house/issues/51)で初回`npm install`→lockfile作成・確認が必要です。完了してから`npm ci`を実行してください |
+| `package.json`がない | `main`の更新が古い可能性があります。GitHub Desktopでmain→Fetch/Pullして確認。`package-lock.json`がないのはまだ未対応の共有環境残作業です |
 | コードを変えたのにGitHubで見えない | GitHub Desktopで`Commit`した後、`Push origin`も押す |
 | 自分が`main`にいる | 変更を始めず、**Current branch**から自分用ブランチを作る。すでに変更した場合はE/Dに相談 |
 | `Merge pull request`が押せない | レビュー未承認、コメント未解決、競合などが原因の可能性。無理に設定を変えない |
