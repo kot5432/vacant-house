@@ -1,3 +1,5 @@
+> **Issue #51の最終操作（Windows）**：[Nodeの確認・lockfileのPR・起動確認](docs/ISSUE51_WINDOWS_FINAL_STEPS.md)。Node v24での型チェック・ビルド・Vite起動は実測成功。Node v26確認とlockfileのmain反映は未完了。
+
 > **2026-11-21 更新：開発開始の最新案内**：[共通React環境とA〜Dの最新手順](docs/START_DEVELOPMENT_20261121.md)。Eが最小React+TypeScript+Viteファイルをmainへ追加しました。**依存取得ができなかったためpackage-lock.json生成・起動テストは未実施**。Dの初手は環境構築#51ではなく**共通型#40**に変更。**この更新案内と矛盾する古い説明は更新案内を優先**してください。
 
 > ## 🔰 初めて開発するメンバーへ
