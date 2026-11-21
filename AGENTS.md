@@ -4,7 +4,7 @@ This is **one** React + TypeScript + Vite application for Toyama community activ
 
 ## First, read the appropriate sources
 1. [docs/CODEX_START_HERE.md](docs/CODEX_START_HERE.md): the single start page for all contributors and Codex.
-2. [docs/README.md](docs/README.md) and [docs/v3/README.md](docs/v3/README.md): current documentation indexes.
+2. [docs/README.md](docs/README.md) and [docs/v3/README.md](docs/v3/README.md): curated current-document indexes. [docs/DOCUMENT_POLICY.md](docs/DOCUMENT_POLICY.md) identifies historical files; do **not** recursively read every file under docs/v3.
 3. **The assigned GitHub Issue and its latest comments**, including scope, acceptance criteria, and dependencies.
 4. Adopted design decisions: [ADR-029](docs/v3/ADR_029_JSON_V1_IDENTIFIERS_AND_DATE_ADOPTED.md), [ADR-030](docs/v3/ADR_030_TOYAMA_PARTICIPATE_AND_ORGANIZE_MVP_SCOPE_ADOPTED.md), [ADR-031](docs/v3/ADR_031_PARENT_TASK_PROGRESS_ONLY_NO_CHILD_CHECKS_ADOPTED.md), [ADR-032](docs/v3/ADR_032_TECHNICAL_V1_DATA_RECHECK_EQUIPMENT_AND_API_ADOPTED.md).
 5. [Shared development rules](docs/v3/TEAM_SHARED_DEVELOPMENT_AND_UI_RULES_20261121.md) and [shared UI implementation](docs/v3/SHARED_UI_IMPLEMENTATION_AND_OWNERSHIP_20261121.md). Inspect the actual current `src/` files before modifying them.
