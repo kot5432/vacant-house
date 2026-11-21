@@ -2,12 +2,38 @@
 
 **まずこのページを開き、Codexにも最初に読ませてください。** 現行MVPは「参加する／企画する」の**1つのWebアプリ**です。旧空き家アプリではありません。
 
-## 0. まず全員がやること
-1. [自分のPCの準備](ALL_MEMBERS_PC_SETUP.md)を確認し、結果を[Issue #55](https://github.com/kot5432/vacant-house/issues/55)へコメント（他の人の実機成功を自分の成功としない）。
-2. GitHub Desktopでリポジトリの`main`をFetch/Pullし、**自分の既存featureブランチ**を選び、最新mainを反映。**mainでは編集しない**。
-3. Codexで**リポジトリのルートフォルダ**を開き、ルートの[AGENTS.md](../AGENTS.md)と自分のIssueを読ませる。
-4. Issueに書かれた**最初の小さな作業だけ**を実装する。11/23〜11/29は各人小PR 1件が目標。
-5. 変更差分・ローカル実行結果を確認し、PRに記録してEにレビュー依頼。レビュー・統合後に初めて完了。
+## まずはこの5段階だけ（A〜D共通）
+
+**毎回の流れ：担当Issue確認 → Codexで実装・確認 → PR提出 → Eがレビュー・マージ → 次のIssueへ。** PC環境確認は済んでいる前提です。操作が不安な箇所だけ[GitHub Desktopの詳しい操作ガイド](BEGINNER_START_HERE.md)を開いてください。
+
+### 1. 自分のIssueとブランチを開く
+- 下の表の**最初のIssue**を確認し、今回作る範囲・完了条件・関連仕様を読む。
+- GitHub Desktopで `main` を選び **Fetch origin → Pull origin**（最新のmainを取得）。
+- **自分の作業中のfeatureブランチ**に切り替え、**Branch → Update from main** で最新mainを反映する。最初の4ブランチはEが用意済み。未コミット変更や競合があれば勝手に破棄せずEへ相談する。
+- **mainで機能開発しない。** 他の人のPRがマージされた後も、作業中ブランチには最新版を取り込む。
+
+### 2. Codexで小さく実装・動作確認する
+- Codexで**このリポジトリのルートフォルダ**を開き、[AGENTS.md](../AGENTS.md)、このページ、**担当Issue本文・最新コメント**と関連ADRを参照させる。具体的なコピペ指示は下の「Codexへの最初の指示」を使う。
+- **編集前に** Codexへ「変更予定ファイル・完成条件・他担当への影響」を説明させる。仕様が曖昧ならIssueで質問する。
+- Codexの差分を本人も確認し、`npm run typecheck`・`npm run build`・必要な画面操作を確認。できなかった項目は `not_run` と理由を記録する。最初のPRは**小さな機能1つ**でよい。
+
+### 3. Commit・PushしてPRを出す
+- GitHub Desktopの **Changes** で追加・削除されたファイルを確認 → **Commit to 自分のブランチ** → **Push origin**。
+- **Create Pull Request**（またはGitHubの **Compare & pull request**）から、**base = main / compare = 自分のfeatureブランチ**でPRを作る。
+- PR本文には「担当Issue番号、作ったもの、まだ作っていないもの、変更ファイル、実際の確認結果／`not_run`、困っていること」を書く。**E @kot5432 にレビュー依頼**。PRを作成しただけでは完了ではない。
+- 画面操作やボタンの詳細は[GitHub Desktop初心者ガイド](BEGINNER_START_HERE.md)、コピー用のPR本文は[担当別の詳細手順](BEGINNER_OWNER_WORKFLOWS.md)を参照。
+
+### 4. Eがレビューしてmainへマージする
+- Eが **Files changed・仕様・テスト結果・他担当への影響**を確認し、必要なら修正を依頼する。
+- 修正依頼が来たら、**同じ作業ブランチで修正 → Commit → Push**。**同じPRが更新される**ので、原則PRを作り直さない。
+- Eが内容と必要な確認を認めたら**Eがmainへマージ**し、担当者へ知らせる。GitHubで承認が必須設定でなくても、**Eの確認を省略しない**。
+
+### 5. 最新mainを取り込み、次のIssueへ
+- A〜Dはマージ連絡後、GitHub Desktopで **mainに切り替え → Fetch origin → Pull origin**。これで自分のPCのmainに統合済みの変更が入る。
+- **まだ作業中の別ブランチがある場合のみ**、そのブランチへ切り替えて **Update from main**。**マージ済みの古いブランチを更新し続ける必要はない**。
+- 次のIssueは、**最新mainを起点に新しいブランチを作って**始める（最初の4ブランチの使い回しはしない）。マージ後は担当Issueに完了した範囲と未実装部分を記録し、受入条件が満たされたことを確認してからクローズする。
+
+**困ったとき**：まず自分のIssueへ「何をした／どうなった／何を知りたい」をコメント。Git・競合・レビュー判断はEへ相談。API/型の接続は関連担当にも共有してください。
 
 ## 1. 誰が何を見る？
 
